@@ -8,8 +8,13 @@ function personC() {
 
 function b() {
  // lineeee
+ // testing git branch create deleteme
 }
 
 function a() {
 
+}
+
+function myBranch() {
+  // does nothing
 }
