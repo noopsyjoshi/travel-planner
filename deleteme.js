@@ -11,5 +11,6 @@ function b () {
 }
 
 function a() {
-  
+  // added a line. FROM LAURA
+
 }
