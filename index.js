@@ -2,12 +2,12 @@
 const express = require('express');
 
 // Environment
-const { PORT, dbURI } = require('./config/environment');
+const { port, dbURI } = require('./config/environment');
 
 // Mongoose/MongoDB
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect(dbURI);
+mongoose.connect(dbURI, { useNewUrlParser: true });
 
 // Set-up app
 const app = express();
@@ -23,6 +23,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.listen(PORT, () => console.log(`Express is now listening on port ${PORT}...`));
+app.listen(port, () => console.log(`Express is now listening on port ${port}...`));
 
 module.exports = app;
