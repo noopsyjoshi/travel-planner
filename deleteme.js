@@ -6,8 +6,8 @@ function personC() {
   // Does nothing
 }
 
-function b () {
- // edit function
+function b() {
+ // lineeee
 }
 
 function a() {
