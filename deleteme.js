@@ -4,6 +4,7 @@ function doNothing() {
 
 function personC() {
   // Does nothing
+  // Another line
 }
 
 function b() {
