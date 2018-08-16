@@ -2,6 +2,14 @@ function doNothing() {
   // Does nothing
 }
 
-function personA() {
-  //Person A
+function personC() {
+  // Does nothing
+}
+
+function b () {
+
+}
+
+function a() {
+  
 }
