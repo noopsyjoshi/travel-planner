@@ -1,3 +1,3 @@
-# travel-planner
+# Traverse: Plan your next holiday
 
-// yoooo written by LA !!!!
+Welcome to Traverse.
