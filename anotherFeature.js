@@ -1,0 +1,3 @@
+function anotherFeature() {
+	// Does nothing
+}
