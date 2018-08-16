@@ -5,3 +5,7 @@ function doNothing() {
 function personC() {
   // Does nothing
 }
+
+function b () {
+
+}
