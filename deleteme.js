@@ -6,10 +6,10 @@ function personC() {
   // Does nothing
 }
 
-function b () {
+function b() {
 
 }
 
 function a() {
-  
+
 }
