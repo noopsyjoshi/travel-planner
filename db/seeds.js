@@ -515,7 +515,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/aint-nothin-but-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 93,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Jazz & Blues"
 				{
@@ -538,7 +538,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/the-troubadour-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 90,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Music Venues"
 				},
@@ -563,7 +563,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/ronnie-scotts-jazz-club-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 137,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Jazz & Blues"
 				},
@@ -584,7 +584,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/nightjar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 167,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Lounges"
 				},
@@ -605,7 +605,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/fabric-london-2?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 188,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Dance Clubs"
 				},
@@ -626,7 +626,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/spiritual-caipirinha-bar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 13,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Bars"
 				},
@@ -647,7 +647,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/the-social-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 59,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Bars"
 				},
@@ -671,7 +671,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/the-crobar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 42,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Music Venues"
 				},
@@ -695,7 +695,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/jazz-after-dark-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 19,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Jazz & Blues"
 				}
@@ -713,7 +713,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/wicked-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 113,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Performing Arts"
 				}
@@ -730,7 +730,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/matilda-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 27,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Performing Arts"
 				}
@@ -747,7 +747,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/hootananny-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 36,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Pubs"
 				},
@@ -768,7 +768,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/royal-academy-of-music-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 8,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Education"
 				},
@@ -788,7 +788,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/606-club-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 30,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Jazz & Blues"
 				},
@@ -812,7 +812,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/queens-theatre-london-7?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 57,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Performing Arts"
 				}
@@ -829,7 +829,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/the-bootlegger-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 2,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Cocktail Bars"
 				},
@@ -852,7 +852,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/the-george-tavern-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 18,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Dive Bars"
 				},
@@ -873,7 +873,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/the-amersham-arms-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 30,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Pubs"
 				},
@@ -897,7 +897,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/royal-albert-hall-kensington?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 207,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Music Venues"
 				},
@@ -918,7 +918,7 @@ const activitiesData = [
 			"is_closed": false,
 			"url": "https://www.yelp.com/biz/roundhouse-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 126,
-			"categories": [ 'Events', 
+			"categories": [ 'Events',
 				{
 					"Music Venues"
 				},
