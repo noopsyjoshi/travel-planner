@@ -2,11 +2,14 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 
+// Required models
 const User = require('../models/user');
 const Activity = require('../models/activity');
 
+// Set-up mongoose
 mongoose.connect(dbURI);
 
+// Remove pre-existing collections from MongoDB
 User.collection.drop();
 Activity.collection.drop();
 
@@ -159,7 +162,7 @@ const activityData = [
     isClosed: false,
     price: '££',
     reviewCount: 93,
-    categories: [ 'Events', 'Jazz & Blues', 'Dance Clubs', 'Wine Bars', ],
+    categories: ['Events', 'Jazz & Blues', 'Dance Clubs', 'Wine Bars'],
     rating: 4.0,
     coordinates: {
       latitude: 51.5129631039042,
@@ -173,7 +176,7 @@ const activityData = [
     isClosed: false,
     price: '££',
     reviewCount: 90,
-    categories: [ 'Events', 'Music Venues', 'Cafes', 'Dance Clubs'],
+    categories: ['Events', 'Music Venues', 'Cafes', 'Dance Clubs'],
     rating: 4.0,
     coordinates: {
       latitude: 51.488822437999,
@@ -187,7 +190,7 @@ const activityData = [
     isClosed: false,
     price: '£££',
     reviewCount: 137,
-    categories: [ 'Events', 'Jazz & Blues', 'Dance Clubs'],
+    categories: ['Events', 'Jazz & Blues', 'Dance Clubs'],
     rating: 4.0,
     coordinates: {
       latitude: 51.5133855,
@@ -201,7 +204,7 @@ const activityData = [
     yelpUrl: 'https://www.yelp.com/biz/nightjar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     price: '£££',
     reviewCount: 167,
-    categories: [ 'Events', 'Lounges', 'Cocktail Bars'],
+    categories: ['Events', 'Lounges', 'Cocktail Bars'],
     rating: 4.5,
     coordinates: {
       latitude: 51.5265350341797,
@@ -214,7 +217,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/fabric-london-2?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 188,
-    categories: [ 'Events', 'Dance Clubs', 'Music Venues'],
+    categories: ['Events', 'Dance Clubs', 'Music Venues'],
     rating: 4.0,
     coordinates: {
       latitude: 51.5196084163624,
@@ -228,7 +231,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/spiritual-caipirinha-bar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 13,
-    categories: [ 'Events', 'Bars', 'Music Venues'],
+    categories: ['Events', 'Bars', 'Music Venues'],
     rating: 4.5,
     coordinates: {
       latitude: 51.543273,
@@ -242,7 +245,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/the-social-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 59,
-    categories: [ 'Events', 'Bars', 'Dance Clubs', 'Music Venues'],
+    categories: ['Events', 'Bars', 'Dance Clubs', 'Music Venues'],
     rating: 4.0,
     coordinates: {
       latitude: 51.5174,
@@ -256,7 +259,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/the-crobar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 42,
-    categories: [ 'Events', 'Music Venues', 'Dance Clubs', 'Pubs'],
+    categories: ['Events', 'Music Venues', 'Dance Clubs', 'Pubs'],
     rating: 4.0,
     coordinates: {
       latitude: 51.514867642482,
@@ -284,7 +287,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/wicked-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 113,
-    categories: [ 'Events', 'Performing Arts'],
+    categories: ['Events', 'Performing Arts'],
     rating: 4.5,
     coordinates: {
       latitude: 51.4954655032239,
@@ -297,7 +300,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/matilda-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 27,
-    categories: [ 'Events', 'Performing Arts'],
+    categories: ['Events', 'Performing Arts'],
     rating: 4.5,
     coordinates: {
       latitude: 51.513650212979,
@@ -311,7 +314,7 @@ const activityData = [
     yelpUrl: 'https://www.yelp.com/biz/hootananny-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 36,
     price: '££',
-    categories: [ 'Events', 'Pubs', 'Music Venues'],
+    categories: ['Events', 'Pubs', 'Music Venues'],
     rating: 4.0,
     coordinates: {
       latitude: 51.4553348340329,
@@ -324,7 +327,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/royal-academy-of-music-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 8,
-    categories: [ 'Events', 'Education', 'Music Venues'],
+    categories: ['Events', 'Education', 'Music Venues'],
     rating: 5.0,
     coordinates: {
       latitude: 51.523622,
@@ -346,12 +349,12 @@ const activityData = [
     price: '££'
   },
   {
-    name: 'Queen's Theatre',
+    name: 'Queen\'s Theatre',
     imageUrl: 'https://s3-media4.fl.yelpcdn.com/bphoto/Z_xRM_Gh9QO3Cq8KCGWYGg/o.jpg',
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/queens-theatre-london-7?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 57,
-    categories: [ 'Events', 'Performing Arts'],
+    categories: ['Events', 'Performing Arts'],
     rating: 4.5,
     coordinates: {
       latitude: 51.511847,
@@ -364,7 +367,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/the-george-tavern-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 18,
-    categories: [ 'Events', 'Dive Bars', 'Music Venues'],
+    categories: ['Events', 'Dive Bars', 'Music Venues'],
     rating: 4.0,
     coordinates: {
       latitude: 51.514333,
@@ -378,7 +381,7 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/the-amersham-arms-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 30,
-    categories: [ 'Events', 'Pubs', 'Dance Clubs', 'Music Venues'],
+    categories: ['Events', 'Pubs', 'Dance Clubs', 'Music Venues'],
     rating: 4.0,
     coordinates: {
       latitude: 51.4757511346773,
@@ -392,13 +395,13 @@ const activityData = [
     isClosed: false,
     yelpUrl: 'https://www.yelp.com/biz/royal-albert-hall-kensington?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     reviewCount: 207,
-    categories: [ 'Events', 'Music Venues', 'Venues & Event Spaces'],
+    categories: ['Events', 'Music Venues', 'Venues & Event Spaces'],
     rating: 4.5,
     coordinates: {
       latitude: 51.5009964375442,
       longitude: -0.177414610229825
     },
-    price: '££',
+    price: '££'
   }
 ];
 
@@ -406,14 +409,8 @@ User
   .create(userData)
   .then(users => {
     console.log(`Created ${users.length} users.`);
+    return Activity.create(activityData);
   })
-  .catch(err => console.log(err))
-  .finally(() => mongoose.connection.close());
-
-  Activity
-  .create(activityData)
-  .then(activities => {
-    console.log(`Created ${activities.length} activities.`)
-  })
+  .then(activities => console.log(`Created ${activities.length} activities...`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
