@@ -5,6 +5,7 @@ const { dbURI } = require('../config/environment');
 // Required models
 const User = require('../models/user');
 const Activity = require('../models/activity');
+const Trip = require('../models/trip')
 
 // Set-up mongoose
 mongoose.connect(dbURI);
@@ -22,7 +23,8 @@ const userData = [
     password: 'pass',
     confirmPassword: 'pass',
     imageUrl: '',
-    location: 'London'
+    location: 'London',
+    tripId: 123
   },
   {
     firstName: 'Noopur',
@@ -404,6 +406,17 @@ const activityData = [
     price: '££'
   }
 ];
+
+const tripData = [
+  {
+    tripId: '123',
+    country: 'United Kingdom',
+    city: 'London',
+    duration: 3,
+    accomodation: 'Hotel',
+    budget: 500,
+    categories: ['music', 'historicalSites', 'food']
+}];
 
 User
   .create(userData)
