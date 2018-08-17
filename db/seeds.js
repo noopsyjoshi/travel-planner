@@ -516,15 +516,9 @@ const activitiesData = [
 			"url": "https://www.yelp.com/biz/aint-nothin-but-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 93,
 			"categories": [ 'Events',
-				{
-					"Jazz & Blues"
-				{
-					"Dance Clubs"
-				},
-				{
-					"Wine Bars"
-				}
-			],
+					"Jazz & Blues",
+					"Dance Clubs",
+					"Wine Bars", ],
 			"rating": 4.0,
 			"coordinates": {
 				"latitude": 51.5129631039042,
@@ -539,15 +533,9 @@ const activitiesData = [
 			"url": "https://www.yelp.com/biz/the-troubadour-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 90,
 			"categories": [ 'Events',
-				{
-					"Music Venues"
-				},
-				{
-					"Cafes"
-				},
-				{
+					"Music Venues",
+					"Cafes",
 					"Dance Clubs"
-				}
 			],
 			"rating": 4.0,
 			"coordinates": {
@@ -564,12 +552,8 @@ const activitiesData = [
 			"url": "https://www.yelp.com/biz/ronnie-scotts-jazz-club-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 137,
 			"categories": [ 'Events',
-				{
-					"Jazz & Blues"
-				},
-				{
+					"Jazz & Blues",
 					"Dance Clubs"
-				}
 			],
 			"rating": 4.0,
 			"coordinates": {
@@ -585,12 +569,8 @@ const activitiesData = [
 			"url": "https://www.yelp.com/biz/nightjar-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 167,
 			"categories": [ 'Events',
-				{
-					"Lounges"
-				},
-				{
+					"Lounges",
 					"Cocktail Bars"
-				}
 			],
 			"rating": 4.5,
 			"coordinates": {
@@ -606,10 +586,7 @@ const activitiesData = [
 			"url": "https://www.yelp.com/biz/fabric-london-2?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
 			"review_count": 188,
 			"categories": [ 'Events',
-				{
-					"Dance Clubs"
-				},
-				{
+					"Dance Clubs",
 					"Music Venues"
 				}
 			],
