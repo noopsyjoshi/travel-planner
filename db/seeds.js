@@ -936,18 +936,5 @@ const activitiesData = [
 			},
 			"price": "££",
 		}
-	],
-	"total": 1400,
-	"region": {
-		"center": {
-			"longitude": -0.135955810546875,
-			"latitude": 51.51283552118349
-		}
-	}
-}
-
-
-
-
-
+  };
 ];
