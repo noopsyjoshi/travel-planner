@@ -5,7 +5,7 @@ const { dbURI } = require('../config/environment');
 // Required models
 const User = require('../models/user');
 const Activity = require('../models/activity');
-const Trip = require('../models/trip')
+const Trip = require('../models/trip');
 
 // Set-up mongoose
 mongoose.connect(dbURI);
@@ -416,7 +416,8 @@ const tripData = [
     accomodation: 'Hotel',
     budget: 500,
     categories: ['music', 'historicalSites', 'food']
-}];
+  }
+];
 
 User
   .create(userData)
@@ -424,6 +425,9 @@ User
     console.log(`Created ${users.length} users.`);
     return Activity.create(activityData);
   })
-  .then(activities => console.log(`Created ${activities.length} activities...`))
+  .then(activities => {
+    console.log(`Created ${activities.length} activities...`);
+    return Trip.create(tripData);
+  })
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
