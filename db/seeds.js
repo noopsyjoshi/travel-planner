@@ -13,6 +13,7 @@ mongoose.connect(dbURI);
 // Remove pre-existing collections from MongoDB
 User.collection.drop();
 Activity.collection.drop();
+Trip.collection.drop();
 
 const userData = [
   {
@@ -21,7 +22,7 @@ const userData = [
     username: 'kanelincoln',
     email: 'kanelincoln@gmail.com',
     password: 'pass',
-    confirmPassword: 'pass',
+    passwordConfirmation: 'pass',
     imageUrl: '',
     location: 'London',
     tripId: 123
@@ -32,7 +33,7 @@ const userData = [
     username: 'noopurjoshi',
     email: 'noopurjoshi@gmail.com',
     password: 'pass',
-    confirmPassword: 'pass',
+    passwordConfirmation: 'pass',
     imageUrl: '',
     location: 'Berlin'
   },
@@ -42,7 +43,7 @@ const userData = [
     username: 'lauraauksoriute',
     email: 'lauraauksoriute@gmail.com',
     password: 'pass',
-    confirmPassword: 'pass',
+    passwordConfirmation: 'pass',
     imageUrl: '',
     location: 'London'
   }
@@ -429,5 +430,6 @@ User
     console.log(`Created ${activities.length} activities...`);
     return Trip.create(tripData);
   })
+  .then(trips => console.log(`Created ${trips.length} trips`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());

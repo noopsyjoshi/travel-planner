@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   imageUrl: String,
   location: String, // this is the user's location (ex. home town)
-  tripId: { type: Number, required: true }
+  tripId: { type: Number, required: false }
 }, { timestamps: true });
 
 userSchema
@@ -19,7 +19,7 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if (this._passwordConfirmation || this._passwordConfirmation !== this.password)
+  if (!this._passwordConfirmation || this._passwordConfirmation !== this.password)
     this.invalidate('passwordConfirmation', 'does not match');
   next();
 });
