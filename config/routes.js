@@ -10,8 +10,7 @@ const secureRoute = require('../lib/secureRoute');
 // Routes go here
 router.route('/trips')
   .all(secureRoute)
-  .get(tripController.index)
-  .get(tripController.new)
+  .get(tripController.show)
   .post(tripController.create);
 
 router.route('/trips/:id')
