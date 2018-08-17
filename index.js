@@ -1,5 +1,7 @@
 // Required packages
 const express = require('express');
+const router = require('./config/routes');
+const errorHandler = require('./lib/errorHandler');
 
 // Environment
 const { port, dbURI } = require('./config/environment');
@@ -22,6 +24,9 @@ app.use((req, res, next) => {
   res.append('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
+
+app.use('/api', router);
+app.use(errorHandler);
 
 app.listen(port, () => console.log(`Express is now listening on port ${port}...`));
 
