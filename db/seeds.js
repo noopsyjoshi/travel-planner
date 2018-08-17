@@ -4,6 +4,7 @@ const { dbURI } = require('../config/environment');
 
 const User = require('../models/user');
 const Activity = require('../models/activity');
+const Trip = require('../models/trip')
 
 mongoose.connect(dbURI);
 
@@ -19,7 +20,8 @@ const userData = [
     password: 'pass',
     confirmPassword: 'pass',
     imageUrl: '',
-    location: 'London'
+    location: 'London',
+    tripId: 123
   },
   {
     firstName: 'Noopur',
@@ -402,18 +404,37 @@ const activityData = [
   }
 ];
 
-User
-  .create(userData)
-  .then(users => {
-    console.log(`Created ${users.length} users.`);
-  })
-  .catch(err => console.log(err))
-  .finally(() => mongoose.connection.close());
+const tripData = [
+  {
+    tripId: '123',
+    country: 'United Kingdom',
+    city: 'London',
+    duration: 3,
+    accomodation: 'Hotel',
+    budget: 500,
+    categories: ['music', 'historicalSites', 'food']
+}];
 
-  Activity
-  .create(activityData)
-  .then(activities => {
-    console.log(`Created ${activities.length} activities.`)
-  })
-  .catch(err => console.log(err))
-  .finally(() => mongoose.connection.close());
+User
+.create(userData)
+.then(users => {
+  console.log(`Created ${users.length} users.`);
+})
+.catch(err => console.log(err))
+.finally(() => mongoose.connection.close());
+
+Activity
+.create(activityData)
+.then(activities => {
+  console.log(`Created ${activities.length} activities.`)
+})
+.catch(err => console.log(err))
+.finally(() => mongoose.connection.close());
+
+Activity
+.create(activityData)
+.then(activities => {
+  console.log(`Created ${activities.length} activities.`)
+})
+.catch(err => console.log(err))
+.finally(() => mongoose.connection.close());

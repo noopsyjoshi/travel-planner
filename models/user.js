@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   confirmPassword: { type: String, required: true },
   imageUrl: String,
-  location: String // this is the user's location (ex. home town)
+  location: String, // this is the user's location (ex. home town)
+  tripId: { type: Number, required: true }
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);
