@@ -1,0 +1,29 @@
+<p>Want to plan your next holiday? Create an account</p>
+<!-- register() will invoke the function when form is submitted -->
+<form ng-submit="register()">
+  <!-- First name -->
+  <div class="field">
+    <input ng-model="user.firstName" class="input" type="text" name="firstName" placeholder="First name">
+  </div>
+  <!-- Last name -->
+  <div class="field">
+    <input ng-model="user.lastName" class="input" type="text" name="lastName" placeholder="Last name">
+  </div>
+  <!-- Username -->
+  <div class="field">
+    <input ng-model="user.username" class="input" type="text" name="username" placeholder="Username">
+  </div>
+  <!-- Email -->
+  <div class="field">
+    <input ng-model="user.email" class="input" type="email" name="email" placeholder="Email">
+  </div>
+  <!-- Password -->
+  <div class="field">
+    <input ng-model="user.password" class="input" type="password" name="password" placeholder="Password">
+  </div>
+  <!-- Confirm password -->
+  <div class="field">
+    <input ng-model="user.passwordConfirmation" class="input" type="password" name="passwordConfirmation" placeholder="Confirm password">
+  </div>
+  <button class="button">Sign Up</button>
+</form>
