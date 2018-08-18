@@ -1,9 +1,6 @@
 /* global describe, it, expect, api, beforeEach */
 
 const User = require('../../models/user');
-const jwt = require('jsonwebtoken');
-const { secret } = require('../../config/environment');
-let token;
 
 const userData = {
   firstName: 'test',
