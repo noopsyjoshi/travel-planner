@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" ng-app="Traverse">
-  <head>
-    <meta charset="utf-8">
-    <title>Traverse</title>
-  </head>
-  <body ng-controller="MainCtrl">
-    <nav class="navbar is-light">
-      <div class="container navbar-brand">
-        <a ui-sref="index" class="navbar-item">Logo</a>
-        <a ui-sref="login" class="navbar-item">Login</a>
-        <a ui-sref="register" class="navbar-item">Sign Up</a>
-      </div>
-    </nav>
-    <!-- test -->
-    <h1>Hello World!</h1>
-    <!-- This is where UI router puts the view for the current state -->
-    <div class="container">
-      <div ui-view></div>
+<head>
+  <meta charset="utf-8">
+  <title>Traverse</title>
+</head>
+<body ng-controller="MainCtrl">
+  <nav class="navbar is-light">
+    <div class="container navbar-brand">
+      <a ui-sref="index" class="navbar-item">Logo</a>
+      <a ui-sref-active="is-active" ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()">Login</a>
+      <a ui-sref-active="is-active" ui-sref="register" class="navbar-item" ng-if="!isAuthenticated()">Sign Up</a>
+      <a ui-sref-active="is-active" ng-click="logout()" class="navbar-item" ng-if="isAuthenticated()">Log Out</a>
     </div>
-  </body>
+  </nav>
+  <!-- This is where UI router puts the view for the current state -->
+  <div class="container">
+    <div ui-view></div>
+  </div>
+</body>
 </html>
