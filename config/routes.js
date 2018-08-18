@@ -20,7 +20,7 @@ router.route('/trips/:id')
   .delete(tripController.delete);
 
 router.route('/user')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(userController.index);
 
 router.route('/user/:id')
