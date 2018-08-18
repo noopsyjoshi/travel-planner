@@ -10,16 +10,24 @@ const secureRoute = require('../lib/secureRoute');
 // Routes go here
 router.route('/trips')
   .all(secureRoute)
-  .get(tripController.show)
+  .get(tripController.index)
   .post(tripController.create);
 
 router.route('/trips/:id')
   .all(secureRoute)
-  .get(tripController.show);
+  .get(tripController.show)
+  .put(tripController.update)
+  .delete(tripController.delete);
 
 router.route('/user')
   .all(secureRoute)
-  .get(userController.show);
+  .get(userController.index);
+
+router.route('/user/:id')
+  .all(secureRoute)
+  .get(userController.show)
+  .put(userController.update)
+  .delete(userController.delete);
 
 router.route('/register')
   .post(authController.register);
