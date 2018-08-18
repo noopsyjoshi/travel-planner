@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" ng-app="Traverse">
   <head>
     <meta charset="utf-8">
-    <title>WDI Project 3</title>
+    <title>Traverse</title>
   </head>
   <body>
+    <nav class="navbar is-light">
+      <div class="container navbar-brand">
+        <a ui-sref="index" class="navbar-item">Logo</a>
+      </div>
+    </nav>
+    <!-- test -->
     <h1>Hello World!</h1>
+    <!-- This is where UI router puts the view for the current state -->
+    <div class="container">
+      <div ui-view></div>
+    </div>
   </body>
 </html>
