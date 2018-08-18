@@ -26,6 +26,7 @@ import TripsEditCtrl from './controllers/trips/edit';
 // Sessions
 import AuthLoginCtrl from './controllers/auth/login';
 import AuthRegisterCtrl from './controllers/auth/register';
+import AuthLogoutCtrl from './controllers/auth/logout';
 
 angular.module('Traverse', ['ui.router', 'ngMessages', 'satellizer']) // ui.router is a dependency
   // .directive('ngMap', Map)
@@ -35,6 +36,7 @@ angular.module('Traverse', ['ui.router', 'ngMessages', 'satellizer']) // ui.rout
   .controller('TripsEditCtrl', TripsEditCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
+  .controller('AuthLogoutCtrl', AuthLogoutCtrl)
   .config(Router)
   .config(function($authProvider) {
     $authProvider.loginUrl = '/api/login';
