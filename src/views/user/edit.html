@@ -1,1 +1,39 @@
 <!-- this is the form to update user account details -->
+<p>Edit your account details</p>
+
+<!-- update() will invoke the function when form is submitted -->
+<form ng-submit="update()">
+  <!-- First name -->
+  <div class="field">
+    <input ng-model="user.firstName" required class="input" type="text" name="firstName" placeholder="First name"> <!-- ng-model will retain the user's information -->
+  </div>
+  <!-- Last name -->
+  <div class="field">
+    <input ng-model="user.lastName" required class="input" type="text" name="lastName" placeholder="Last name">
+  </div>
+  <!-- Username -->
+  <div class="field">
+    <input ng-model="user.username" required minLength="4" class="input" type="text" name="username" placeholder="Username">
+  </div>
+  <!-- Email -->
+  <div class="field">
+    <input ng-model="user.email" required class="input" type="email" name="email" placeholder="Email">
+  </div>
+  <!-- Location -->
+  <div class="field">
+    <input ng-model="user.location" required class="input" type="text" name="location" placeholder="Location">
+  </div>
+  <!-- Profile Picture -->
+  <div class="field">
+    <input ng-model="user.imageUrl" required class="input" type="text" name="imageUrl" placeholder="Profile Picture">
+  </div>
+  <!-- Password -->
+  <div class="field">
+    <input ng-model="user.password" minLength="6" required class="input" type="password" name="password" placeholder="Password">
+  </div>
+  <!-- Confirm password -->
+  <div class="field">
+    <input ng-model="user.passwordConfirmation" required class="input" type="password" name="passwordConfirmation" placeholder="Confirm password">
+  </div>
+  <button class="button">Save</button>
+</form>

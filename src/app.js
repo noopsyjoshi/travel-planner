@@ -17,11 +17,19 @@ import Router from './config/routes';
 // Custom directives
 // import Map from './directives/map';
 
-// Import controllers
+// Import Main controller
 import MainCtrl from './controllers/main';
+
+// Import Trips controller
 import TripsNewCtrl from './controllers/trips/new';
 import TripsShowCtrl from './controllers/trips/show';
 import TripsEditCtrl from './controllers/trips/edit';
+
+// Import Users controller
+import UsersShowCtrl from './controllers/users/show';
+// import UsersEditCtrl from './controllers/users/edit';
+
+// Import Activities controller
 
 // Sessions
 import AuthLoginCtrl from './controllers/auth/login';
@@ -35,6 +43,8 @@ angular.module('Traverse', ['ui.router', 'ngMessages', 'satellizer']) // ui.rout
   .controller('TripsEditCtrl', TripsEditCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
+  .controller('UsersShowCtrl', UsersShowCtrl)
+  // .controller('UsersEditCtrl', UsersEditCtrl)
   .config(Router)
   .config(function($authProvider) {
     $authProvider.loginUrl = '/api/login';

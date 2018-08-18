@@ -17,6 +17,12 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/auth/register.html',
       url: '/register',
       controller: 'AuthRegisterCtrl'
+    })
+    // Show user dashboard
+    .state('usersShow', {
+      templateUrl: './views/users/show.html',
+      url: '/user/:id',
+      controller: 'UsersShowCtrl'
     });
   // App will redirect you to the home page if only localhost:8000 is noted (without the #!)
   $urlRouterProvider.otherwise('/');

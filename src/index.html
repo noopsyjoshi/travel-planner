@@ -11,6 +11,7 @@
       <a ui-sref-active="is-active" ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()">Login</a>
       <a ui-sref-active="is-active" ui-sref="register" class="navbar-item" ng-if="!isAuthenticated()">Sign Up</a>
       <a ui-sref-active="is-active" ng-click="logout()" class="navbar-item" ng-if="isAuthenticated()">Log Out</a>
+      <a ui-sref-active="is-active" ui-sref="usersShow" class="navbar-item" ng-if="isAuthenticated()">Dashboard</a>   <!-- if user is logged in, allow them to see their dashboard -->
     </div>
   </nav>
   <!-- This is where UI router puts the view for the current state -->
