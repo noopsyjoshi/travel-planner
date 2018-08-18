@@ -4,6 +4,9 @@ import angular from 'angular';
 import '@uirouter/angularjs';
 import 'angular-messages';
 
+// Authentication
+import 'satellizer';
+
 // Styling
 import 'bulma';
 import './scss/style.scss';
@@ -24,7 +27,7 @@ import TripsEditCtrl from './controllers/trips/edit';
 import AuthLoginCtrl from './controllers/auth/login';
 import AuthRegisterCtrl from './controllers/auth/register';
 
-angular.module('Traverse', ['ui.router', 'ngMessages']) // ui.router is a dependency
+angular.module('Traverse', ['ui.router', 'ngMessages', 'satellizer']) // ui.router is a dependency
   // .directive('ngMap', Map)
   .controller('MainCtrl', MainCtrl)
   .controller('TripsNewCtrl', TripsNewCtrl)
@@ -32,4 +35,8 @@ angular.module('Traverse', ['ui.router', 'ngMessages']) // ui.router is a depend
   .controller('TripsEditCtrl', TripsEditCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
-  .config(Router);
+  .config(Router)
+  .config(function($authProvider) {
+    $authProvider.loginUrl = '/api/login';
+    $authProvider.signupUrl = '/api/register';
+  });

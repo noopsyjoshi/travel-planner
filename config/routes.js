@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
+
+// Include other required files
+const secureRoute = require('../lib/secureRoute');
+
 // Include necessary controllers
 const tripController = require('../controllers/tripController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
-// Include other required files
-const secureRoute = require('../lib/secureRoute');
 
 // Routes go here
 router.route('/trips')

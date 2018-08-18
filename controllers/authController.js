@@ -13,8 +13,9 @@ function login(req, res, next) {
   User
     .findOne({ email: req.body.email })
     .then(user => {
-      if (!user || !user.validatePassword(req.body.password))
+      if (!user || !user.validatePassword(req.body.password)) {
         return res.status(401).json({ message: 'Unauthorised' });
+      }
       // User is authenticated
       const token = jwt.sign({ sub: user.id, admin: false }, secret, { expiresIn: '1h' });
       console.log('Created token', token);
