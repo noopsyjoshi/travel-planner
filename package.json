@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@uirouter/angular": "ui-router/angular",
-    "angular": "^1.7.1",
+    "@uirouter/angularjs": "^1.0.20",
+    "angular": "^1.7.3",
+    "angular-messages": "^1.7.3",
     "bcrypt": "^3.0.0",
     "bulma": "^0.7.1",
     "express": "^4.16.3",
