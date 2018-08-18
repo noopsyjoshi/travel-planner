@@ -1,7 +1,7 @@
-// This function will be invoked when the user logs in
+
 function AuthLoginCtrl($scope) {
   $scope.login = function() {
-
+    console.log('log in');
   };
 }
 

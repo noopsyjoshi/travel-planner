@@ -1,7 +1,6 @@
-// This function will be invoked when user registers
 function AuthRegisterCtrl($scope) {
   $scope.register = function() {
-
+    console.log('register controller');
   };
 }
 
