@@ -21,11 +21,11 @@ router.route('/trips/:id')
   .put(tripController.update)
   .delete(tripController.delete);
 
-router.route('/user')
+router.route('/users')
   .all(secureRoute)
   .get(userController.index);
 
-router.route('/user/:id')
+router.route('/users/:id')
   .all(secureRoute)
   .get(userController.show)
   .put(userController.update)
