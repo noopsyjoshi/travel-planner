@@ -8,6 +8,7 @@ const secureRoute = require('../lib/secureRoute');
 const tripController = require('../controllers/tripController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const activityController = require('../controllers/activityController');
 
 // Routes go here
 router.route('/trips')
@@ -30,6 +31,17 @@ router.route('/users/:id')
   .get(userController.show)
   .put(userController.update)
   .delete(userController.delete);
+
+router.route('/activities')
+  // .all(secureRoute)
+  .get(activityController.index)
+  .post(activityController.create);
+
+router.route('/activities/:id')
+  // .all(secureRoute)
+  .get(activityController.show)
+  .put(activityController.update)
+  .delete(activityController.delete);
 
 router.route('/register')
   .post(authController.register);
