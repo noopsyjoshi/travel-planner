@@ -26,6 +26,7 @@ import TripsShowCtrl from './controllers/trips/show';
 import TripsEditCtrl from './controllers/trips/edit';
 
 // Import Users controller
+import UsersIndexCtrl from './controllers/users/index';
 import UsersShowCtrl from './controllers/users/show';
 // import UsersEditCtrl from './controllers/users/edit';
 
@@ -43,6 +44,7 @@ angular.module('Traverse', ['ui.router', 'ngMessages', 'satellizer']) // ui.rout
   .controller('TripsEditCtrl', TripsEditCtrl)
   .controller('AuthLoginCtrl', AuthLoginCtrl)
   .controller('AuthRegisterCtrl', AuthRegisterCtrl)
+  .controller('UsersIndexCtrl', UsersIndexCtrl)
   .controller('UsersShowCtrl', UsersShowCtrl)
   // .controller('UsersEditCtrl', UsersEditCtrl)
   .config(Router)
