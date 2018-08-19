@@ -11,22 +11,22 @@ const authController = require('../controllers/authController');
 
 // Routes go here
 router.route('/trips')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(tripController.index)
   .post(tripController.create);
 
 router.route('/trips/:id')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(tripController.show)
   .put(tripController.update)
   .delete(tripController.delete);
 
 router.route('/users')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(userController.index);
 
 router.route('/users/:id')
-  .all(secureRoute)
+  // .all(secureRoute)
   .get(userController.show)
   .put(userController.update)
   .delete(userController.delete);
