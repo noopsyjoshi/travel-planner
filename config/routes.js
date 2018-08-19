@@ -40,7 +40,7 @@ router.route('/activities')
 router.route('/activities/:id')
   // .all(secureRoute)
   .get(activityController.show)
-  .put(activityController.update)
+  // .put(activityController.update)
   .delete(activityController.delete);
 
 router.route('/register')
