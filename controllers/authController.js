@@ -13,7 +13,7 @@ function login(req, res, next) {
   User
     .findOne({ email: req.body.email })
     .then(user => {
-      if (!user || !user.validatePassword(req.body.password))
+      if (!user || !user.validatePassword(req.body.password)) // if there is no user/not registered or they got the wrong password they not registrered
         return res.status(401).json({ message: 'Unauthorised' });
       // User is authenticated
       const token = jwt.sign({ sub: user.id, admin: false }, secret, { expiresIn: '1h' });
