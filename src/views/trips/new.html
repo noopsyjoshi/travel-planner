@@ -2,35 +2,66 @@
 <h1>Plan your journey</h1>
 
 <!-- TODO: Insert Map -->
-<section>
-  <form>
-    <!-- City -->
-    <div class="field">
-      <label for="name">City</label>
-      <input ng-model="trip.city" class="input" type="text" name="city" placeholder="e.g. London">
-    </div>
 
-    <!-- Duration -->
-    <h3 class="title is-3">Trip Duration</h3>
-    <button class="button" id="btnThree" ng-click="getDurationThreeDays()">3 days</button>
-    <button class="button" id="btnSeven" ng-click="getDurationSevenDays()">7 days</button>
-    <button class="button" id="btnTen" ng-click="getDurationTenDays()">10 days</button>
-    <p>You've selected: <strong id="tripDuration"></strong></p>
-
-    <!-- Accomodation Type -->
-    <h3 class="title is-3">Accomodation Type</h3>
-    <button class="button" id="btnHotel" ng-click="getTypeHotel()">Hotel</button>
-    <button class="button" id="btnHostel" ng-click="getTypeHostel()">Hostel</button>
-    <button class="button" id="btnBedBreakast" ng-click="getTypeBedBreakfast()">Bed & Breakfast</button>
-    <p>You've selected: <strong id="accomodationType"></strong></p>
-
-    <!-- Display accomodations in the City based on what type the user has selected -->
-
-    <!-- Budget -->
-    <h3 class="title is-3">Budget</h3>
-    <input type="" class="input"></input>
-
-    <!-- Submit create new trip form -->
-    <button class="button" type="submit">Submit</button>
-  </form>
+<form>
+  <!-- Choose city -->
+  <section>
+  <div class="field">
+    <label for="name">City</label>
+    <input ng-model="trip.city" class="input is-large" type="text" name="city" placeholder="e.g. London">
+  </div>
 </section>
+
+  <!-- Duration -->
+  <h3 class="title is-3">Trip Duration</h3>
+  <button class="button is-large is-link is-outlined" id="btnThree" ng-click="getDurationThreeDays()">3 days</button>
+  <button class="button is-large is-link is-outlined" id="btnSeven" ng-click="getDurationSevenDays()">7 days</button>
+  <button class="button is-large is-link is-outlined" id="btnTen" ng-click="getDurationTenDays()">10 days</button>
+  <p>You've selected: <strong id="tripDuration"></strong></p>
+
+  <!-- Accomodation Type -->
+  <h3 class="title is-3">Accomodation Type</h3>
+  <button class="button is-large is-link is-outlined" id="btnHotel" ng-click="getTypeHotel()">Hotel</button>
+  <button class="button is-large is-link is-outlined" id="btnHostel" ng-click="getTypeHostel()">Hostel</button>
+  <button class="button is-large is-link is-outlined" id="btnBedBreakast" ng-click="getTypeBedBreakfast()">Bed & Breakfast</button>
+  <p>You've selected: <strong id="accomodationType"></strong></p>
+
+  <!-- TODO: Display accomodations in the City based on what type the user has selected -->
+
+  <!-- Budget -->
+  <h3 class="title is-3">Budget</h3>
+  <h4>Please enter a number</h4>
+  <input type="number" class="input is-large"></input>
+
+  <!-- Interests -->
+  <!-- TODO: Display this on a separate page/view -->
+  <h3 class="title is-3">Choose your Interests</h3>
+  <button class="button is-large is-link is-outlined" id="btnMusic" ng-click="getInterestMusic()">Music</button>
+  <button class="button is-large is-link is-outlined" id="btnHistory" ng-click="getInterestHistory()">Historial Landmarks</button>
+  <button class="button is-large is-link is-outlined" id="btnRestaurants" ng-click="getInterestRestaurants()">Restaurants</button>
+  <p>You've selected: </p>
+  <ul id="interests"></ul>
+
+  <!-- Activities (things to do based on your interests) -->
+  <!-- TODO: Display on another page -->
+  <!-- TODO: Show only the activities based on interests -->
+  <h3 class="title is-3">Choose your activities</h3>
+  <p class="">There are {{ activities.length }} you can choose from</p>
+    <div ng-repeat="activity in activities">
+      <div class="columns box is-multiline">
+    <div class="column is-one-third">
+      <img src="{{ activity.imageUrl }}" alt="{{ activity.name }}">
+    </div>
+    <div class="column is-one-third">
+      <div class="">{{ activity.name }}</div>
+    </div>
+    <div class="column is-one-third">
+      <p>{{ activity.rating }}</p>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Submit create new trip form -->
+  <button class="button is-large is-link" type="submit">Submit</button>
+</form>
