@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>WDI Project 3</title>
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+<html lang="en" dir="ltr" ng-app="Traverse">
+<head>
+  <meta charset="utf-8">
+  <title>Traverse</title>
+</head>
+<body ng-controller="MainCtrl">
+  <nav class="navbar is-light">
+    <div class="container navbar-brand">
+      <a ui-sref="index" class="navbar-item">LOGO</a>
+      <a ui-sref-active="is-active" ui-sref="login" class="navbar-item" ng-if="!isAuthenticated()">Login</a>
+      <a ui-sref-active="is-active" ui-sref="register" class="navbar-item" ng-if="!isAuthenticated()">Sign Up</a>
+      <a ui-sref-active="is-active" ng-click="logout()" class="navbar-item" ng-if="isAuthenticated()">Log Out</a>
+      <a ui-sref-active="is-active" ui-sref="usersShow" class="navbar-item" ng-if="isAuthenticated()">Dashboard</a>   <!-- if user is logged in, allow them to see their dashboard -->
+    </div>
+  </nav>
+  <!-- This is where UI router puts the view for the current state -->
+  <div class="container">
+    <div ui-view></div>
+  </div>
+</body>
 </html>

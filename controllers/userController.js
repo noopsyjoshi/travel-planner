@@ -1,8 +1,15 @@
 const User = require('../models/user');
 
+function usersIndex(req, res, next) {
+  User
+    .find()
+    .then(users => res.json(users))
+    .catch(next);
+}
+
 function usersShow(req, res, next) {
   User
-    .findbyId(req.params.id)
+    .findById(req.params.id)
     .then(user => res.json(user))
     .catch(next);
 }
@@ -16,7 +23,7 @@ function usersUpdate(req, res, next) { // update takes info from edit form and p
     .catch(next);
 }
 
-function userNew(req, res, next) { // this is sign up page
+function usersNew(req, res, next) { // this is sign up page
   User
     .findById(req.params.id)
     .then(user => user.create(req.body))
@@ -25,7 +32,7 @@ function userNew(req, res, next) { // this is sign up page
     .catch(next);
 }
 
-function userDelete(req, res, next) {
+function usersDelete(req, res, next) {
   User
     .findById(req.params.id)
     .then(user => user.remove())
@@ -34,8 +41,9 @@ function userDelete(req, res, next) {
 }
 
 module.exports = {
+  index: usersIndex,
   show: usersShow,
   update: usersUpdate,
-  new: userNew,
-  delete: userDelete
+  new: usersNew,
+  delete: usersDelete
 };

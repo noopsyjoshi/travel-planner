@@ -1,5 +1,6 @@
 // Required packages
 const express = require('express');
+const bodyParser = require('body-parser');
 const router = require('./config/routes');
 const errorHandler = require('./lib/errorHandler');
 
@@ -15,7 +16,10 @@ mongoose.connect(dbURI, { useNewUrlParser: true });
 const app = express();
 app.use(express.static(`${__dirname}/public`));
 
-app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
+// Middleware
+app.use(bodyParser.json());
+
+// app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 // Add CORS Headers
 app.use((req, res, next) => {
