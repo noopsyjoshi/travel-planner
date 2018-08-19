@@ -1,7 +1,7 @@
 <!-- form where user can create a new trip (location, duration, accomodation, budget, interests, activities) -->
 <h1>Plan your journey</h1>
 
-
+<!-- TODO: Insert Map -->
 <section>
   <form>
     <!-- City -->
@@ -9,5 +9,28 @@
       <label for="name">City</label>
       <input ng-model="trip.city" class="input" type="text" name="city" placeholder="e.g. London">
     </div>
+
+    <!-- Duration -->
+    <h3 class="title is-3">Trip Duration</h3>
+    <button class="button" id="btnThree" ng-click="getDurationThreeDays()">3 days</button>
+    <button class="button" id="btnSeven" ng-click="getDurationSevenDays()">7 days</button>
+    <button class="button" id="btnTen" ng-click="getDurationTenDays()">10 days</button>
+    <p>You've selected: <strong id="tripDuration"></strong></p>
+
+    <!-- Accomodation Type -->
+    <h3 class="title is-3">Accomodation Type</h3>
+    <button class="button" id="btnHotel" ng-click="getTypeHotel()">Hotel</button>
+    <button class="button" id="btnHostel" ng-click="getTypeHostel()">Hostel</button>
+    <button class="button" id="btnBedBreakast" ng-click="getTypeBedBreakfast()">Bed & Breakfast</button>
+    <p>You've selected: <strong id="accomodationType"></strong></p>
+
+    <!-- Display accomodations in the City based on what type the user has selected -->
+
+    <!-- Budget -->
+    <h3 class="title is-3">Budget</h3>
+    <input type="" class="input"></input>
+
+    <!-- Submit create new trip form -->
+    <button class="button" type="submit">Submit</button>
   </form>
 </section>
