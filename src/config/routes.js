@@ -1,20 +1,20 @@
 function Router($stateProvider, $urlRouterProvider) {
 
-  // Secure route
-  function secureState($q, $auth, $state, $rootScope) {
-    // Create a new Promise. $q is angular's way of saying Promise
-    return new $q((resolve) => {
-      if($auth.isAuthenticated()) return resolve();
-      // User not logged in
-      // Create a flash message!
-      console.log('Creating a flash message from the router');
-      $rootScope.$broadcast('flashMessage', {
-        type: 'warning',
-        content: 'Please log in to do this.'
-      });
-      $state.go('login');
-    });
-  }
+  // // Secure route
+  // function secureState($q, $auth, $state, $rootScope) {
+  //   // Create a new Promise. $q is angular's way of saying Promise
+  //   return new $q((resolve) => {
+  //     if($auth.isAuthenticated()) return resolve();
+  //     // User not logged in
+  //     // Create a flash message!
+  //     console.log('Creating a flash message from the router');
+  //     $rootScope.$broadcast('flashMessage', {
+  //       type: 'warning',
+  //       content: 'Please log in to do this.'
+  //     });
+  //     $state.go('login');
+  //   });
+  // }
 
   // Creating our ui router states
   $stateProvider
@@ -38,17 +38,17 @@ function Router($stateProvider, $urlRouterProvider) {
     .state('usersIndex', {
       templateUrl: './views/users/index.html',
       url: '/users',
-      controller: 'UsersIndexCtrl',
-      resolve: {
-        secureState,
-        users: function($http) {
-          return $http({
-            method: 'GET',
-            url: '/api/users'
-          })
-            .then(res => res.data);
-        }
-      }
+      controller: 'UsersIndexCtrl'
+      // resolve: {
+      //   secureState,
+      //   users: function($http) {
+      //     return $http({
+      //       method: 'GET',
+      //       url: '/api/users'
+      //     })
+      //       .then(res => res.data);
+      //   }
+      // }
     })
     // Show user dashboard
     .state('usersShow', {
@@ -59,7 +59,7 @@ function Router($stateProvider, $urlRouterProvider) {
     // New trip form - select location
     .state('tripsNew', {
       templateUrl: './views/trips/new.html',
-      url: '/trips/:id',
+      url: '/trips/new',
       controller: 'TripsNewCtrl'
     });
   // App will redirect you to the home page if only localhost:8000 is noted (without the #!)
