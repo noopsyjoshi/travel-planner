@@ -87,8 +87,8 @@ describe('PUT /trips/:id', () => {
       .set('Authorization', `Bearer ${token}`) // Create an authorization header
       .send(updateTripData)
       .end((err, res) => {
-        expect(res.body.name).to.eq(updateTripData.name);
         expect(res.body.country).to.eq(updateTripData.country);
+        expect(res.body.city).to.eq(updateTripData.city);
         done();
       });
   });
