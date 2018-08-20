@@ -38,7 +38,7 @@
   <!-- TODO: Display this on a separate page/view -->
   <section>
     <h3 class="title is-3">Choose your Interests</h3>
-    <button ng-repeat="interest in interests" class="button interestButton is-large is-link is-outlined" durationVal="{{ interest }}" ng-click="getInterest($event)"> {{interest}} </button>
+    <button ng-repeat="interest in interests" class="button interestButton is-large is-link is-outlined" interestVal="{{ interest }}" ng-click="getInterest($event)"> {{interest}} </button>
     <p>You've selected:<strong id="tripInterest">{{ selectedInterests }}</strong> </p>
   </section>
 

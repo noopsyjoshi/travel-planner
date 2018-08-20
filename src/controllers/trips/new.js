@@ -28,20 +28,18 @@ function TripsNewCtrl($scope, $http, $rootScope) {
   };
 
   $scope.getInterest = function($event) {
-    console.log($event.target.getAttribute('durationVal'));
-    const selectedInterest = $event.target.getAttribute('durationVal');
-    $rootScope.trip.interest = selectedInterest;
+    console.log($event.target.getAttribute('interestVal'));
+    const selectedInterest = $event.target.getAttribute('interestVal');
+    $scope.activities = $scope.activities.filter(activity =>  activity.categories.includes(selectedInterest));
+    console.log('scope.activities is', $scope.activities);
+    $rootScope.trip.interest = selectedInterest; // TODO: the list of activities doesn't append any more categories...
   };
-  
+
   // TODO: add accomodation into model/seeds
 
-  $scope.getInterestMusic = function() {
-    $scope.activities = $scope.activities.filter(activity =>  activity.categories.includes('music'));
-    console.log('scope.activities is', $scope.activities);
-  };
 
   $scope.getBudget = function() {
-
+    
   };
 
 
