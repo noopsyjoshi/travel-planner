@@ -22,39 +22,54 @@ function TripsNewCtrl($scope, $http) {
   const buttonHistory = document.querySelector('#btnHistory');
   const buttonRestaurants = document.querySelector('#btnRestaurants');
 
+  // This will display the interests in the html
   const selectedInterests = document.querySelector('#interests');
-
 
   // Get Trip Duration
   $scope.getDurationThreeDays = function() {
     console.log('user has selected', buttonThree.innerHTML );
     selectedDuration.innerHTML = buttonThree.innerHTML;
+    $scope.selectedDuration = 3;
+    // $scope.selectedDuration should return 3
+    console.log('$scope with the duration is ', $scope.selectedDuration);
   };
 
   $scope.getDurationSevenDays = function() {
     console.log('user has selected', buttonSeven.innerHTML );
     selectedDuration.innerHTML = buttonSeven.innerHTML;
+    $scope.selectedDuration = 7;
+    // $scope.selectedDuration should return 7
+    console.log('$scope with the duration is ', $scope.selectedDuration);
   };
 
   $scope.getDurationTenDays = function() {
     console.log('user has selected', buttonTen.innerHTML );
     selectedDuration.innerHTML = buttonTen.innerHTML;
+    $scope.selectedDuration = 10;
+    // $scope.selectedDuration should return 10
+    console.log('$scope with the duration is ', $scope.selectedDuration);
   };
 
   // Get Accomodation Type
   $scope.getTypeHotel = function() {
     console.log('user has selected', buttonHotel.innerHTML );
     selectedAccomodationType.innerHTML = buttonHotel.innerHTML;
+    $scope.selectedAccomodationType = 'Hotel';
+    console.log('$scope with the selected accomodation type is ', $scope.selectedAccomodationType);
   };
 
   $scope.getTypeHostel = function() {
     console.log('user has selected', buttonHostel.innerHTML );
     selectedAccomodationType.innerHTML = buttonHostel.innerHTML;
+    $scope.selectedAccomodationType = 'Hostel';
+    console.log('$scope with the selected accomodation type is ', $scope.selectedAccomodationType);
   };
 
   $scope.getTypeBedBreakfast = function() {
     console.log('user has selected', buttonBedBreakfast.innerHTML );
     selectedAccomodationType.innerHTML = buttonBedBreakfast.innerHTML;
+    $scope.selectedAccomodationType = 'Bed & Breakfast';
+    console.log('$scope with the selected accomodation type is ', $scope.selectedAccomodationType);
   };
 
   // Get
@@ -65,6 +80,7 @@ function TripsNewCtrl($scope, $http) {
     music.classList.add('box');
     music.innerHTML = buttonMusic.innerHTML;
     selectedInterests.appendChild(music);
+    $scope.music = 'music';
   };
 
   $scope.getInterestHistory = function() {
@@ -94,6 +110,7 @@ function TripsNewCtrl($scope, $http) {
     .then(res => {
       console.log('Activities are', res.data);
       $scope.activities = res.data;
+      $scope.activities.categories = res.data.categories;
     });
 }
 

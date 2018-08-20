@@ -1,6 +1,5 @@
 /* global api, expect, describe, it, beforeEach */
 
-
 // need to talk through the code
 const User = require('../../models/user'); // will need this model because person needs to login
 const jwt = require('jsonwebtoken'); // token lasts for an hour (or whatever)
@@ -107,7 +106,7 @@ describe('POST /trips', () => { // posting to the index
   });
 
   it('should return a 401 without a token', done => {
-    api.post('/api/trips') // make a new trip, post to apitrips to this url
+    api.post('/api/trips') // make a new trip, post to api trips to this url
       .end((err, res) => { //
         expect(res.status).to.eq(401); // this is the response what you should be expecting to get
         done();
