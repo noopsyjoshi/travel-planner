@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Include other required files
+// TODO: test with secureRoute
 const secureRoute = require('../lib/secureRoute');
 
 // Include necessary controllers
@@ -9,6 +10,7 @@ const tripController = require('../controllers/tripController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const activityController = require('../controllers/activityController');
+const tripActivityController = require('../controllers/tripActivityController');
 
 // Routes go here
 router.route('/trips')
@@ -42,6 +44,13 @@ router.route('/activities/:id')
   .get(activityController.show)
   // .put(activityController.update)
   .delete(activityController.delete);
+
+
+router.route('/trips/:tripId/activities')
+  .post(tripActivityController.create);
+
+router.route('/trips/:tripId/activities/:activityId')
+  .delete(tripActivityController.delete);
 
 router.route('/register')
   .post(authController.register);
