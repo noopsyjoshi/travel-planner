@@ -6,21 +6,25 @@ function TripsNewCtrl($scope, $http, $rootScope) {
   $scope.durations = [3, 7, 10];
   $scope.interests = ['music', 'historical landmarks', 'museums'];
 
-  // This is the span that will display the user's choice
-  const selectedDurationSpan = document.querySelector('#tripDuration');
-
-  // This will display the type of accomodation user has selected
-  const selectedAccomodationType = document.querySelector('#accomodationType');
-
-  // This will display the interests in the html
-  const selectedInterests = document.querySelector('#tripInterest');
+  // Accomodation Type Variables
+  $scope.accomodationTypes = ['Hotel', 'Hostel', 'Bed and Breakfast'];
 
   // Refactored!!!!!!
+  // Duration
   $scope.getDuration = function($event) {
     console.log($event.target.getAttribute('durationVal'));
     const selectedDuration = $event.target.getAttribute('durationVal');
     // $rootScope.trip should reflect your model
     $rootScope.trip.duration = selectedDuration;
+    console.log('rootScope.duration', $rootScope.trip);
+  };
+
+  // Accomodation Type
+  $scope.getAccomodationType = function($event) {
+    console.log($event.target.getAttribute('accomodationTypeVal'));
+    const selectedAccomodationType = $event.target.getAttribute('accomodationTypeVal');
+    $rootScope.trip.accomodationType = selectedAccomodationType; // TODO: selectedAccomodationType isn't being pushed into the array
+    console.log('rootScope.trip', $rootScope.trip);
   };
 
   $scope.getInterest = function($event) {
@@ -28,6 +32,18 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     const selectedInterest = $event.target.getAttribute('durationVal');
     $rootScope.trip.interest = selectedInterest;
   };
+  
+  // TODO: add accomodation into model/seeds
+
+  $scope.getInterestMusic = function() {
+    $scope.activities = $scope.activities.filter(activity =>  activity.categories.includes('music'));
+    console.log('scope.activities is', $scope.activities);
+  };
+
+  $scope.getBudget = function() {
+
+  };
+
 
   // Make a request to the database to get the activities based on interests
   $http({
@@ -41,6 +57,5 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       $scope.activities.categories = res.data.categories;
     });
 }
-
 
 export default TripsNewCtrl;
