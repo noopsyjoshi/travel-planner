@@ -12,6 +12,7 @@ const tripData = [
     categories: ['music', 'historicalSites', 'food']
   }
 ];
+
 // this is mocha thing
 describe('GET /trips', () => { // Test the index route. Describe takes a function wihtout arguments
   // Mocha tets lifecycle hooks
@@ -21,6 +22,7 @@ describe('GET /trips', () => { // Test the index route. Describe takes a functio
       .then(() => Trip.create(tripData))
       .then(() => done());
   });
+
   // Mocha tests
   it('should return a 200 response', done => { // done is like 'next' in express. call this when
     api.get('/api/trips') // api is our express app that runs through supertest
@@ -42,7 +44,7 @@ describe('GET /trips', () => { // Test the index route. Describe takes a functio
   it('should return an array of the correct length', done => {
     api.get('/api/trips')
       .end((err, res) => {
-        expect(res.body.lenght).to.eq(tripData.lenght);
+        expect(res.body.length).to.eq(tripData.length);
         done();
       });
   });
