@@ -56,7 +56,12 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/users/:id',
       controller: 'UsersShowCtrl'
     })
-    // New trip form - select location
+    .state('usersEdit', {
+      templateUrl: './views/users/edit.html',
+      url: '/users/:id/edit',
+      controller: 'UsersEditCtrl'
+    })
+    // New trip form
     .state('tripsNew', {
       templateUrl: './views/trips/new.html',
       url: '/trips/new',

@@ -9,7 +9,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   imageUrl: String,
   location: String, // this is the user's location (ex. home town)
-  tripId: { type: Number, required: false }
+  trips: [{ type: mongoose.Schema.ObjectId, ref: 'Trip' }]
 }, { timestamps: true });
 
 userSchema

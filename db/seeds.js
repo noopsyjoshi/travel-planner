@@ -24,8 +24,7 @@ const userData = [
     password: 'pass',
     passwordConfirmation: 'pass',
     imageUrl: '',
-    location: 'London',
-    tripId: 123
+    location: 'London'
   },
   {
     firstName: 'Noopur',
@@ -410,26 +409,42 @@ const activityData = [
 
 const tripData = [
   {
-    tripId: '123',
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
     accomodation: 'Hotel',
     budget: 500,
-    categories: ['music', 'historicalSites', 'food']
+    categories: ['music', 'historicalSites', 'food'],
+    activities: [] // need activity id first
   }
 ];
 
-User
-  .create(userData)
+Activity
+//create activity first
+  .create(activityData)
+  .then(activities => {
+    console.log(`Created ${activities.length} activities...`);
+    tripData[0].activities.push({
+      date: new Date(2018,9,20),
+      activity: activities[0]._id });
+    tripData[0].activities.push({
+      date: new Date(2018,9,21),
+      activity: activities[1]._id });
+    tripData[0].activities.push({
+      date: new Date(2018,9,22),
+      activity: activities[2]._id });
+    return Trip.create(tripData);
+  })
+  .then(trips => {
+    console.log(`Created ${trips.length} trips`);
+    userData[0].trips = [
+      trips[0]._id
+    ];
+    return User.create(userData);
+  })
   .then(users => {
     console.log(`Created ${users.length} users.`);
     return Activity.create(activityData);
   })
-  .then(activities => {
-    console.log(`Created ${activities.length} activities...`);
-    return Trip.create(tripData);
-  })
-  .then(trips => console.log(`Created ${trips.length} trips`))
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
