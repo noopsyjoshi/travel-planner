@@ -15,21 +15,16 @@
   <!-- Duration -->
   <section>
     <h3 class="title is-3">Trip Duration</h3>
-    <button class="button is-large is-link is-outlined" id="btnThree" ng-click="getDurationThreeDays()">3 days</button>
-    <button class="button is-large is-link is-outlined" id="btnSeven" ng-click="getDurationSevenDays()">7 days</button>
-    <button class="button is-large is-link is-outlined" id="btnTen" ng-click="getDurationTenDays()">10 days</button>
-    <p>You've selected: <strong id="tripDuration"></strong></p>
+    <button ng-repeat="duration in durations"  class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="getDuration($event)">{{duration}} days</button>
+    <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
   </section>
 
   <!-- Accomodation Type -->
   <section>
-  <h3 class="title is-3">Accomodation Type</h3>
-  <button class="button is-large is-link is-outlined" id="btnHotel" ng-click="getTypeHotel()">Hotel</button>
-  <button class="button is-large is-link is-outlined" id="btnHostel" ng-click="getTypeHostel()">Hostel</button>
-  <button class="button is-large is-link is-outlined" id="btnBedBreakast" ng-click="getTypeBedBreakfast()">Bed & Breakfast</button>
-  <p>You've selected: <strong id="accomodationType"></strong></p>
-</section>
-
+    <h3 class="title is-3">Accomodation Type</h3>
+    <button ng-repeat="accomodationType in accomodationTypes"  class="button accomodationTypeButton is-large is-link is-outlined" durationVal="{{ accomodationType }}" ng-click="getAccomodationType($event)">{{ accomodationType }}</button>
+    <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
+  </section>
   <!-- TODO: Display accomodations in the City based on what type the user has selected -->
 
   <!-- Budget -->
