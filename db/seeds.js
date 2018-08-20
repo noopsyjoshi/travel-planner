@@ -412,7 +412,8 @@ const tripData = [
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
-    accomodation: 'Hotel',
+    accomodationType: 'Hotel',
+    accommodation: [],
     budget: 500,
     categories: ['music', 'historicalSites', 'food'],
     activities: [] // need activity id first
