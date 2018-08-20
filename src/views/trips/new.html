@@ -29,21 +29,18 @@
 
   <!-- Budget -->
   <section>
-  <h3 class="title is-3">Budget</h3>
-  <h4>Please enter a number</h4>
-  <input type="number" class="input is-large"></input>
-</section>
+    <h3 class="title is-3">Budget</h3>
+    <h4>Please enter a number</h4>
+    <input type="number" class="input is-large"></input>
+  </section>
 
   <!-- Interests -->
   <!-- TODO: Display this on a separate page/view -->
   <section>
-  <h3 class="title is-3">Choose your Interests</h3>
-  <button class="button is-large is-link is-outlined" id="btnMusic" ng-click="getInterestMusic()">Music</button>
-  <button class="button is-large is-link is-outlined" id="btnHistory" ng-click="getInterestHistory()">Historial Landmarks</button>
-  <button class="button is-large is-link is-outlined" id="btnRestaurants" ng-click="getInterestRestaurants()">Restaurants</button>
-  <p>You've selected: </p>
-  <ul id="interests"></ul>
-</section>
+    <h3 class="title is-3">Choose your Interests</h3>
+    <button ng-repeat="interest in interests" class="button interestButton is-large is-link is-outlined" durationVal="{{ interest }}" ng-click="getInterest($event)"> {{interest}} </button>
+    <p>You've selected:<strong id="tripInterest">{{ selectedInterests }}</strong> </p>
+  </section>
 
 <p>{{ activities.category }}</p>
 

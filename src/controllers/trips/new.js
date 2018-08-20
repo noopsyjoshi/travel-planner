@@ -1,8 +1,10 @@
 function TripsNewCtrl($scope, $http, $rootScope) {
   console.log('into the new trip controller...');
 
+  $rootScope.trip = {};
   // Trip Duration Variables
   $scope.durations = [3, 7, 10];
+  $scope.interests = ['music', 'historical landmarks', 'museums'];
 
   // This is the span that will display the user's choice
   const selectedDurationSpan = document.querySelector('#tripDuration');
@@ -11,7 +13,7 @@ function TripsNewCtrl($scope, $http, $rootScope) {
   const selectedAccomodationType = document.querySelector('#accomodationType');
 
   // This will display the interests in the html
-  const selectedInterests = document.querySelector('#interests');
+  const selectedInterests = document.querySelector('#tripInterest');
 
   // Refactored!!!!!!
   $scope.getDuration = function($event) {
@@ -19,6 +21,12 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     const selectedDuration = $event.target.getAttribute('durationVal');
     // $rootScope.trip should reflect your model
     $rootScope.trip.duration = selectedDuration;
+  };
+
+  $scope.getInterest = function($event) {
+    console.log($event.target.getAttribute('durationVal'));
+    const selectedInterest = $event.target.getAttribute('durationVal');
+    $rootScope.trip.interest = selectedInterest;
   };
 
   // Make a request to the database to get the activities based on interests
