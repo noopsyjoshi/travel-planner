@@ -22,30 +22,30 @@
   <!-- Accomodation Type -->
   <section>
     <h3 class="title is-3">Accomodation Type</h3>
-    <button ng-repeat="accomodationType in accomodationTypes"  class="button accomodationTypeButton is-large is-link is-outlined" durationVal="{{ accomodationType }}" ng-click="getAccomodationType($event)">{{ accomodationType }}</button>
-    <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
+    <button ng-repeat="accomodationType in accomodationTypes" class="button accomodationTypeButton is-large is-link is-outlined" accomodationTypeVal="{{ accomodationType }}" ng-click="getAccomodationType($event)">{{ accomodationType }}</button>
+    <p>You've selected: <strong id="selectedAccomodationType">{{ accomodationType }}</strong></p>
   </section>
+
   <!-- TODO: Display accomodations in the City based on what type the user has selected -->
 
   <!-- Budget -->
   <section>
-  <h3 class="title is-3">Budget</h3>
-  <h4>Please enter a number</h4>
-  <input type="number" class="input is-large"></input>
-</section>
+    <h3 class="title is-3">Budget</h3>
+    <input type="Number" class="input is-large" placeholder="Please enter a number">
+  </section>
 
   <!-- Interests -->
   <!-- TODO: Display this on a separate page/view -->
   <section>
-  <h3 class="title is-3">Choose your Interests</h3>
-  <button class="button is-large is-link is-outlined" id="btnMusic" ng-click="getInterestMusic()">Music</button>
-  <button class="button is-large is-link is-outlined" id="btnHistory" ng-click="getInterestHistory()">Historial Landmarks</button>
-  <button class="button is-large is-link is-outlined" id="btnRestaurants" ng-click="getInterestRestaurants()">Restaurants</button>
-  <p>You've selected: </p>
-  <ul id="interests"></ul>
-</section>
+    <h3 class="title is-3">Choose your Interests</h3>
+    <button class="button is-large is-link is-outlined" id="btnMusic" ng-click="getInterestMusic()">Music</button>
+    <button class="button is-large is-link is-outlined" id="btnHistory" ng-click="getInterestHistory()">Historial Landmarks</button>
+    <button class="button is-large is-link is-outlined" id="btnRestaurants" ng-click="getInterestRestaurants()">Restaurants</button>
+    <p>You've selected: </p>
+    <ul id="interests"></ul>
+  </section>
 
-<p>{{ activities.category }}</p>
+  <p>{{ activities.category }}</p>
 
   <!-- Activities (things to do based on your interests) -->
   <!-- TODO: Display on another page -->
