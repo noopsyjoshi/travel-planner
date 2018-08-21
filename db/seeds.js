@@ -412,12 +412,7 @@ const accommodationData = [
     'isClosed': false,
     'yelpUrl': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 14,
-    'categories': [
-      {
-        'alias': 'hotels',
-        'title': 'Hotels'
-      }
-    ],
+    'categories': ['hotels'],
     'rating': 5.0,
     'coordinates': {
       'latitude': 51.5147387,
@@ -431,12 +426,7 @@ const accommodationData = [
     'is_closed': false,
     'url': 'https://www.yelp.com/biz/hotel-indigo-london-4?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 25,
-    'categories': [
-      {
-        'alias': 'hotels',
-        'title': 'Hotels'
-      }
-    ],
+    'categories': ['hostels'],
     'rating': 4.5,
     'coordinates': {
       'latitude': 51.4919293664835,
@@ -450,16 +440,7 @@ const accommodationData = [
     'is_closed': false,
     'url': 'https://www.yelp.com/biz/the-hoxton-shoreditch-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 184,
-    'categories': [
-      {
-        'alias': 'hotels',
-        'title': 'Hotels'
-      },
-      {
-        'alias': 'venues',
-        'title': 'Venues & Event Spaces'
-      }
-    ],
+    'categories': ['hotels', 'venues'],
     'rating': 4.5,
     'coordinates': {
       'latitude': 51.5255813407725,
@@ -469,22 +450,34 @@ const accommodationData = [
   }
 ];
 
+// User journey data is being collected in Trips
 const tripData = [
   {
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
     accomodationType: ['Hotels', 'Hostels', 'Bed & Breakfast'], // is this needed?
-    accommodation: [], // need accommodation id first
+    accommodations: [], // need accommodation id first
     budget: 500,
     categories: ['music', 'historicalSites', 'food'], // is this needed?
     activities: [] // need activity id first
   }
 ];
 
-Activity
-//create activity first
-  .create(activityData)
+Accommodation.create(accommodationData)
+  .then(accommodations => {
+    console.log(`Created ${accommodations.length} accommodations...`);
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,20),
+      accommodation: accommodations[0]._id });
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,21),
+      accommodation: accommodations[1]._id });
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,22),
+      accommodation: accommodations[2]._id });
+    return Activity.create(activityData);
+  })
   .then(activities => {
     console.log(`Created ${activities.length} activities...`);
     tripData[0].activities.push({
@@ -498,20 +491,6 @@ Activity
       activity: activities[2]._id });
     return Trip.create(tripData);
   })
-  .create(accommodationData)
-  .then(accommodations => {
-    console.log(`Created ${accommodations.length} accommodations...`);
-    tripData[0].accommodations.push({
-      date: new Date(2018,9,20),
-      accommodation: accommodations[0]._id });
-    tripData[0].accommodations.push({
-      date: new Date(2018,9,21),
-      accommodation: accommodations[1]._id });
-    tripData[0].accommodations.push({
-      date: new Date(2018,9,22),
-      accommodation: accommodations[2]._id });
-    return Trip.create(tripData);
-  })
   .then(trips => {
     console.log(`Created ${trips.length} trips`);
     userData[0].trips = [
@@ -521,7 +500,6 @@ Activity
   })
   .then(users => {
     console.log(`Created ${users.length} users.`);
-    return Activity.create(activityData);
   })
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
