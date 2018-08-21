@@ -37,9 +37,8 @@ function TripsNewCtrl($scope, $http, $rootScope) {
 
   // TODO: add accomodation into model/seeds
 
-
   $scope.getBudget = function() {
-    
+
   };
 
 
