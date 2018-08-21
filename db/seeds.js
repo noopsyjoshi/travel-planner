@@ -406,9 +406,9 @@ const activityData = [
 const accommodationData = [
   {
     'name': 'The Nadler Soho',
-    'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/kjv2o3sE-s1fV07fHsanGw/o.jpg',
-    'is_closed': false,
-    'url': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'imageUrl': 'https://s3-media2.fl.yelpcdn.com/bphoto/kjv2o3sE-s1fV07fHsanGw/o.jpg',
+    'isClosed': false,
+    'yelpUrl': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 14,
     'categories': [
       {

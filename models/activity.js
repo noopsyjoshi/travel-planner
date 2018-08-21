@@ -17,8 +17,6 @@ const activitySchema = new mongoose.Schema({
 module.exports = mongoose.model('Activity', activitySchema);
 
 
-
-
 //NOTES
 // requet add acticity
 // in the body add the idea of the activity: ""
