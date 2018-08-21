@@ -81,11 +81,15 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     console.log('this is $scope.filteredAccommodations ->', $scope.filteredAccommodations);
   };
 
-
   // Display the selected accommodation from a list
-
   $scope.setSelectedAccommodation = function(index) {
     $scope.selectedAccommodation = index;
+  };
+
+  // Display the selected activity from a list
+  $scope.setSelectedActivity = function(index) {
+    console.log('into the setSelectedActivity function...');
+    $scope.selectedActivity = index;
   };
 
   //////////////////////////////////////////////////////////////////////////////
@@ -98,12 +102,10 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     console.log('rootScope', $rootScope.trip);
   };
 
-
   //////////////////////////////////////////////////////////////////////////////
   /////////////////////////// INTEREST AND ACTIVITIES //////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
-  // Interests and Activities
   $scope.toggleInterest = function($event) {
     // Set filteredActivities to all the activities
     $scope.filteredActivites = $scope.activities;
@@ -132,8 +134,10 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       // 1. Check all of the Activities
       // 2. Check each activity has a category that matches the user's selected interest
       $scope.filteredActivites = $scope.filteredActivites.filter(activity =>  activity.categories.filter(category => tripInterests.includes(category)).length);
+      $rootScope.filteredActivites = $scope.filteredActivites;
     }
     console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
+    console.log('this is $rootScope.filteredActivites ->', $rootScope.filteredActivites);
     //$scope.filteredActivites is an array of the activities filtered by selected activity
   };
 
@@ -153,7 +157,7 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       //TODO: In views change everything so that it refers to filteredActivites
     });
 
-    // make a request to the database to get all accommodations
+  // make a request to the database to get all accommodations
   $http({
     method: 'GET',
     url: '/api/accommodations'

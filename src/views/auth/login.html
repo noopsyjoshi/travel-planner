@@ -1,13 +1,19 @@
-<p>Welcome to to Traverse, please log in below.</p>
 
-<form ng-submit="login()">
-  <div class="field">
-    <input ng-model="user.email" class="input" type="text" name="" placeholder="Email">
+<section class="hero is-fullheight is-light is-bold has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1">Welcome to Traverse</h1>
+      <h2 class="title is-2">Please log in below</h2>
+      <form ng-submit="login()">
+        <div class="field">
+          <input ng-model="user.email" class="input" type="text" name="" placeholder="Email">
+        </div>
+        <div class="field">
+          <input ng-model="user.password" class="input" type="password" name="password" placeholder="Password">
+        </div>
+        <button class="button is-large is-info">Login</button>
+      </form>
+      <p>New to Traverse? <a ui-sref="register">Create an account</a></p>
+    </div>
   </div>
-  <div class="field">
-    <input ng-model="user.password" class="input" type="password" name="password" placeholder="Password">
-  </div>
-  <button class="button">Login</button>
-</form>
-
-<p>New to Traverse? <a ui-sref="register">Create an account</a></p>
+</section>

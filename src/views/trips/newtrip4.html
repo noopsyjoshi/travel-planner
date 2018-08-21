@@ -1,26 +1,4 @@
 
-<!-- Display Activities -->
-<section>
-  <h3 class="title is-3">Choose your activities</h3>
-  <p></p>
-  <p class="">There are {{ filteredActivites.length }} you can choose from</p>
-  <div ng-repeat="activity in filteredActivites">
-    <div class="columns box is-multiline">
-      <div class="column is-one-third">
-        <img src="{{ activity.imageUrl }}" alt="{{ activity.name }}">
-      </div>
-      <div class="column is-one-third">
-        <div class="">{{ activity.name }}</div>
-      </div>
-      <div class="column is-one-third">
-        <p>{{ activity.rating }}</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<hr>
-
 <div class="level">
   <div class="level-left">
     <a class="button is-large is-info" ui-sref="tripsNew3">PREVIOUS</a>
