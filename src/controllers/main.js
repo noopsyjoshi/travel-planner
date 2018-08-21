@@ -2,7 +2,8 @@ function MainCtrl($auth, $scope, $state, $rootScope, $timeout) {
   // We're making sure isAuthenticated is available everywhere
   // NOTE: isAuthenticated is a function!
   $rootScope.trip = {
-    accomodationTypes: [],
+    accommodationTypes: [],
+    accommodation: [],
     interests: [],
     activities: []
   };

@@ -1,12 +1,10 @@
 function TripsNewCtrl($scope, $http, $rootScope) {
   console.log('into the new trip controller...');
 
-  // Trip Duration Variables
+
   $scope.durations = [3, 7, 10];
   $scope.interests = ['music', 'historical landmarks', 'museums'];
-
-  // Accomodation Type Variables
-  $scope.accomodationTypes = ['Hotel', 'Hostel', 'Bed and Breakfast'];
+  $scope.accommodationTypes = ['Hotel', 'Hostel', 'Bed and Breakfast'];
 
   // Location
   $scope.getLocation = function() {
@@ -26,21 +24,47 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     console.log('rootScope.trip', $rootScope.trip);
   };
 
-  // Accomodation Type
-  $scope.toggleAccomodationType = function($event) {
-    let accomodationTypes = $rootScope.trip.accomodationTypes;
-    const selectedAccomodationType = $event.target.getAttribute('accomodationTypeVal');
-    if(accomodationTypes.includes(selectedAccomodationType)) {
-      // remove interest
-      console.log('removing accomodation type...');
-      accomodationTypes = accomodationTypes.filter(accomodationType => accomodationType !== selectedAccomodationType);
+  // Accommodation
+  $scope.toggleAccommodation = function($event) {
+    // Set filteredAccommodations to all the accommodations that we fetch from the seeds file (for test - 3)
+    // $scope.accommodations is all accommodations from the db
+    $scope.filteredAccommodations = $scope.accommodations;
+
+    // accommodationTypes is the collection of the selected accommodations we have clicked on, eg - user can click on Hotels and Hostels
+    let accommodationTypes = $rootScope.trip.accommodationTypes;
+
+    // test
+    console.log('this is $scope.filteredAccommodations ->', $scope.filteredAccommodations);
+
+    // Get the selected accommodationType from user
+    const selectedAccommodationType = $event.target.getAttribute('accommodationTypeVal');
+    console.log('this is selectedAccommodationType ->', selectedAccommodationType); // works
+
+    console.log('this is accommodationTypes', accommodationTypes);
+
+    // if the array of selected types already includes the user's selected accommodation type, then remove it from the array
+    // this is so that we don't have more than one type (ex. Hotels) in the same array
+    if(accommodationTypes.includes(selectedAccommodationType)) {
+      // remove accommodation type
+      console.log('removing accommodation type...');
+      accommodationTypes = accommodationTypes.filter(accommodation => accommodation !== selectedAccommodationType);
+      console.log(accommodationTypes);
     } else {
-      console.log('adding accomodationType...');
-      // add interest
-      accomodationTypes.push(selectedAccomodationType); // TODO: the list of activities doesn't append any more categories...
+      // add the accommodationType to the array of user selection
+      console.log('adding accommodationType...');
+      accommodationTypes.push(selectedAccommodationType);
+      console.log(accommodationTypes);
     }
-    $rootScope.trip.accomodationTypes = accomodationTypes;
-    console.log($rootScope.trip);
+    //add the chosen accommodation to the rootScope so that it's everywhere
+    $rootScope.trip.accommodationTypes = accommodationTypes;
+
+    if(accommodationTypes.length !== 0) {
+      // 1. Check all of the accommodations
+      // 2. Check each accommodation has a type that matches the user's selected accommodation
+      $scope.filteredAccommodations = $scope.filteredAccommodations.filter(accommodation =>  accommodation.categories.filter(category => accommodationTypes.includes(category)).length);
+    }
+    //$scope.filteredAccommodations is an array of the accommodations filtered by selected accommodation
+    console.log('this is $scope.filteredAccommodations ->', $scope.filteredAccommodations);
   };
 
   // Budget
@@ -50,21 +74,18 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     console.log('rootScope', $rootScope.trip);
   };
 
-  // Interest
+  // Interests and Activities
   $scope.toggleInterest = function($event) {
-
+    // Set filteredActivities to all the activities
     $scope.filteredActivites = $scope.activities;
 
     let tripInterests = $rootScope.trip.interests;
     //tripInterests is the collection of the selected interests we have clicked on
     console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
 
-
     const selectedInterest = $event.target.getAttribute('interestVal');
     console.log('this is selectedInterest ->', selectedInterest);
     //selectedInterest is the one we clicked on
-    $scope.getBudget = function() {
-    };
 
     if(tripInterests.includes(selectedInterest)) {
       // remove interest
@@ -73,7 +94,7 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     } else {
       console.log('adding interest...');
       // add interest
-      tripInterests.push(selectedInterest); // TODO: the list of activities doesn't append any more categories...
+      tripInterests.push(selectedInterest);
     }
 
     $rootScope.trip.interests = tripInterests;
@@ -100,6 +121,17 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       $scope.filteredActivites = res.data;
       // $scope.activities.categories = res.data.categories;
       //TODO: In views change everything so that it refers to filteredActivites
+    });
+
+  $http({
+    method: 'GET',
+    url: '/api/accommodations'
+  })
+    .then(res => {
+      console.log('accommodations are', res.data);
+      // return all the data
+      $scope.accommodations = res.data;
+      $scope.filteredAccommodations = res.data;
     });
 }
 

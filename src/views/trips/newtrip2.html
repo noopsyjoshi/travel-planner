@@ -1,29 +1,53 @@
 <h2 class="title is-2"></h2>
-<p>This is where the budget, accomodation stuff will go</p>
 
 <!-- Duration -->
 <section>
   <h3 class="title is-3">Trip Duration</h3>
   <button ng-repeat="duration in durations"  class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</button>
-  <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
 </section>
+
+<hr>
 
 <!-- Accomodation Type -->
 <section>
-  <h3 class="title is-3">Accomodation Type</h3>
-  <button ng-repeat="accomodationType in accomodationTypes" ng-class="{ 'is-link': trip.accomodationTypes.includes(accomodationType), 'is-outlined': !trip.accomodationTypes.includes(accomodationType) }"class="button interestButton is-large" accomodationTypeVal="{{ accomodationType }}" ng-click="toggleAccomodationType($event)">{{ accomodationType }}</button>
-  <p>You've selected: <strong id="selectedAccomodationType">{{ accomodationType }}</strong></p>
-</section>
+  <h3 class="title is-3">Accommodation Type</h3>
+  <div class="columns is-multiline">
+    <div class="column is-one-half">
+      <button ng-repeat="accommodationType in accommodationTypes" ng-class="{ 'is-link': trip.accommodationTypes.includes(accommodationType), 'is-outlined': !trip.accommodationTypes.includes(accommodationType) }"class="button interestButton is-large" accommodationTypeVal="{{ accommodationType }}" ng-click="toggleAccommodation($event)">{{ accommodationType }}</button>
+    </div>
 
-<!-- TODO: Display accomodations in the City based on what type the user has selected -->
+    <div class="column is-one-half">
+      <h3 class="title is-3">Choose your accommodation</h3>
+      <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
+      <div ng-repeat="accomodation in filteredAccommodations">
+        <div class="box is-primary is-fullwidth">
+          <div class="columns is-multiline">
+            <div class="column is-one-third"><img src="{{ accomodation.imageUrl }}" alt="{{ accomodation.name }}"></div>
+            <div class="column is-one-third">{{ accomodation.name }}</div>
+            <div class="column is-one-third">{{ accomodation.rating }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Budget -->
-<section>
-  <form ng-submit="getBudget()">
-    <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
-  </form>
-</section>
+  <hr>
 
+  <!-- Budget -->
+  <section>
+    <h3 class="title is-3">Enter your budget</h3>
+    <form ng-submit="getBudget()">
+      <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
+    </form>
+  </section>
 
-<a class="button" ui-sref="tripsNew1">PREVIOUS</a>
-<a class="button" ui-sref="tripsNew3">NEXT</a>
+  <hr>
+
+  <div class="level">
+    <div class="level-left">
+      <a class="button is-large is-info" ui-sref="tripsNew1">PREVIOUS</a>
+    </div>
+    <div class="level-right">
+      <a class="button is-large is-info" ui-sref="tripsNew3">NEXT</a>
+    </div>
+  </div>

@@ -411,7 +411,7 @@ const accommodationData = [
     'isClosed': false,
     'yelpUrl': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 14,
-    'categories': ['hotels'],
+    'categories': ['Hostel'],
     'rating': 5.0,
     'coordinates': {
       'latitude': 51.5147387,
@@ -425,7 +425,7 @@ const accommodationData = [
     'is_closed': false,
     'url': 'https://www.yelp.com/biz/hotel-indigo-london-4?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 25,
-    'categories': ['hostels'],
+    'categories': ['Hostel'],
     'rating': 4.5,
     'coordinates': {
       'latitude': 51.4919293664835,
@@ -439,7 +439,7 @@ const accommodationData = [
     'is_closed': false,
     'url': 'https://www.yelp.com/biz/the-hoxton-shoreditch-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 184,
-    'categories': ['hotels', 'venues'],
+    'categories': ['Hostel'],
     'rating': 4.5,
     'coordinates': {
       'latitude': 51.5255813407725,
@@ -455,7 +455,7 @@ const tripData = [
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
-    accomodationTypes: ['Hotels', 'Hostels', 'Bed & Breakfast'], // is this needed?
+    accomodationTypes: ['Hotel', 'Hostel', 'Bed & Breakfast'],
     accommodations: [], // need accommodation id first
     budget: 500,
     categories: ['music', 'historical sites', 'food'], // is this needed?
