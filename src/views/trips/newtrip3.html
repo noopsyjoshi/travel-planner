@@ -1,0 +1,12 @@
+<h2 class="title is-2">Select your interests</h2>
+
+<!-- Interests -->
+<!-- TODO: Display this on a separate page/view -->
+<section>
+  <h3 class="title is-3">Choose your Interests</h3>
+  <button ng-class="{ 'is-link': trip.interests.includes(interest), 'is-outlined': !trip.interests.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
+  <p>You've selected:<strong id="tripInterest">{{ selectedInterests }}</strong> </p>
+</section>
+
+<a class="button" ui-sref="tripsNew2">PREVIOUS</a>
+<a class="button" ui-sref="tripsNew4">NEXT</a>

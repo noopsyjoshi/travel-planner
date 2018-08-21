@@ -1,0 +1,23 @@
+<h2 class="title is-2">Select your activities</h2>
+<!-- Activities (things to do based on your interests) -->
+<!-- TODO: Display on another page -->
+<!-- TODO: Show only the activities based on interests -->
+<h3 class="title is-3">Choose your activities</h3>
+<p class="">There are {{ activities.length }} you can choose from</p>
+<div ng-repeat="activity in activities">
+  <div class="columns box is-multiline">
+    <div class="column is-one-third">
+      <img src="{{ activity.imageUrl }}" alt="{{ activity.name }}">
+    </div>
+    <div class="column is-one-third">
+      <div class="">{{ activity.name }}</div>
+    </div>
+    <div class="column is-one-third">
+      <p>{{ activity.rating }}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Next will take you to the confirmation page -->
+<a class="button" ui-sref="tripsNew3">PREVIOUS</a>
+<a class="button" ui-sref="">NEXT</a>

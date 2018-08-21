@@ -62,8 +62,36 @@ function Router($stateProvider, $urlRouterProvider) {
       controller: 'UsersEditCtrl'
     })
     // New trip form
-    .state('tripsNew', {
-      templateUrl: './views/trips/new.html',
+    // .state('tripsNew', {
+    //   templateUrl: './views/trips/new.html',
+    //   url: '/trips/new',
+    //   controller: 'TripsNewCtrl'
+    // })
+
+    // TODO: Discuss best way to rename states
+    // Trips New 1 is the page the user is directed to directly after log in
+    // The map will be displayed here
+    // Put map separately in directives form
+    .state('tripsNew1', {
+      templateUrl: './views/trips/newtrip1.html',
+      url: '/trips/new',
+      controller: 'TripsNewCtrl'
+    })
+    // Trips New 2 - the user can enter their budget, accomodation type and pick their accomodation
+    .state('tripsNew2', {
+      templateUrl: './views/trips/newtrip2.html',
+      url: '/trips/new',
+      controller: 'TripsNewCtrl'
+    })
+    // Trips New 3 - the user can select their interests
+    .state('tripsNew3', {
+      templateUrl: './views/trips/newtrip3.html',
+      url: '/trips/new',
+      controller: 'TripsNewCtrl'
+    })
+    // Trips New 4 - where the user can select their activities based on their interests
+    .state('tripsNew4', {
+      templateUrl: './views/trips/newtrip4.html',
       url: '/trips/new',
       controller: 'TripsNewCtrl'
     });

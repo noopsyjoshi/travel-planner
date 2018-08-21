@@ -1,67 +1,8 @@
 <!-- form where user can create a new trip (location, duration, accomodation, budget, interests, activities) -->
-<h1>Plan your journey</h1>
 
-<!-- TODO: Insert Map -->
 
-<form>
-  <!-- Choose city -->
-  <section>
-    <div class="field">
-      <label for="name">City</label>
-      <input ng-model="trip.city" class="input is-large" type="text" name="city" placeholder="e.g. London">
-    </div>
-  </section>
-
-  <!-- Duration -->
-  <section>
-    <h3 class="title is-3">Trip Duration</h3>
-    <button ng-repeat="duration in durations"  class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="getDuration($event)">{{duration}} days</button>
-    <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
-  </section>
-
-  <!-- Accomodation Type -->
-  <section>
-    <h3 class="title is-3">Accomodation Type</h3>
-    <button ng-repeat="accomodationType in accomodationTypes" class="button accomodationTypeButton is-large is-link is-outlined" accomodationTypeVal="{{ accomodationType }}" ng-click="getAccomodationType($event)">{{ accomodationType }}</button>
-    <p>You've selected: <strong id="selectedAccomodationType">{{ accomodationType }}</strong></p>
-  </section>
-
-  <!-- TODO: Display accomodations in the City based on what type the user has selected -->
-
-  <!-- Budget -->
-  <section>
-    <h3 class="title is-3">Budget</h3>
-    <input type="Number" class="input is-large" placeholder="Please enter a number">
-  </section>
-
-  <!-- Interests -->
-  <!-- TODO: Display this on a separate page/view -->
-  <section>
-    <h3 class="title is-3">Choose your Interests</h3>
-    <button ng-repeat="interest in interests" class="button interestButton is-large is-link is-outlined" interestVal="{{ interest }}" ng-click="getInterest($event)"> {{interest}} </button>
-    <p>You've selected:<strong id="tripInterest">{{ selectedInterests }}</strong> </p>
-  </section>
 
   <p>{{ activities.category }}</p>
-
-  <!-- Activities (things to do based on your interests) -->
-  <!-- TODO: Display on another page -->
-  <!-- TODO: Show only the activities based on interests -->
-  <h3 class="title is-3">Choose your activities</h3>
-  <p class="">There are {{ activities.length }} you can choose from</p>
-  <div ng-repeat="activity in activities">
-    <div class="columns box is-multiline">
-      <div class="column is-one-third">
-        <img src="{{ activity.imageUrl }}" alt="{{ activity.name }}">
-      </div>
-      <div class="column is-one-third">
-        <div class="">{{ activity.name }}</div>
-      </div>
-      <div class="column is-one-third">
-        <p>{{ activity.rating }}</p>
-      </div>
-    </div>
-  </div>
 
 
   <!-- Submit create new trip form -->

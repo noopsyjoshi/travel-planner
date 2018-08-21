@@ -5,7 +5,7 @@ function AuthLoginCtrl($scope, $http, $auth, $state) {
     $auth.login($scope.user)
       .then(() => {
         console.log('Logging in user...', $scope.user);
-        $state.go('tripsNew');
+        $state.go('tripsNew1');
       })
       .catch(err => console.log('There was an error', err));
   };

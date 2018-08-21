@@ -1,0 +1,13 @@
+
+<h2 class="title is-2">Plan your journey</h2>
+<h3 class="title is-3">Select a city</h3>
+
+<!-- TODO: Insert Map -->
+
+<!-- Choose city -->
+<section>
+  <form ng-submit="getLocation()">
+    <input ng-model="trip.city" class="input is-large" required type="text" name="city" placeholder="e.g. London">
+  </form>
+  <a class="button is-info is-large" ui-sref="tripsNew2">NEXT</a>
+</section>

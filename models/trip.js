@@ -18,6 +18,5 @@ const tripSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('Trip', tripSchema);
 
-
 // removed tripid
 // change coords to number not string

@@ -1,6 +1,12 @@
 function MainCtrl($auth, $scope, $state, $rootScope, $timeout) {
   // We're making sure isAuthenticated is available everywhere
   // NOTE: isAuthenticated is a function!
+  $rootScope.trip = {
+    accomodationTypes: [],
+    interests: [],
+    activities: []
+  };
+
   $scope.isAuthenticated = $auth.isAuthenticated;
   $rootScope.$on('flashMessage', (e, data) => {
     console.log('e is ', e, 'data is', data);

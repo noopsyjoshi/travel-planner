@@ -1,0 +1,29 @@
+<h2 class="title is-2"></h2>
+<p>This is where the budget, accomodation stuff will go</p>
+
+<!-- Duration -->
+<section>
+  <h3 class="title is-3">Trip Duration</h3>
+  <button ng-repeat="duration in durations"  class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</button>
+  <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
+</section>
+
+<!-- Accomodation Type -->
+<section>
+  <h3 class="title is-3">Accomodation Type</h3>
+  <button ng-repeat="accomodationType in accomodationTypes" ng-class="{ 'is-link': trip.accomodationTypes.includes(accomodationType), 'is-outlined': !trip.accomodationTypes.includes(accomodationType) }"class="button interestButton is-large" accomodationTypeVal="{{ accomodationType }}" ng-click="toggleAccomodationType($event)">{{ accomodationType }}</button>
+  <p>You've selected: <strong id="selectedAccomodationType">{{ accomodationType }}</strong></p>
+</section>
+
+<!-- TODO: Display accomodations in the City based on what type the user has selected -->
+
+<!-- Budget -->
+<section>
+  <form ng-submit="getBudget()">
+    <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
+  </form>
+</section>
+
+
+<a class="button" ui-sref="tripsNew1">PREVIOUS</a>
+<a class="button" ui-sref="tripsNew3">NEXT</a>
