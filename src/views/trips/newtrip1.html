@@ -7,7 +7,9 @@
 <!-- Choose city -->
 <section>
   <form ng-submit="getLocation()">
-    <input ng-model="trip.city" class="input is-large" required type="text" name="city" placeholder="e.g. London">
+    <!-- TODO: Make this input required -->
+    <!-- TODO: Add google map api autocomplete  -->
+    <input ng-model="trip.city" class="input is-large" type="text" name="city" placeholder="e.g. London">
   </form>
   <a class="button is-info is-large" ui-sref="tripsNew2">NEXT</a>
 </section>

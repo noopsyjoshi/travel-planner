@@ -94,6 +94,11 @@ function Router($stateProvider, $urlRouterProvider) {
       templateUrl: './views/trips/newtrip4.html',
       url: '/trips/new',
       controller: 'TripsNewCtrl'
+    })
+    .state('summary', {
+      templateUrl: './views/trips/summary.html',
+      url: '/trips/new',
+      controller: 'TripsNewCtrl'
     });
   // App will redirect you to the home page if only localhost:8000 is noted (without the #!)
   $urlRouterProvider.otherwise('/');

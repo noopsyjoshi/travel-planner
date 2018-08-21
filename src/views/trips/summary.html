@@ -1,1 +1,15 @@
-<h2>Confirm your trip</h2>
+<h2 class="title is-2">Confirm your trip</h2>
+
+<form ng-submit="createNewTrip()">
+  <section>
+    <!-- this will iterate through all keys in the object 'trip' -->
+      <table>
+        <tr ng-repeat="(key, value) in trip">
+          <td> {{key}} </td>
+          <td ng-repeat="x in value"> {{ x }} </td>
+        </tr>
+      </table>
+</section>
+
+<button class="button is-large is-info" type="submit" name="confirm">Confirm</button>
+</form>

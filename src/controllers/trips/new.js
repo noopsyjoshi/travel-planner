@@ -43,16 +43,27 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     console.log($rootScope.trip);
   };
 
+  // Budget
   $scope.getBudget = function() {
     console.log('into the getBudget function');
     $rootScope.trip.budget = $scope.trip.budget;
     console.log('rootScope', $rootScope.trip);
   };
 
+  // Interest
   $scope.toggleInterest = function($event) {
+
+    $scope.filteredActivites = $scope.activities;
+
     let tripInterests = $rootScope.trip.interests;
+    //tripInterests is the collection of the selected interests we have clicked on
+    console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
+
+
     const selectedInterest = $event.target.getAttribute('interestVal');
-    $scope.activities = $scope.activities.filter(activity =>  activity.categories.includes(selectedInterest));
+    console.log('this is selectedInterest ->', selectedInterest);
+    //selectedInterest is the one we clicked on
+
     if(tripInterests.includes(selectedInterest)) {
       // remove interest
       console.log('removing interest...');
@@ -62,14 +73,17 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       // add interest
       tripInterests.push(selectedInterest); // TODO: the list of activities doesn't append any more categories...
     }
+
     $rootScope.trip.interests = tripInterests;
-    console.log($rootScope.trip);
+
+    if(tripInterests.length !== 0) {
+      // 1. Check all of the Activities
+      // 2. Check each activity has a category that matches the user's selected interest
+      $scope.filteredActivites = $scope.filteredActivites.filter(activity =>  activity.categories.filter(category => tripInterests.includes(category)).length);
+    }
+    console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
+    //$scope.filteredActivites is an array of the activities filtered by selected activity
   };
-
-  // TODO: add accomodation into model/seeds
-
-
-
 
   // Make a request to the database to get the activities based on interests
   $http({
@@ -79,8 +93,11 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   // The activities information is in the data section in console
     .then(res => {
       console.log('Activities are', res.data);
+      // return all the data
       $scope.activities = res.data;
-      $scope.activities.categories = res.data.categories;
+      $scope.filteredActivites = res.data;
+      // $scope.activities.categories = res.data.categories;
+      //TODO: In views change everything so that it refers to filteredActivites
     });
 }
 
