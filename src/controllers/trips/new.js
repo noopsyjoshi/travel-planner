@@ -1,19 +1,30 @@
+// THIS IS THE CONTROLLER RESPONSIBLE FOR CREATING A NEW TRIP
+
 function TripsNewCtrl($scope, $http, $rootScope) {
   console.log('into the new trip controller...');
 
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////// VARIABLES /////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   $scope.durations = [3, 7, 10];
   $scope.interests = ['music', 'historical landmarks', 'museums'];
   $scope.accommodationTypes = ['Hotel', 'Hostel', 'Bed and Breakfast'];
 
-  // Location
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////// LOCATION  /////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
   $scope.getLocation = function() {
     console.log('into the getlocation function');
     $rootScope.trip.city = $scope.trip.city;
     console.log('rootscope and scope', $scope.trip.city, $rootScope.trip.city);
   };
 
-  // Duration
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////// DURATION //////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
   // TODO: Add toggle class
   $scope.toggleDuration = function($event) {
     // get the value of the button that is clicked
@@ -24,7 +35,10 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     console.log('rootScope.trip', $rootScope.trip);
   };
 
-  // Accommodation
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////// ACCOMMODATION /////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
   $scope.toggleAccommodation = function($event) {
     // Set filteredAccommodations to all the accommodations that we fetch from the seeds file (for test - 3)
     // $scope.accommodations is all accommodations from the db
@@ -67,14 +81,31 @@ function TripsNewCtrl($scope, $http, $rootScope) {
     console.log('this is $scope.filteredAccommodations ->', $scope.filteredAccommodations);
   };
 
-  // Budget
+  // Display the selected accommodation from a list
+  $scope.setSelectedAccommodation = function(index) {
+    $scope.selectedAccommodation = index;
+  };
+
+  // Display the selected activity from a list
+  $scope.setSelectedActivity = function(index) {
+    console.log('into the setSelectedActivity function...');
+    $scope.selectedActivity = index;
+  };
+
+  //////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////// BUDGET ////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
   $scope.getBudget = function() {
     console.log('into the getBudget function');
     $rootScope.trip.budget = $scope.trip.budget;
     console.log('rootScope', $rootScope.trip);
   };
 
-  // Interests and Activities
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////// INTEREST AND ACTIVITIES //////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
   $scope.toggleInterest = function($event) {
     // Set filteredActivities to all the activities
     $scope.filteredActivites = $scope.activities;
@@ -103,10 +134,13 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       // 1. Check all of the Activities
       // 2. Check each activity has a category that matches the user's selected interest
       $scope.filteredActivites = $scope.filteredActivites.filter(activity =>  activity.categories.filter(category => tripInterests.includes(category)).length);
+      $rootScope.filteredActivites = $scope.filteredActivites;
     }
     console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
+    console.log('this is $rootScope.filteredActivites ->', $rootScope.filteredActivites);
     //$scope.filteredActivites is an array of the activities filtered by selected activity
   };
+
 
   // Make a request to the database to get the activities based on interests
   $http({
@@ -123,6 +157,7 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       //TODO: In views change everything so that it refers to filteredActivites
     });
 
+  // make a request to the database to get all accommodations
   $http({
     method: 'GET',
     url: '/api/accommodations'
