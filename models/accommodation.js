@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-
-const activitySchema = new mongoose.Schema({
-  name: { type: String, required: true },
+// model will need to be adjusted once we will plug in to APIs,  (seed parameter names were changed)
+const accommodationSchema = new mongoose.Schema({
+  name: { type: String, required: false },
   imageUrl: { type: String, required: false },
   yelpUrl: { type: String, required: false },
   categories: [{ type: String, required: false}],
@@ -14,4 +14,4 @@ const activitySchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Activity', activitySchema);
+module.exports = mongoose.model('Accommodation', accommodationSchema);

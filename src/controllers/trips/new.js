@@ -53,6 +53,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   // Interest
   $scope.toggleInterest = function($event) {
 
+<<<<<<< HEAD
     $scope.filteredActivites = $scope.activities;
 
     let tripInterests = $rootScope.trip.interests;
@@ -63,6 +64,11 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     const selectedInterest = $event.target.getAttribute('interestVal');
     console.log('this is selectedInterest ->', selectedInterest);
     //selectedInterest is the one we clicked on
+=======
+  $scope.getBudget = function() {
+
+  };
+>>>>>>> added-accommodation-model-and-seeds
 
     if(tripInterests.includes(selectedInterest)) {
       // remove interest

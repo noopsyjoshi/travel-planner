@@ -6,6 +6,7 @@ const { dbURI } = require('../config/environment');
 const User = require('../models/user');
 const Activity = require('../models/activity');
 const Trip = require('../models/trip');
+const Accommodation = require('../models/accommodation');
 
 // Set-up mongoose
 mongoose.connect(dbURI);
@@ -14,7 +15,9 @@ mongoose.connect(dbURI);
 User.collection.drop();
 Activity.collection.drop();
 Trip.collection.drop();
+Accommodation.collection.drop();
 
+// Database
 const userData = [
   {
     firstName: 'Kane',
@@ -47,10 +50,7 @@ const userData = [
     location: 'London'
   }
 ];
-
 const activityData = [
-  // BERLIN
-  // museum & historicalBuildings
   {
     name: 'Pergamon Museum',
     imageUrl: 'https://s3-media1.fl.yelpcdn.com/bphoto/BrqqPNJ6nFJhgzU3DTChSg/o.jpg',
@@ -116,7 +116,6 @@ const activityData = [
       longitude: 13.38281
     }
   },
-  // music Venues
   {
     name: 'Berliner Philharmonie',
     imageUrl: 'https://s3-media2.fl.yelpcdn.com/bphoto/F5ygaRtWQ3-bWgV1yQqC8w/o.jpg',
@@ -156,7 +155,6 @@ const activityData = [
       longitude: 13.3695
     }
   },
-  // London
   {
     name: 'Aint Nothin But A Blues bar',
     imageUrl: 'https://s3-media3.fl.yelpcdn.com/bphoto/vDYafb7CBIGWbFd2ohx08A/o.jpg',
@@ -406,23 +404,79 @@ const activityData = [
     price: '££'
   }
 ];
+const accommodationData = [
+  {
+    'name': 'The Nadler Soho',
+    'imageUrl': 'https://s3-media2.fl.yelpcdn.com/bphoto/kjv2o3sE-s1fV07fHsanGw/o.jpg',
+    'isClosed': false,
+    'yelpUrl': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'review_count': 14,
+    'categories': ['hotels'],
+    'rating': 5.0,
+    'coordinates': {
+      'latitude': 51.5147387,
+      'longitude': -0.1341108
+    },
+    'price': '£££'
+  },
+  {
+    'name': 'Hotel Indigo',
+    'image_url': 'https://s3-media1.fl.yelpcdn.com/bphoto/HrTcSN0h7KyiK0NYDMPGLA/o.jpg',
+    'is_closed': false,
+    'url': 'https://www.yelp.com/biz/hotel-indigo-london-4?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'review_count': 25,
+    'categories': ['hostels'],
+    'rating': 4.5,
+    'coordinates': {
+      'latitude': 51.4919293664835,
+      'longitude': -0.191815613709144
+    },
+    'price': '££'
+  },
+  {
+    'name': 'The Hoxton - Shoreditch',
+    'image_url': 'https://s3-media1.fl.yelpcdn.com/bphoto/qBswiDC9K9w9bi5yPGoW4Q/o.jpg',
+    'is_closed': false,
+    'url': 'https://www.yelp.com/biz/the-hoxton-shoreditch-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'review_count': 184,
+    'categories': ['hotels', 'venues'],
+    'rating': 4.5,
+    'coordinates': {
+      'latitude': 51.5255813407725,
+      'longitude': -0.0828488618135452
+    },
+    'price': '££'
+  }
+];
 
+// Collecting user data
 const tripData = [
   {
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
-    accomodationType: 'Hotel',
-    accommodation: [],
+    accomodationTypes: ['Hotels', 'Hostels', 'Bed & Breakfast'], // is this needed?
+    accommodations: [], // need accommodation id first
     budget: 500,
-    categories: ['music', 'historicalSites', 'food'],
+    categories: ['music', 'historical sites', 'food'], // is this needed?
     activities: [] // need activity id first
   }
 ];
 
-Activity
-//create activity first
-  .create(activityData)
+Accommodation.create(accommodationData)
+  .then(accommodations => {
+    console.log(`Created ${accommodations.length} accommodations...`);
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,20),
+      accommodation: accommodations[0]._id });
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,21),
+      accommodation: accommodations[1]._id });
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,22),
+      accommodation: accommodations[2]._id });
+    return Activity.create(activityData);
+  })
   .then(activities => {
     console.log(`Created ${activities.length} activities...`);
     tripData[0].activities.push({
@@ -445,7 +499,6 @@ Activity
   })
   .then(users => {
     console.log(`Created ${users.length} users.`);
-    return Activity.create(activityData);
   })
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());
