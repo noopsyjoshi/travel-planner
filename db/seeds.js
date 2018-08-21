@@ -498,6 +498,20 @@ Activity
       activity: activities[2]._id });
     return Trip.create(tripData);
   })
+  .create(accommodationData)
+  .then(accommodations => {
+    console.log(`Created ${accommodations.length} accommodations...`);
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,20),
+      accommodation: accommodations[0]._id });
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,21),
+      accommodation: accommodations[1]._id });
+    tripData[0].accommodations.push({
+      date: new Date(2018,9,22),
+      accommodation: accommodations[2]._id });
+    return Trip.create(tripData);
+  })
   .then(trips => {
     console.log(`Created ${trips.length} trips`);
     userData[0].trips = [

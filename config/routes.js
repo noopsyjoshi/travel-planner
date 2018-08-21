@@ -11,6 +11,7 @@ const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
 const activityController = require('../controllers/activityController');
 const tripActivityController = require('../controllers/tripActivityController');
+const accommodationController = require('../controllers/accommodationController');
 
 // Routes go here
 router.route('/trips')
