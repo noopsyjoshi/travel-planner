@@ -49,8 +49,6 @@ const userData = [
 ];
 
 const activityData = [
-  // BERLIN
-  // museum & historicalBuildings
   {
     name: 'Pergamon Museum',
     imageUrl: 'https://s3-media1.fl.yelpcdn.com/bphoto/BrqqPNJ6nFJhgzU3DTChSg/o.jpg',
@@ -116,7 +114,6 @@ const activityData = [
       longitude: 13.38281
     }
   },
-  // music Venues
   {
     name: 'Berliner Philharmonie',
     imageUrl: 'https://s3-media2.fl.yelpcdn.com/bphoto/F5ygaRtWQ3-bWgV1yQqC8w/o.jpg',
@@ -156,7 +153,6 @@ const activityData = [
       longitude: 13.3695
     }
   },
-  // London
   {
     name: 'Aint Nothin But A Blues bar',
     imageUrl: 'https://s3-media3.fl.yelpcdn.com/bphoto/vDYafb7CBIGWbFd2ohx08A/o.jpg',
@@ -408,142 +404,81 @@ const activityData = [
 ];
 
 const accommodationData = [
-		{
-			"alias": "the-nadler-soho-london",
-			"name": "The Nadler Soho",
-			"image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/kjv2o3sE-s1fV07fHsanGw/o.jpg",
-			"is_closed": false,
-			"url": "https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
-			"review_count": 14,
-			"categories": [
-				{
-					"alias": "hotels",
-					"title": "Hotels"
-				}
-			],
-			"rating": 5.0,
-			"coordinates": {
-				"latitude": 51.5147387,
-				"longitude": -0.1341108
-			},
-			"transactions": [],
-			"price": "£££",
-			"location": {
-				"address1": "10 Carlisle Street",
-				"address2": "",
-				"address3": "",
-				"city": "London",
-				"zip_code": "W1D 3BR",
-				"country": "GB",
-				"state": "XGL",
-				"display_address": [
-					"10 Carlisle Street",
-					"London W1D 3BR",
-					"United Kingdom"
-				]
-			},
-			"phone": "+442036973697",
-			"display_phone": "+44 20 3697 3697",
-			"distance": 247.15404778863302
-		},
-		{
-			"id": "G7uJE057HeMLOZGg6c6lAA",
-			"alias": "hotel-indigo-london-4",
-			"name": "Hotel Indigo",
-			"image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/HrTcSN0h7KyiK0NYDMPGLA/o.jpg",
-			"is_closed": false,
-			"url": "https://www.yelp.com/biz/hotel-indigo-london-4?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
-			"review_count": 25,
-			"categories": [
-				{
-					"alias": "hotels",
-					"title": "Hotels"
-				}
-			],
-			"rating": 4.5,
-			"coordinates": {
-				"latitude": 51.4919293664835,
-				"longitude": -0.191815613709144
-			},
-			"transactions": [],
-			"price": "££",
-			"location": {
-				"address1": "34 - 44 Barkston Gardens",
-				"address2": "",
-				"address3": "",
-				"city": "London",
-				"zip_code": "SW5 0EW",
-				"country": "GB",
-				"state": "XGL",
-				"display_address": [
-					"34 - 44 Barkston Gardens",
-					"London SW5 0EW",
-					"United Kingdom"
-				]
-			},
-			"phone": "+442073737851",
-			"display_phone": "+44 20 7373 7851",
-			"distance": 4511.468188223717
-		},
-		{
-			"id": "eCS9km_3I4yQZ4x6dpFdCA",
-			"alias": "the-hoxton-shoreditch-london",
-			"name": "The Hoxton - Shoreditch",
-			"image_url": "https://s3-media1.fl.yelpcdn.com/bphoto/qBswiDC9K9w9bi5yPGoW4Q/o.jpg",
-			"is_closed": false,
-			"url": "https://www.yelp.com/biz/the-hoxton-shoreditch-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw",
-			"review_count": 184,
-			"categories": [
-				{
-					"alias": "hotels",
-					"title": "Hotels"
-				},
-				{
-					"alias": "venues",
-					"title": "Venues & Event Spaces"
-				}
-			],
-			"rating": 4.5,
-			"coordinates": {
-				"latitude": 51.5255813407725,
-				"longitude": -0.0828488618135452
-			},
-			"transactions": [],
-			"price": "££",
-			"location": {
-				"address1": "81-83 Great Eastern Street",
-				"address2": "",
-				"address3": "",
-				"city": "London",
-				"zip_code": "EC2A 3HU",
-				"country": "GB",
-				"state": "XGL",
-				"display_address": [
-					"81-83 Great Eastern Street",
-					"London EC2A 3HU",
-					"United Kingdom"
-				]
-			},
-			"phone": "+442075501000",
-			"display_phone": "+44 20 7550 1000",
-			"distance": 3938.3819561853247
-		},
-
+  {
+    'name': 'The Nadler Soho',
+    'image_url': 'https://s3-media2.fl.yelpcdn.com/bphoto/kjv2o3sE-s1fV07fHsanGw/o.jpg',
+    'is_closed': false,
+    'url': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'review_count': 14,
+    'categories': [
+      {
+        'alias': 'hotels',
+        'title': 'Hotels'
+      }
+    ],
+    'rating': 5.0,
+    'coordinates': {
+      'latitude': 51.5147387,
+      'longitude': -0.1341108
+    },
+    'price': '£££'
+  },
+  {
+    'name': 'Hotel Indigo',
+    'image_url': 'https://s3-media1.fl.yelpcdn.com/bphoto/HrTcSN0h7KyiK0NYDMPGLA/o.jpg',
+    'is_closed': false,
+    'url': 'https://www.yelp.com/biz/hotel-indigo-london-4?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'review_count': 25,
+    'categories': [
+      {
+        'alias': 'hotels',
+        'title': 'Hotels'
+      }
+    ],
+    'rating': 4.5,
+    'coordinates': {
+      'latitude': 51.4919293664835,
+      'longitude': -0.191815613709144
+    },
+    'price': '££'
+  },
+  {
+    'name': 'The Hoxton - Shoreditch',
+    'image_url': 'https://s3-media1.fl.yelpcdn.com/bphoto/qBswiDC9K9w9bi5yPGoW4Q/o.jpg',
+    'is_closed': false,
+    'url': 'https://www.yelp.com/biz/the-hoxton-shoreditch-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
+    'review_count': 184,
+    'categories': [
+      {
+        'alias': 'hotels',
+        'title': 'Hotels'
+      },
+      {
+        'alias': 'venues',
+        'title': 'Venues & Event Spaces'
+      }
+    ],
+    'rating': 4.5,
+    'coordinates': {
+      'latitude': 51.5255813407725,
+      'longitude': -0.0828488618135452
+    },
+    'price': '££'
+  }
+];
 
 const tripData = [
   {
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
-    accomodationType: 'Hotel',
-    accommodation: [],
+    accomodationType: ['Hotels', 'Hostels', 'Bed & Breakfast'], // is this needed?
+    accommodation: [], // need accommodation id first
     budget: 500,
-    categories: ['music', 'historicalSites', 'food'],
+    categories: ['music', 'historicalSites', 'food'], // is this needed?
     activities: [] // need activity id first
   }
 ];
-
-const
 
 
 

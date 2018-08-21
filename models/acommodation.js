@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 
-const tripSchema = new mongoose.Schema({
-  country: { type: String, required: false },
+const accommodationSchema = new mongoose.Schema({
+  name: { type: String, required: false },
   city: { type: String, required: true },
-  duration: { type: String, required: false  },
+  duration: { type: String, required: false },
   accomodationType: [{ type: String, required: false  }],
   accommodation: [{ type: String, required: false  }],
   budget: {type: Number, required: false  },
