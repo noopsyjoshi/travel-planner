@@ -15,15 +15,3 @@ const activitySchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Activity', activitySchema);
-
-
-//NOTES
-// requet add acticity
-// in the body add the idea of the activity: ""
-// add an activity to the trip
-// activities is an array of activities
-
-// trip needs to have a start date
-// backend stuff that adds an activity to the trip
-
-// post to /trips/id/acti

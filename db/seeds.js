@@ -17,6 +17,7 @@ Activity.collection.drop();
 Trip.collection.drop();
 Accommodation.collection.drop();
 
+// Database
 const userData = [
   {
     firstName: 'Kane',
@@ -49,7 +50,6 @@ const userData = [
     location: 'London'
   }
 ];
-
 const activityData = [
   {
     name: 'Pergamon Museum',
@@ -404,7 +404,6 @@ const activityData = [
     price: '££'
   }
 ];
-
 const accommodationData = [
   {
     'name': 'The Nadler Soho',
@@ -450,16 +449,16 @@ const accommodationData = [
   }
 ];
 
-// User journey data is being collected in Trips
+// Collecting user data
 const tripData = [
   {
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
-    accomodationType: ['Hotels', 'Hostels', 'Bed & Breakfast'], // is this needed?
+    accomodationTypes: ['Hotels', 'Hostels', 'Bed & Breakfast'], // is this needed?
     accommodations: [], // need accommodation id first
     budget: 500,
-    categories: ['music', 'historicalSites', 'food'], // is this needed?
+    categories: ['music', 'historical sites', 'food'], // is this needed?
     activities: [] // need activity id first
   }
 ];
