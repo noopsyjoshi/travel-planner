@@ -22,9 +22,3 @@ const tripSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Trip', tripSchema);
-<<<<<<< HEAD
-
-// removed tripid
-// change coords to number not string
-=======
->>>>>>> added-accommodation-model-and-seeds

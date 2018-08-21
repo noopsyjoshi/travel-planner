@@ -1,4 +1,4 @@
-function TripsNewCtrl($scope, $http, $rootScope, $state) {
+function TripsNewCtrl($scope, $http, $rootScope) {
   console.log('into the new trip controller...');
 
   // Trip Duration Variables
@@ -53,7 +53,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   // Interest
   $scope.toggleInterest = function($event) {
 
-<<<<<<< HEAD
     $scope.filteredActivites = $scope.activities;
 
     let tripInterests = $rootScope.trip.interests;
@@ -64,11 +63,8 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     const selectedInterest = $event.target.getAttribute('interestVal');
     console.log('this is selectedInterest ->', selectedInterest);
     //selectedInterest is the one we clicked on
-=======
-  $scope.getBudget = function() {
-
-  };
->>>>>>> added-accommodation-model-and-seeds
+    $scope.getBudget = function() {
+    };
 
     if(tripInterests.includes(selectedInterest)) {
       // remove interest
