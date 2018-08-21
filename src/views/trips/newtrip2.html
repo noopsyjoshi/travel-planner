@@ -19,15 +19,29 @@
     <div class="column is-one-half">
       <h3 class="title is-3">Choose your accommodation</h3>
       <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
-      <div ng-repeat="accomodation in filteredAccommodations">
-        <div class="box is-primary is-fullwidth">
-          <div class="columns is-multiline">
-            <div class="column is-one-third"><img src="{{ accomodation.imageUrl }}" alt="{{ accomodation.name }}"></div>
-            <div class="column is-one-third">{{ accomodation.name }}</div>
-            <div class="column is-one-third">{{ accomodation.rating }}</div>
-          </div>
-        </div>
-      </div>
+      <table class="table table-bordered">
+        <tr>
+          <th>Number</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Location</th>
+          <th>Price</th>
+        </tr>
+        <!-- When the selectedAccommodation row is equal to the index, then add the class of is-link -->
+        <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'is-primary': $index === 'selectedAccommodation'}" ng-click="setSelectedAccommodation($index)">
+          <td>{{ $index }}</td>
+          <td><img src="{{ accommodation.imageUrl }}" alt="{{ accomodation.name }}"></td>
+          <td>{{ accommodation.name }}</td>
+          <td>{{ accommodation.rating }}</td>
+          <td>{{ accommodation.location }}</td>
+          <td>{{ accommodation.price }}</td>
+        </tr>
+      </table>
+
+      selectedAccommodation = {{ selectedAccommodation }}
+      <hr>
+      accomodation = {{filteredAccommodations[selectedAccommodation].name}}
     </div>
   </section>
 
