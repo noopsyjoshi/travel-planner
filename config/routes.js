@@ -34,6 +34,16 @@ router.route('/users/:id')
   .put(userController.update)
   .delete(userController.delete);
 
+router.route('/accommodations')
+  // .all(secureRoute)
+  .get(accommodationController.index)
+  .post(accommodationController.create);
+
+router.route('/accommodations/:id')
+  // .all(secureRoute)
+  .get(accommodationController.show)
+  .delete(accommodationController.delete);
+
 router.route('/activities')
   // .all(secureRoute)
   .get(activityController.index)
@@ -42,9 +52,7 @@ router.route('/activities')
 router.route('/activities/:id')
   // .all(secureRoute)
   .get(activityController.show)
-  // .put(activityController.update)
   .delete(activityController.delete);
-
 
 router.route('/trips/:tripId/activities')
   .post(tripActivityController.create);

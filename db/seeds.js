@@ -6,6 +6,7 @@ const { dbURI } = require('../config/environment');
 const User = require('../models/user');
 const Activity = require('../models/activity');
 const Trip = require('../models/trip');
+const Accommodation = require('../models/accommodation');
 
 // Set-up mongoose
 mongoose.connect(dbURI);
@@ -14,6 +15,7 @@ mongoose.connect(dbURI);
 User.collection.drop();
 Activity.collection.drop();
 Trip.collection.drop();
+Accommodation.collection.drop();
 
 const userData = [
   {
@@ -479,8 +481,6 @@ const tripData = [
     activities: [] // need activity id first
   }
 ];
-
-
 
 Activity
 //create activity first
