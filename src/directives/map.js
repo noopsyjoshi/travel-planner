@@ -33,7 +33,7 @@ function Map() {
       $scope.$watch('activity', function() { // Watching for the page to load first.
         if($scope.activity) {
           const lat = $scope.activity.coordinates.latitude; // getting data from seeds and storing in a new variable
-          const lng = $scope.activity.coordinates.longitude; // getting data from seeds and storing in a new variable
+          const lng = $scope.activity.coordinates.longitude; 
           map.setView([lat, lng], 12); //
           const marker = L.marker([lat, lng]).addTo(map);
           marker.bindPopup('<p>test</p>');
