@@ -1,5 +1,4 @@
 // Front-end
-
 import angular from 'angular';
 import '@uirouter/angularjs';
 import 'angular-messages';
@@ -15,7 +14,7 @@ import './scss/style.scss';
 import Router from './config/routes';
 
 // Custom directives
-// import Map from './directives/map';
+import Map from './directives/map';
 
 // Import Main controller
 import MainCtrl from './controllers/main';
@@ -36,8 +35,12 @@ import UsersShowCtrl from './controllers/users/show';
 import AuthLoginCtrl from './controllers/auth/login';
 import AuthRegisterCtrl from './controllers/auth/register';
 
-angular.module('Traverse', ['ui.router', 'ngMessages', 'satellizer']) // ui.router is a dependency
-  // .directive('ngMap', Map)
+angular.module('Traverse', [ // ui.router is a dependency
+  'ui.router',
+  'ngMessages',
+  'satellizer'
+])
+  .directive('ngMap', Map)
   .controller('MainCtrl', MainCtrl)
   .controller('TripsNewCtrl', TripsNewCtrl)
   .controller('TripsShowCtrl', TripsShowCtrl)
