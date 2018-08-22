@@ -82,14 +82,30 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     console.log('this is $scope.filteredAccommodations ->', $scope.filteredAccommodations);
   };
 
-  // Display the selected accommodation from a list
-  $scope.setSelectedAccommodation = function(index) {
+  $scope.selectedAccommodation = [];
+
+  // Select Accommodation from list
+  $scope.addAccommodation = function(index) {
     // selectedAccommodation is what the user has selected (one row in the display relates to one accommodation)
     const selectedAccommodation = $scope.filteredAccommodations[index];
-    console.log('Selected an accommodation', selectedAccommodation);
-    // make sure the accommodation array has only one accommodation at a time
+    console.log('selectedAccommodation is', selectedAccommodation);
+    // Update the UI
+    $scope.selectedAccommodation = [selectedAccommodation.name];
+    // Update the trip object
     $rootScope.trip.accommodations = [selectedAccommodation];
-    console.log($rootScope.trip);
+    console.log('adding accommodation');
+  };
+
+  // Remove Accommodation from list
+  $scope.removeAccommodation = function(index) {
+    // selectedAccommodation is what the user has selected (one row in the display relates to one accommodation)
+    const selectedAccommodation = $scope.filteredAccommodations[index];
+    console.log('selectedAccommodation is', selectedAccommodation);
+    // Update the UI
+    $scope.selectedAccommodation = [];
+    // Update the trip object
+    $rootScope.trip.accommodations = [];
+    console.log('removing accommodation');
   };
 
   $scope.$watchGroup(['map', 'accommodations'], function() {
