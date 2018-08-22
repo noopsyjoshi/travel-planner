@@ -6,7 +6,13 @@
   <div class="column is-one-quarter has-background-info">
     <!-- Edit user profile -->
     <!-- TODO: Add usersEdit controller -->
-    <a ui-sref="usersEdit" class="button" ng-if="isAuthenticated()">Edit account details</a>
+    <!-- We need to pass params in state -->
+    <p>user.userId - > {{ user.userId }} </p>
+    <p>user.id - > {{ user.id }} </p>
+    <p>user._id - > {{ user._id }} </p>
+    <p>$scope.userId - > {{ $rootScope.userId }} </p>
+
+    <a ui-sref="usersEdit({ id: user._id })" class="button" ng-if="isAuthenticated()">Edit account details</a>
   </div>
 
   <div class="column is-one-half has-background-link">

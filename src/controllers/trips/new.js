@@ -19,7 +19,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   $scope.getLocation = function() {
     console.log('into the getlocation function');
     $rootScope.trip.city = $scope.trip.city;
-    console.log('rootscope and scope', $scope.trip.city, $rootScope.trip.city);
+    console.log('trip object is',  $rootScope.trip.city);
   };
 
   //////////////////////////////////////////////////////////////////////////////
