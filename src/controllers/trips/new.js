@@ -1,5 +1,5 @@
+/* global L */
 // THIS IS THE CONTROLLER RESPONSIBLE FOR CREATING A NEW TRIP
-
 function TripsNewCtrl($scope, $http, $rootScope) {
   console.log('into the new trip controller...');
 
@@ -168,6 +168,25 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       $scope.accommodations = res.data;
       $scope.filteredAccommodations = res.data;
     });
+
+  $scope.$watchGroup(['map', 'accommodations'], function() {
+    if($scope.map && $scope.accommodations) {
+      drawAccommodationMap();
+    }
+  });
+
+  function drawAccommodationMap() {
+    // Add one marker for each accommodation
+    const accommodations = $scope.accommodations;
+    accommodations.forEach(accommodation => {
+      const lat = accommodation.coordinates.latitude; // getting data from seeds and storing in a new variable
+      const lng = accommodation.coordinates.longitude;
+      $scope.map.setView([lat, lng], 12); //
+      const marker = L.marker([lat, lng]).addTo($scope.map);
+      marker.bindPopup(`<p>${accommodation.name}</p>`);
+    });
+  }
+
 }
 
 export default TripsNewCtrl;
