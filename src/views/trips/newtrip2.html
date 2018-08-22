@@ -1,31 +1,63 @@
-<h2 class="title is-2"></h2>
-<p>This is where the budget, accomodation stuff will go</p>
-
-<div class="map" ng-map id="mapId"></div>
-
-<!-- Duration -->
-<section>
-  <h3 class="title is-3">Trip Duration</h3>
-  <button ng-repeat="duration in durations"  class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</button>
-  <p>You've selected: <strong id="tripDuration">{{ selectedDuration }}</strong></p>
-</section>
-
-<!-- Accomodation Type -->
-<section>
-  <h3 class="title is-3">Accomodation Type</h3>
-  <button ng-repeat="accomodationType in accomodationTypes" ng-class="{ 'is-link': trip.accomodationTypes.includes(accomodationType), 'is-outlined': !trip.accomodationTypes.includes(accomodationType) }"class="button interestButton is-large" accomodationTypeVal="{{ accomodationType }}" ng-click="toggleAccomodationType($event)">{{ accomodationType }}</button>
-  <p>You've selected: <strong id="selectedAccomodationType">{{ accomodationType }}</strong></p>
-</section>
-
-<!-- TODO: Display accomodations in the City based on what type the user has selected -->
-
-<!-- Budget -->
-<section>
-  <form ng-submit="getBudget()">
-    <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
-  </form>
-</section>
-
-
-<a class="button" ui-sref="tripsNew1">PREVIOUS</a>
-<a class="button" ui-sref="tripsNew3">NEXT</a>
+<div class="container">
+  <h2 class="title is-2"></h2>
+  <!-- Duration -->
+  <section>
+    <h3 class="title is-3">Trip Duration</h3>
+    <a ng-repeat="duration in durations" class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</a>
+  </section>
+  <hr>
+  <!-- Accomodation Type -->
+  <section>
+    <h3 class="title is-3">Accommodation Type</h3>
+    <div class="columns is-multiline">
+      <div class="column is-one-half">
+        <a ng-repeat="accommodationType in accommodationTypes"
+        ng-class="{ 'is-link': trip.accommodationTypes.includes(accommodationType), 'is-outlined': !trip.accommodationTypes.includes(accommodationType) }"
+        class="button interestButton is-large" accommodationTypeVal="{{ accommodationType }}" ng-click="toggleAccommodation($event)">{{ accommodationType }}
+      </a>
+    </div>
+    <div class="column is-one-half">
+      <h3 class="title is-3">Choose your accommodation</h3>
+      <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
+      <table class="table table-bordered">
+        <tr>
+          <th>Number</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Location</th>
+          <th>Price</th>
+        </tr>
+        <!-- When the selectedAccommodation row is equal to the index, then add the class of is-link -->
+        <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'has-background-link': $index === 'selectedAccommodation'}" ng-click="setSelectedAccommodation($index)">
+          <td>{{ $index }}</td>
+          <td><img src="{{ accommodation.imageUrl }}" alt="{{ accomodation.name }}"></td>
+          <td>{{ accommodation.name }}</td>
+          <td>{{ accommodation.rating }}</td>
+          <td>{{ accommodation.location }}</td>
+          <td>{{ accommodation.price }}</td>
+        </tr>
+      </table>
+      <p>selectedAccommodation = {{ selectedAccommodation }}</p>
+      <hr>
+      <p>accomodation = {{filteredAccommodations[selectedAccommodation].name}}</p>
+    </div>
+  </section>
+  <hr>
+  <!-- Budget -->
+  <section>
+    <h3 class="title is-3">Enter your budget</h3>
+    <form ng-submit="getBudget()">
+      <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
+    </form>
+  </section>
+  <hr>
+  <div class="level">
+    <div class="level-left">
+      <a class="button is-large is-info" ui-sref="tripsNew1">PREVIOUS</a>
+    </div>
+    <div class="level-right">
+      <a class="button is-large is-info" ui-sref="tripsNew3">NEXT</a>
+    </div>
+  </div>
+</div>

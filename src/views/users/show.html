@@ -1,8 +1,17 @@
 <!-- page that shows the user's dashboard -->
-<h1>Dashboard</h1>
+<h2 class="title is-2">Dashboard</h2>
 
-<!-- <h1 class="title is-1">{{ user.FirstName }}</h1> -->
+<div class="columns is-multiline">
 
-<h1>This is the users dashboard</h1>
-{{ user.firstName }}
-<a ui-sref="usersEdit" class="navbar-item" ng-if="isAuthenticated()">Edit account details</a>
+  <div class="column is-one-quarter has-background-info">
+    <!-- Edit user profile -->
+    <!-- TODO: Add usersEdit controller -->
+    <a ui-sref="usersEdit" class="button" ng-if="isAuthenticated()">Edit account details</a>
+  </div>
+
+  <div class="column is-one-half has-background-link">
+    <div class="">
+      <!-- TODO: Add recent trip here.. -->
+    </div>
+  </div>
+</div>

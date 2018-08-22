@@ -1,15 +1,32 @@
-<h2 class="title is-2">Confirm your trip</h2>
+
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Confirm your trip details
+      </h1>
+      <h2 class="subtitle">
+
+      </h2>
+    </div>
+  </div>
+</section>
 
 <form ng-submit="createNewTrip()">
   <section>
     <!-- this will iterate through all keys in the object 'trip' -->
-      <table>
-        <tr ng-repeat="(key, value) in trip">
-          <td> {{key}} </td>
-          <td ng-repeat="x in value"> {{ x }} </td>
-        </tr>
-      </table>
-</section>
+    <div class="columns is-multiline">
+      <div ng-repeat="(key, value) in trip">
+        <div class="column is-one-half has-background-primary">
+          {{key}}
+      </div>
+      <div ng-repeat="(key, value) in trip">
+        <div class="column is-one-half has-background-info">
+          {{value}}
+      </div>
+    </div>
+  </div>
+  </section>
 
-<button class="button is-large is-info" type="submit" name="confirm">Confirm</button>
+  <button class="button is-large is-info" type="submit" name="confirm">Confirm</button>
 </form>

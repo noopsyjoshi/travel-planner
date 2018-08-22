@@ -1,31 +1,37 @@
-<p>Want to plan your next holiday? Create an account</p>
-<!-- register() will invoke the function when form is submitted -->
-<form ng-submit="register()">
-  <!-- First name -->
-  <div class="field">
-    <input ng-model="user.firstName" required class="input" type="text" name="firstName" placeholder="First name">
-  </div>
-  <!-- Last name -->
-  <div class="field">
-    <input ng-model="user.lastName" required class="input" type="text" name="lastName" placeholder="Last name">
-  </div>
-  <!-- Username -->
-  <div class="field">
-    <input ng-model="user.username" required minLength="4" class="input" type="text" name="username" placeholder="Username">
-  </div>
-  <!-- Email -->
-  <div class="field">
-    <input ng-model="user.email" required class="input" type="email" name="email" placeholder="Email">
-  </div>
-  <!-- Password -->
-  <div class="field">
-    <input ng-model="user.password" minLength="6" required class="input" type="password" name="password" placeholder="Password">
-  </div>
-  <!-- Confirm password -->
-  <div class="field">
-    <input ng-model="user.passwordConfirmation" required class="input" type="password" name="passwordConfirmation" placeholder="Confirm password">
-  </div>
-  <button class="button">Sign Up</button>
-</form>
 
-<p>Already have an account? <a ui-sref="login">Log in</a></p>
+<section class="hero is-fullheight is-light is-bold has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title is-1">Welcome to Traverse</h1>
+      <h2 class="title is-2">Please sign up below</h2>
+      <form ng-submit="register()">
+        <!-- First name -->
+        <div class="field">
+          <input ng-model="user.firstName" required class="input" type="text" name="firstName" placeholder="First name">
+        </div>
+        <!-- Last name -->
+        <div class="field">
+          <input ng-model="user.lastName" required class="input" type="text" name="lastName" placeholder="Last name">
+        </div>
+        <!-- Username -->
+        <div class="field">
+          <input ng-model="user.username" required minLength="4" class="input" type="text" name="username" placeholder="Username">
+        </div>
+        <!-- Email -->
+        <div class="field">
+          <input ng-model="user.email" required class="input" type="email" name="email" placeholder="Email">
+        </div>
+        <!-- Password -->
+        <div class="field">
+          <input ng-model="user.password" minLength="6" required class="input" type="password" name="password" placeholder="Password">
+        </div>
+        <!-- Confirm password -->
+        <div class="field">
+          <input ng-model="user.passwordConfirmation" required class="input" type="password" name="passwordConfirmation" placeholder="Confirm password">
+        </div>
+        <button class="button is-large is-link">Sign Up</button>
+      </form>
+      <p>Already have an account? <a ui-sref="login">Log in</a></p>
+    </div>
+  </div>
+</section>
