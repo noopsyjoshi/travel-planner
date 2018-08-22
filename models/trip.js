@@ -4,7 +4,7 @@ const tripSchema = new mongoose.Schema({
   country: { type: String, required: false },
   city: { type: String, required: true },
   duration: { type: String, required: false  },
-  accomodationTypes: [{ type: String, required: false  }], // this is accommodation top level categories e.g. Hostel, Hotel, B&B etc.
+  accommodationTypes: [{ type: String, required: false  }], // this is accommodation top level categories e.g. Hostel, Hotel, B&B etc.
   accommodations: [
     {
       accommodation: { type: mongoose.Schema.ObjectId, ref: 'Accommodation'},

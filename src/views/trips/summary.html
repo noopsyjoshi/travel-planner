@@ -1,80 +1,39 @@
 
 <section class="hero is-medium is-primary is-bold">
-  <div class="container">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Confirm your trip details
-        </h1>
-        <h2 class="subtitle">
-        </h2>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">Confirm your trip details</h1>
+    </div>
+  </div>
+</section>
+<section>
+  <form ng-submit="createNewTrip()">
+    <div class="columns container is-multiline">
+      <div class="column has-background-info is-one-quarter">
+        <p><strong>City</strong></p>
+        <p><strong>Trip Duration</strong></p>
+        <p><strong>Budget</strong></p>
+        <p><strong>Accommodation Type</strong></p>
+        <p><strong>Accommodation</strong></p>
+        <p><strong>Interests</strong></p>
+        <p><strong>Activities</strong></p>
+      </div>
+      <div class="column has-background-light">
+        <p>{{ trip.city }}</p>
+        <p>{{ trip.duration }}</p>
+        <p>{{ trip.budget }}</p>
+        <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
+        <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.name }} {{ accommodation.rating }}</p>
+        <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
       </div>
     </div>
-  </section>
-  <form ng-submit="createNewTrip()">
-    <section>
-      <table class="table is-bordered">
-        <tr>
-          <td>City</td>
-          <td>{{ trip.city }}</td>
-        </tr>
-        <tr>
-          <td>Trip Duration</td>
-          <td>{{ trip.duration }} days</td>
-        </tr>
-        <tr>
-          <td>Budget</td>
-          <td>{{ trip.budget }}</td>
-        </tr>
-        <tr>
-          <td>City</td>
-          <td>{{ trip.city }}</td>
-        </tr>
-        <tr>
-          <td>Accommodation Type</td>
-          <td>
-            <p ng-repeat="accommodationType in trip.accommodationTypes">
-              {{ accommodationType }}
-            </p>
-          </td>
-          <tr>
-            <td>Accommodation</td>
-            <td>
-              <p ng-repeat="accommodation in trip.accommodations">
-                {{ accommodation.name }} {{ accommodation.rating }}
-              </p>
-            </td>
-            <td>Interests</td>
-            <td>
-              <p ng-repeat="interest in trip.interests">
-                {{ interest }}
-              </p>
-            </td>
-            <td>Activities</td>
-            <td>
-              <p ng-repeat="activity in trip.activities">
-                {{ activity.name }}
-              </p>
-            </td>
-
-            <!-- {{ trip.accommodationType }}</td> -->
-          </tr>
-          <tr>
-            <td>Accommodation</td>
-            <td>{{ trip.accommodations.name }}</td>
-            <td>{{ trip.accommodations.rating }}</td>
-            <td>{{ trip.accommodations.price }}</td>
-          </tr>
-          <tr>
-            <td>Interests</td>
-            <td>{{ trip.interests }}</td>
-          </tr>
-          <tr>
-            <td>Activities</td>
-            <td>{{ trip.activities.name }}</td>
-          </tr>
-        </table>
-      </div>
-    </section>
-    <button class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</button>
+    <div class="level-left">
+      <a class="button is-large is-info" ui-sref="tripsNew4">Previous</a>
+    </div>
+  </div>
+  <div class="level">
+    <div class="level-right">
+      <a class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</a>
+    </div>
   </form>
+</section>

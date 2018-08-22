@@ -4,21 +4,31 @@
 <div class="columns is-multiline">
 
   <div class="column is-one-quarter has-background-info">
-    <!-- Edit user profile -->
-    <!-- TODO: Add usersEdit controller -->
-    <!-- We need to pass params in state -->
-    <p>user.userId - > {{ user.userId }} </p>
-    <p>user.id - > {{ user.id }} </p>
-    <p>user._id - > {{ user._id }} </p>
-    <p>$scope.userId - > {{ $rootScope.userId }} </p>
-
     <a ui-sref="usersEdit({ id: user._id })" class="button" ng-if="isAuthenticated()">Edit account details</a>
   </div>
 
-  <div class="column is-one-half has-background-link">
-    <div class="">
-      <!-- TODO: Add recent trip here.. -->
-      Most recent trip: {{ trips[0] }}
-    </div>
-  </div>
+  <div class="container">
+      <section>
+        <div class="columns is-multiline is-one-half">
+          <div class="column has-background-light">
+            <p>City</p>
+            <p>Trip Duration</p>
+            <p>Budget</p>
+            <p>Accommodation Type</p>
+            <p>Accommodation</p>
+            <p>Interests</p>
+            <p>Activities</p>
+          </div>
+          <div class="column has-background-info">
+            <p>{{ trip.city }}</p>
+            <p>{{ trip.duration }}</p>
+            <p>{{ trip.budget }}</p>
+            <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
+            <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.name }} {{ accommodation.rating }}</p>
+            <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
+          </div>
+        </div>
+      </div>
+      <button class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</button>
+    </section>
 </div>

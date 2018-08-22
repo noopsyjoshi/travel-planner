@@ -455,7 +455,7 @@ const tripData = [
     country: 'United Kingdom',
     city: 'London',
     duration: 3,
-    accomodationTypes: ['Hotel', 'Hostel', 'Bed & Breakfast'],
+    accommodationTypes: ['Hotel', 'Hostel', 'Bed & Breakfast'],
     accommodations: [], // need accommodation id first
     budget: 500,
     categories: ['music', 'historical sites', 'food'], // is this needed?

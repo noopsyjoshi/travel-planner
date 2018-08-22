@@ -3,6 +3,7 @@ const Trip = require('../models/trip');
 function tripsIndex(req, res, next) {
   Trip
     .find()
+    .populate('accommodations.accommodation accommodations activities activities.activity')
     .then(trips => res.json(trips))
     .catch(next);
 }
@@ -11,8 +12,7 @@ function tripsIndex(req, res, next) {
 function tripsShow(req, res, next) {
   Trip
     .findById(req.params.id)
-    .populate('accommodations.accommodation')
-    .populate('activities.activity')
+    .populate('accommodations.accommodation accommodations activities.activity')
     .then(trip => res.json(trip))
     .catch(next);
 }
