@@ -1,6 +1,6 @@
 // THIS IS THE CONTROLLER RESPONSIBLE FOR CREATING A NEW TRIP
 
-function TripsNewCtrl($scope, $http, $rootScope) {
+function TripsNewCtrl($scope, $http, $rootScope, $state) {
   console.log('into the new trip controller...');
 
   //////////////////////////////////////////////////////////////////////////////
@@ -83,13 +83,34 @@ function TripsNewCtrl($scope, $http, $rootScope) {
 
   // Display the selected accommodation from a list
   $scope.setSelectedAccommodation = function(index) {
-    $scope.selectedAccommodation = index;
+    // selectedAccommodation is what the user has selected (one row in the display relates to one accommodation)
+    const selectedAccommodation = $scope.filteredAccommodations[index];
+    console.log('Selected an accommodation', selectedAccommodation);
+    // make sure the accommodation array has only one accommodation at a time
+    $rootScope.trip.accommodations = [selectedAccommodation];
+    console.log($rootScope.trip);
   };
 
+  $scope.selectedActivities = [];
+
   // Display the selected activity from a list
-  $scope.setSelectedActivity = function(index) {
-    console.log('into the setSelectedActivity function...');
-    $scope.selectedActivity = index;
+  $scope.addActivity = function(index) {
+    // selectedActivity is what the user has selected (one row in the display relates to one activity)
+    const selectedActivity = $scope.filteredActivites[index];
+    // Update the UI
+    $scope.selectedActivities.push(selectedActivity.name);
+    // Update the trip object
+    $rootScope.trip.activities.push(selectedActivity);
+  };
+
+  $scope.removeActivity = function(index) {
+    // selectedActivity is what the user has selected (one row in the display relates to one activity)
+    const selectedActivity = $scope.filteredActivites[index];
+    console.log('Removing activity', selectedActivity);
+    // Update the UI
+    $scope.selectedActivities = $scope.selectedActivities.filter(activity => activity !== selectedActivity.name);
+    // Update the trip object
+    $rootScope.trip.activities = $rootScope.trip.activities.filter(activity => activity.name !== selectedActivity.name);
   };
 
   //////////////////////////////////////////////////////////////////////////////
@@ -99,7 +120,7 @@ function TripsNewCtrl($scope, $http, $rootScope) {
   $scope.getBudget = function() {
     console.log('into the getBudget function');
     $rootScope.trip.budget = $scope.trip.budget;
-    console.log('rootScope', $rootScope.trip);
+    // console.log('rootScope', $rootScope.trip);
   };
 
   //////////////////////////////////////////////////////////////////////////////
@@ -112,7 +133,7 @@ function TripsNewCtrl($scope, $http, $rootScope) {
 
     let tripInterests = $rootScope.trip.interests;
     //tripInterests is the collection of the selected interests we have clicked on
-    console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
+    // console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
 
     const selectedInterest = $event.target.getAttribute('interestVal');
     console.log('this is selectedInterest ->', selectedInterest);
@@ -136,9 +157,10 @@ function TripsNewCtrl($scope, $http, $rootScope) {
       $scope.filteredActivites = $scope.filteredActivites.filter(activity =>  activity.categories.filter(category => tripInterests.includes(category)).length);
       $rootScope.filteredActivites = $scope.filteredActivites;
     }
-    console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
-    console.log('this is $rootScope.filteredActivites ->', $rootScope.filteredActivites);
+    // console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
+    // console.log('this is $rootScope.filteredActivites ->', $rootScope.filteredActivites);
     //$scope.filteredActivites is an array of the activities filtered by selected activity
+    console.log($rootScope.trip);
   };
 
 
@@ -149,25 +171,40 @@ function TripsNewCtrl($scope, $http, $rootScope) {
   })
   // The activities information is in the data section in console
     .then(res => {
-      console.log('Activities are', res.data);
-      // return all the data
-      $scope.activities = res.data;
-      $scope.filteredActivites = res.data;
-      // $scope.activities.categories = res.data.categories;
-      //TODO: In views change everything so that it refers to filteredActivites
-    });
+    console.log('Activities are', res.data);
+    // return all the data
+    $scope.activities = res.data;
+    $scope.filteredActivites = res.data;
+    // $scope.activities.categories = res.data.categories;
+    //TODO: In views change everything so that it refers to filteredActivites
+  });
 
   // make a request to the database to get all accommodations
   $http({
     method: 'GET',
     url: '/api/accommodations'
   })
-    .then(res => {
-      console.log('accommodations are', res.data);
-      // return all the data
-      $scope.accommodations = res.data;
-      $scope.filteredAccommodations = res.data;
-    });
+  .then(res => {
+    console.log('accommodations are', res.data);
+    // return all the data
+    $scope.accommodations = res.data;
+    $scope.filteredAccommodations = res.data;
+  });
+
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////// SUBMIT TRIP //////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  $scope.handleSubmit = function() {
+    $http({
+      method: 'POST',
+      url: '/api/trips',
+      data: $rootScope.trip
+    })
+      .then(res => {
+        $state.go('tripsShow', { id: res.data._id });
+      });
+  };
 }
 
 export default TripsNewCtrl;

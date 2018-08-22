@@ -6,27 +6,19 @@
         Confirm your trip details
       </h1>
       <h2 class="subtitle">
-
       </h2>
     </div>
   </div>
 </section>
-
 <form ng-submit="createNewTrip()">
   <section>
     <!-- this will iterate through all keys in the object 'trip' -->
-    <div class="columns is-multiline">
-      <div ng-repeat="(key, value) in trip">
-        <div class="column is-one-half has-background-primary">
-          {{key}}
-      </div>
-      <div ng-repeat="(key, value) in trip">
-        <div class="column is-one-half has-background-info">
-          {{value}}
-      </div>
+    <div ng-repeat="(key, value) in trip">
+      {{key}}
+      {{value}}
     </div>
-  </div>
   </section>
 
-  <button class="button is-large is-info" type="submit" name="confirm">Confirm</button>
+  {{ trip }}
+  <button class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</button>
 </form>

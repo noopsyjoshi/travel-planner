@@ -11,22 +11,26 @@
   <!-- Display Activities -->
   <section>
     <h3 class="title is-3">Choose your activities</h3>
-    <p></p>
     <p class="">There are {{ filteredActivites.length }} you can choose from</p>
-    <div ng-repeat="activity in filteredActivites" ng-class="{'has-background-link': $index === 'selectedActivity'}" ng-click="setSelectedActivity($index)">
-      <div class="columns box is-multiline">
-        <div class="column is-one-third">
-          <img src="{{ activity.imageUrl }}" alt="{{ activity.name }}">
-        </div>
-        <div class="column is-one-third">
-          <div class="">{{ activity.name }}</div>
-        </div>
-        <div class="column is-one-third">
-          <p>{{ activity.rating }}</p>
-        </div>
-      </div>
-    </div>
+    <table class="table table-bordered">
+      <tr>
+        <th>Number</th>
+        <!-- <th>Image</th> -->
+        <th>Name</th>
+        <th>Rating</th>
+      </tr>
+      Selected activities is {{ selectedActivities }}
+      <tr ng-repeat="activity in filteredActivites" ng-class="{'has-background-link': $index === selectedActivityIndex}">
+        <td>{{ $index }}</td>
+        <!-- <td><img src="{{ activity.imageUrl }}" alt="{{ activity.name }}"></td> -->
+        <td>{{ activity.name }}</td>
+        <td>{{ activity.rating }}</td>
+        <td ng-if="!selectedActivities.includes(activity.name)"><a class="button is-primary" ng-click="addActivity($index)">Select</a></td>
+        <td ng-if="selectedActivities.includes(activity.name)"><a class="button is-info" ng-click="removeActivity($index)">Remove</a></td>
+      </tr>
+    </table>
   </section>
+
   <p>selectedActivity = {{ selectedActivity }}</p>
   <hr>
   <p>activity = {{filteredActivites[selectedActivity].name}}</p>

@@ -29,18 +29,16 @@
           <th>Price</th>
         </tr>
         <!-- When the selectedAccommodation row is equal to the index, then add the class of is-link -->
-        <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'has-background-link': $index === 'selectedAccommodation'}" ng-click="setSelectedAccommodation($index)">
+        <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'has-background-link': $index === 'selectedAccommodationIndex'}" ng-click="setSelectedAccommodation($index)">
           <td>{{ $index }}</td>
           <td><img src="{{ accommodation.imageUrl }}" alt="{{ accomodation.name }}"></td>
           <td>{{ accommodation.name }}</td>
           <td>{{ accommodation.rating }}</td>
           <td>{{ accommodation.location }}</td>
           <td>{{ accommodation.price }}</td>
+          <td><a class="button is-primary">Select</a></td>
         </tr>
       </table>
-      <p>selectedAccommodation = {{ selectedAccommodation }}</p>
-      <hr>
-      <p>accomodation = {{filteredAccommodations[selectedAccommodation].name}}</p>
     </div>
   </section>
   <hr>
