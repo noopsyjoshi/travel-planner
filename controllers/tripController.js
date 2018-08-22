@@ -11,6 +11,8 @@ function tripsIndex(req, res, next) {
 function tripsShow(req, res, next) {
   Trip
     .findById(req.params.id)
+    .populate('accommodations.accommodation')
+    .populate('activities.activity')
     .then(trip => res.json(trip))
     .catch(next);
 }
