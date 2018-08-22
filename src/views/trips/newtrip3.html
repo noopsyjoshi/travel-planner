@@ -11,7 +11,7 @@
   <!-- Display Activities -->
   <section>
     <h3 class="title is-3">Choose your activities</h3>
-    <p></p>
+    <div class="map" ng-map map-name="activities"></div>
     <p class="">There are {{ filteredActivites.length }} you can choose from</p>
     <div ng-repeat="activity in filteredActivites" ng-class="{'has-background-link': $index === 'selectedActivity'}" ng-click="setSelectedActivity($index)">
       <div class="columns box is-multiline">

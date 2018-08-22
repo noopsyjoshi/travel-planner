@@ -4,10 +4,12 @@ function Map() {
   return { // Return the object from the database
 
     restrict: 'A', // Chooses directive type // A - sets functionality to DOM element
-    link($scope, $element) { // $scope - is where the dom element exists. $element - is the DOM element itself
-
+    link($scope, $element, attr) { // $scope - is where the dom element exists. $element - is the DOM element itself
+      // attr is, e.g. map-name="cities"
+      console.log('In the map, attr is', attr);
       const domElement = $element[0]; // Creates a DOM element
-      $scope.map = L.map(domElement);
+      const map = L.map(domElement);
+      $scope.maps[attr.mapName] = map;
 
       // MAP SETTINGS
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -15,9 +17,9 @@ function Map() {
         maxZoom: 18, // sets zoom level
         id: 'mapbox.satellite', // sets map view type
         accessToken: 'your.mapbox.access.token'
-      }).addTo($scope.map); // map is ready for use
+      }).addTo(map); // map is ready for use
 
-      // // MARKER PARAMETERS
+      // MARKER PARAMETERS
       $scope.greenIcon = L.icon({
         iconSize: [100, 100], // size of the icon
         iconAnchor: [22, 94], // point of the icon which will correspond to marker's location

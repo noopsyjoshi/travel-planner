@@ -16,7 +16,7 @@
         class="button interestButton is-large" accommodationTypeVal="{{ accommodationType }}" ng-click="toggleAccommodation($event)">{{ accommodationType }}
       </a>
     </div>
-    <div class="map" ng-map></div>
+    <div class="map" ng-map map-name="accommodations"></div>
     <div class="column is-one-half">
       <h3 class="title is-3">Choose your accommodation</h3>
       <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
@@ -58,7 +58,7 @@
       <a class="button is-large is-info" ui-sref="tripsNew1">PREVIOUS</a>
     </div>
     <div class="level-right">
-      <a class="button is-large is-info" ui-sref="tripsNew3">NEXT</a>
+      <a class="button is-large is-info" ng-click="drawActivitiesMap()" ui-sref="tripsNew3">NEXT</a>
     </div>
   </div>
 </div>
