@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 
-// Required models
+// REQUIRED MODELS
 const User = require('../models/user');
 const Activity = require('../models/activity');
 const Trip = require('../models/trip');
 const Accommodation = require('../models/accommodation');
 
-// Set-up mongoose
+// SET-UP MONGOOSE
 mongoose.connect(dbURI);
 
 // Remove pre-existing collections from MongoDB
@@ -17,7 +17,7 @@ Activity.collection.drop();
 Trip.collection.drop();
 Accommodation.collection.drop();
 
-// Database
+// DATABASE
 const userData = [
   {
     firstName: 'Kane',
@@ -411,7 +411,7 @@ const accommodationData = [
     'isClosed': false,
     'yelpUrl': 'https://www.yelp.com/biz/the-nadler-soho-london?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 14,
-    'categories': ['Hostel'],
+    'categories': ['Hotel'],
     'rating': 5.0,
     'coordinates': {
       'latitude': 51.5147387,
@@ -425,7 +425,7 @@ const accommodationData = [
     'is_closed': false,
     'url': 'https://www.yelp.com/biz/hotel-indigo-london-4?adjust_creative=wcqZ-io-_tQ0apkNmeclTw&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=wcqZ-io-_tQ0apkNmeclTw',
     'review_count': 25,
-    'categories': ['Hostel'],
+    'categories': ['Hotel'],
     'rating': 4.5,
     'coordinates': {
       'latitude': 51.4919293664835,
@@ -449,7 +449,7 @@ const accommodationData = [
   }
 ];
 
-// Collecting user data
+// LOGIC TO COLLECT USER DATA
 const tripData = [
   {
     country: 'United Kingdom',
@@ -460,6 +460,16 @@ const tripData = [
     budget: 500,
     categories: ['music', 'historical sites', 'food'], // is this needed?
     activities: [] // need activity id first
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    duration: 7,
+    accommodationTypes: ['Hotel', 'Hostel'],
+    accommodations: [], // need accommodation id first
+    budget: 9000,
+    categories: ['music', 'historical sites', 'museums'],
+    activities: [] // need activity id first
   }
 ];
 
@@ -467,34 +477,32 @@ Accommodation.create(accommodationData)
   .then(accommodations => {
     console.log(`Created ${accommodations.length} accommodations...`);
     tripData[0].accommodations.push({
-      date: new Date(2018,9,20),
+      dayNumber: 1,
       accommodation: accommodations[0]._id });
     tripData[0].accommodations.push({
-      date: new Date(2018,9,21),
+      dayNumber: 2,
       accommodation: accommodations[1]._id });
     tripData[0].accommodations.push({
-      date: new Date(2018,9,22),
+      dayNumber: 3,
       accommodation: accommodations[2]._id });
     return Activity.create(activityData);
   })
   .then(activities => {
     console.log(`Created ${activities.length} activities...`);
     tripData[0].activities.push({
-      date: new Date(2018,9,20),
+      dayNumber: 1,
       activity: activities[0]._id });
     tripData[0].activities.push({
-      date: new Date(2018,9,21),
+      dayNumber: 2,
       activity: activities[1]._id });
     tripData[0].activities.push({
-      date: new Date(2018,9,22),
+      dayNumber: 3,
       activity: activities[2]._id });
     return Trip.create(tripData);
   })
   .then(trips => {
     console.log(`Created ${trips.length} trips`);
-    userData[0].trips = [
-      trips[0]._id
-    ];
+    userData[0].trips = [trips[0]._id, trips[1]._id];
     return User.create(userData);
   })
   .then(users => {

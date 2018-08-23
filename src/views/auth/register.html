@@ -1,9 +1,9 @@
 
 <section class="hero is-fullheight is-light is-bold has-text-centered">
-  <div class="hero-body">
-    <div class="container">
+  <div class="hero-body loginRegisterPage">
+    <div class="container loginRegisterForm">
       <h1 class="title is-1">Welcome to Traverse</h1>
-      <h2 class="title is-2">Please sign up below</h2>
+      <h3 class="title is-3">Please sign up below</h3>
       <form ng-submit="register()">
         <!-- First name -->
         <div class="field">
@@ -29,7 +29,7 @@
         <div class="field">
           <input ng-model="user.passwordConfirmation" required class="input" type="password" name="passwordConfirmation" placeholder="Confirm password">
         </div>
-        <button class="button is-large is-link">Sign Up</button>
+        <button class="button is-fullwidth is-medium is-link">Sign Up</button>
       </form>
       <p>Already have an account? <a ui-sref="login">Log in</a></p>
     </div>

@@ -1,34 +1,37 @@
 <!-- page that shows the user's dashboard -->
-<h2 class="title is-2">Dashboard</h2>
-
 <div class="columns is-multiline">
-
-  <div class="column is-one-quarter has-background-info">
-    <a ui-sref="usersEdit({ id: user._id })" class="button" ng-if="isAuthenticated()">Edit account details</a>
+  <div class="column has-background-info is-one-quarter has-text-centered">
+    <img src="{{ user.imageUrl }}" alt=" {{ user.FirstName }}">
+    <h3 class="title is-3">{{ user.firstName }} {{ user.lastName }}</h3>
+    <a ui-sref="usersEdit({ id: user._id })" class="button is-medium is-info" ng-if="isAuthenticated()">Edit account details</a>
   </div>
-
-  <div class="container">
-      <section>
-        <div class="columns is-multiline is-one-half">
-          <div class="column has-background-light">
-            <p>City</p>
-            <p>Trip Duration</p>
-            <p>Budget</p>
-            <p>Accommodation Type</p>
-            <p>Accommodation</p>
-            <p>Interests</p>
-            <p>Activities</p>
-          </div>
-          <div class="column has-background-info">
+  <div class="column has-background-primary">
+    <h2 class="title is-2">Dashboard</h2>
+    <section>
+      <div class="box" ng-repeat="trip in user.trips">
+        <div class="columns">
+          <div class="column">
             <p>{{ trip.city }}</p>
+          </div>
+          <div class="column">
             <p>{{ trip.duration }}</p>
+          </div>
+          <div class="column">
             <p>{{ trip.budget }}</p>
-            <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
-            <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.name }} {{ accommodation.rating }}</p>
-            <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
+          </div>
+          <div class="column">
+            <p>{{ trip.accommodation.accommodation.name }}</p>
+          </div>
+          <div class="column">
+            <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
           </div>
         </div>
+        <div class="columns">
+          <div class="column">
+          </div>
+        </div>
+        <!-- <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
+        <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</p> -->
       </div>
-      <button class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</button>
     </section>
-</div>
+  </div>

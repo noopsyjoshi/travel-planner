@@ -1,8 +1,7 @@
 <!-- this is the form to update user account details -->
-<p>Edit your account details</p>
-
-<!-- update() will invoke the function when form is submitted -->
-<form ng-submit="update()">
+<h1 class="title is-1">Edit your account details</h1>
+<!-- updateUser() will invoke the function when form is submitted -->
+<form ng-submit="updateUser()">
   <!-- First name -->
   <div class="field">
     <input ng-model="user.firstName" class="input" type="text" name="firstName" placeholder="First name"> <!-- ng-model will retain the user's information -->

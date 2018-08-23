@@ -19,6 +19,9 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
+  if (!this.isModified('password')) {
+    return next();
+  }
   if (!this._passwordConfirmation || this._passwordConfirmation !== this.password)
     this.invalidate('passwordConfirmation', 'does not match');
   next();

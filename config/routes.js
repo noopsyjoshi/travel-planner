@@ -15,7 +15,7 @@ const accommodationController = require('../controllers/accommodationController'
 
 // Routes go here
 router.route('/trips')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(tripController.index)
   .post(tripController.create);
 
@@ -26,32 +26,32 @@ router.route('/trips/:id')
   .delete(tripController.delete);
 
 router.route('/users')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(userController.index);
 
 router.route('/users/:id')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(userController.show)
   .put(userController.update)
   .delete(userController.delete);
 
 router.route('/accommodations')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(accommodationController.index)
   .post(accommodationController.create);
 
 router.route('/accommodations/:id')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(accommodationController.show)
   .delete(accommodationController.delete);
 
 router.route('/activities')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(activityController.index)
   .post(activityController.create);
 
 router.route('/activities/:id')
-  // .all(secureRoute)
+  .all(secureRoute)
   .get(activityController.show)
   .delete(activityController.delete);
 

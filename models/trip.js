@@ -8,7 +8,7 @@ const tripSchema = new mongoose.Schema({
   accommodations: [
     {
       accommodation: { type: mongoose.Schema.ObjectId, ref: 'Accommodation'},
-      date: { type: Date }
+      dayNumber: { type: Number }
     }
   ],
   budget: {type: Number, required: false  },
@@ -16,7 +16,7 @@ const tripSchema = new mongoose.Schema({
   activities: [
     {
       activity: { type: mongoose.Schema.ObjectId, ref: 'Activity' },
-      date: { type: Date }
+      dayNumber: { type: Number }
     }
   ]
 });

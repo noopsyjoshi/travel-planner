@@ -1,6 +1,49 @@
-#mapId { height: 500px; }
+#navbar {
+  border-bottom: 2px solid pink;
+}
+
+#mapId {
+  height: 700px;
+}
+
+#selectedInterests {
+  // padding: 90px 0px 0px 0px;
+  height: 900px;
+}
 
 .map {
+  position: relative;
   height: 500px;
-  width:: 100vw;
+  width:: 40vw;
+}
+
+.loginRegisterPage {
+  background-image: url('https://images.pexels.com/photos/297755/pexels-photo-297755.jpeg?cs=srgb&dl=adult-book-business-297755.jpg&fm=jpg');
+  background-size: cover;
+}
+
+.loginRegisterForm {
+  background-color: #fff;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.mapHome {
+  width: 100%;
+  height: 70vh;
+}
+
+.interests {
+  // background-image: url('https://images.pexels.com/photos/1047442/pexels-photo-1047442.jpeg?cs=srgb&dl=audience-band-bright-1047442.jpg&fm=jpg');
+  // background-image: url('https://www.pexels.com/photo/light-landmark-building-architecture-135018');
+  background-image: url('https://images.pexels.com/photos/896762/pexels-photo-896762.jpeg?cs=srgb&dl=ancient-arches-architecture-896762.jpg&fm=jpg');
+  padding: 10px;
+  height: 200px;
+  width: 300px;
+  background-size: contain;
+  color: white;
+  font-weight: bold;
 }

@@ -8,32 +8,42 @@
 </section>
 <section>
   <form ng-submit="createNewTrip()">
-    <div class="columns container is-multiline">
-      <div class="column has-background-info is-one-quarter">
-        <p><strong>City</strong></p>
-        <p><strong>Trip Duration</strong></p>
-        <p><strong>Budget</strong></p>
-        <p><strong>Accommodation Type</strong></p>
-        <p><strong>Accommodation</strong></p>
-        <p><strong>Interests</strong></p>
-        <p><strong>Activities</strong></p>
-      </div>
-      <div class="column has-background-light">
-        <p>{{ trip.city }}</p>
-        <p>{{ trip.duration }}</p>
-        <p>{{ trip.budget }}</p>
-        <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
-        <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.name }} {{ accommodation.rating }}</p>
-        <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
-      </div>
+    <div class="box">
+      <p><strong>City</strong></p>
+      <p>{{ trip.city }}</p>
     </div>
-    <div class="level-left">
-      <a class="button is-large is-info" ui-sref="tripsNew4">Previous</a>
+    <div class="box">
+      <p><strong>Budget</strong></p>
+      <p>{{ trip.budget }}</p>
     </div>
-  </div>
+    <div class="box">
+      <p><strong>Duration</strong></p>
+      <p>{{ trip.duration }}</p>
+    </div>
+    <div class="box">
+      <p><strong>Accommodation Type</strong></p>
+      <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
+    </div>
+    <div class="box">
+      <p><strong>Accommodation Name</strong></p>
+      <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</p>
+    </div>
+    <div class="box">
+      <p><strong>Interests</strong></p>
+      <p ng-repeat="interest in trip.categories">{{ interest.name }}</p>
+    </div>
+    <div class="box">
+      <p><strong>Activities</strong></p>
+      <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
+    </div>
+  </form>
+  <hr>
   <div class="level">
+    <div class="level-left">
+      <a class="button is-large is-info" ui-sref="tripsNew3">Previous</a>
+    </div>
     <div class="level-right">
       <a class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</a>
     </div>
-  </form>
+  </div>
 </section>
