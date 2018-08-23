@@ -44,7 +44,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   function getNumber(selectedDuration) {
     console.log('selectedDuration is', selectedDuration);
     const days = [];
-    for(var i=0; i<selectedDuration; i++) {
+    for(var i=0; i< selectedDuration; i++) {
       console.log(i);
       days.push(i);
     }
@@ -154,6 +154,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     $rootScope.trip.budget = $scope.trip.budget;
   };
 
+
   //////////////////////////////////////////////////////////////////////////////
   /////////////////////////// INTEREST AND ACTIVITIES //////////////////////////
   //////////////////////////////////////////////////////////////////////////////
@@ -213,66 +214,50 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   function assignDays() {
     $scope.trip.accommodations.forEach((accommodation, i) => {
       accommodation.dayNumber = i + 1;
+      console.log('accommodation.dayNumber is',accommodation.dayNumber);
     });
     $scope.trip.activities.forEach((activity) => {
       activity.dayNumber = Math.round(Math.random() * ($scope.trip.duration - 1)) + 1;
+      console.log('activity.dayNumber', activity.DayNumber);
     });
   }
-
-  //////////////////////////////////////////////////////////////////////////////
-  /////////////////////////// SUBMIT TRIP //////////////////////////
-  //////////////////////////////////////////////////////////////////////////////
-
-  $scope.handleSubmit = function() {
-    assignDays();
-    $http({
-      method: 'POST',
-      url: '/api/trips',
-      data: $rootScope.trip
-    })
-      .then(res => {
-        $state.go('tripsShow', { id: res.data._id });
-      });
-  };
-
-
 
   //////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////// MAPS /////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
   // CITY MAP
-  $scope.$watch('maps.city', function() { // watching for maps and accommodation data to load first before adding a map
-    if($scope.maps.city) {
-      drawCityMap();
-    }
-  });
-  function drawCityMap() {
-    $http({
-      method: 'GET',
-      url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
-    })
-      .then(res => {
-        const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
-        $scope.trip = location;
-        console.log('WHAT IS THAT?', location); // WORKS
-        const bb = location.boundingbox; // getting this from insomnia
-        console.log('WHAT IS bb?', bb); // WORKS
-        map.fitBounds([ // extracts element from the array
-          [ bb[0], bb[2] ], // top left
-          [ bb[1], bb[3] ] // bottom right
-        ]);
-        // console.log('WHAT IS map.fitBounds?', map.fitBounds); // WORKS
-        // const map = $scope.maps.city;
-        // map.setView([25, 0], 2);
-      });
-    const map = $scope.maps.city;
-    const location = map;
-    console.log('what is map', map);
-    map.setView([location.lat, location.lon], 2); // CONTINUE FROM HERE
-    const marker = L.marker([location.lat, location.lon]).addTo(map);
-    marker.bindPopup(`<p>${location.display_name}</p>`);
-  }
+  // $scope.$watch('maps.city', function() { // watching for maps and accommodation data to load first before adding a map
+  //   if($scope.maps.city) {
+  //     drawCityMap();
+  //   }
+  // });
+  // function drawCityMap() {
+  //   $http({
+  //     method: 'GET',
+  //     url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
+  //   })
+  //     .then(res => {
+  //       const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
+  //       $scope.trip = location;
+  //       console.log('WHAT IS THAT?', location); // WORKS
+  //       const bb = location.boundingbox; // getting this from insomnia
+  //       console.log('WHAT IS bb?', bb); // WORKS
+  //       map.fitBounds([ // extracts element from the array
+  //         [ bb[0], bb[2] ], // top left
+  //         [ bb[1], bb[3] ] // bottom right
+  //       ]);
+  //       // console.log('WHAT IS map.fitBounds?', map.fitBounds); // WORKS
+  //       // const map = $scope.maps.city;
+  //       // map.setView([25, 0], 2);
+  //     });
+  //   const map = $scope.maps.city;
+  //   const location = map;
+  //   console.log('what is map', map);
+  //   map.setView([location.lat, location.lon], 2); // CONTINUE FROM HERE
+  //   const marker = L.marker([location.lat, location.lon]).addTo(map);
+  //   marker.bindPopup(`<p>${location.display_name}</p>`);
+  // }
 
 
   // ACCOMMODATION MAP
@@ -293,7 +278,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       console.log('what is this', marker);
     });
   }
-
 
   // ACTIVITY MAP
   $scope.$watchGroup(['maps.activities','activities'], function() {
@@ -343,7 +327,29 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   //       marker.bindPopup(`<p>${accommodation.name}</p>`);
   //     });
   // };
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////// SUBMIT TRIP //////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
+  // function assignUserTrip() {
+  //   console.log('rootScope.user', $rootScope.user);
+  // }
+
+  $scope.handleSubmit = function() {
+    assignDays();
+    // assignUserTrip();
+    $http({
+      method: 'POST',
+      url: '/api/trips',
+      data: $rootScope.trip
+    })
+      .then(res => {
+        // $rootScope.users.trips.push(res);
+        // $rootScope.user.trips.push($rootScope.trip);
+        // console.log('$rootScope.users.trips', $rootScope.users.trips);
+        $state.go('tripsShow', { id: res.data._id });
+      });
+  };
 }
 
 export default TripsNewCtrl;
