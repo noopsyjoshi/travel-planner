@@ -251,12 +251,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       drawCityMap();
     }
   });
-  // function drawCityMap() {
-  //   console.log('what is scope at the start', $scope);
-  //   const map = $scope.maps.city; // data based on which page you are at
-  //   console.log('what is scope at the end', $scope.maps.city);
-  //   map.setView([32, 20], 3);
-  // }
 
   $scope.$watch('maps.city', function() {
     if($scope.maps.city) {
@@ -281,9 +275,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
         const marker = L.marker([location.lat, location.lon]).addTo(map); /* global L */
         marker.bindPopup(`<p>${location.display_name}</p>`);
       });
-    // const map = $scope.maps.city;
-    // const location = map;
-    // map.setView([$scope.accommodation.coordinates.latitude, $scope.accommodation.coordinates.longitude], 2); // CONTINUE FROM HERE
   }
 
   // ACCOMMODATION MAP
@@ -324,37 +315,8 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     });
   }
 
-
-// REDUNDANT CODE & OTHER ATTEMPTS
-  // $scope.drawAccommodationMap = function($http, $scope) {
-  //   $http({ // make a request to the database to get all accommodations
-  //     method: 'GET',
-  //     url: '/api/accommodations'
-  //
-  //   })
-  //     .then(res => {
-  //       $scope.accommodations = res.data;  // res.data returns all the data in accommodations
-  //       $scope.filteredAccommodations = res.data;
-  //     });
-  //
-  //   $watchGroup(['map', 'accommodations'], function() { // watching for maps and accommodation data to load first before adding a map
-  //     if(map && accommodations) {
-  //       drawAccommodationMap();
-  //     }
-  //   });
-  //
-  //   function drawAccommodationMap() {
-  //     const accommodations = $scope.accommodations;
-  //     accommodations.forEach(accommodation => {
-  //       const lat = accommodation.coordinates.latitude; // getting data from seeds and storing in a new variable
-  //       const lng = accommodation.coordinates.longitude;
-  //       $scope.map.setView([lat, lng], 12);
-  //       const marker = L.marker([lat, lng]).addTo($scope.map);
-  //       marker.bindPopup(`<p>${accommodation.name}</p>`);
-  //     });
-  // };
   //////////////////////////////////////////////////////////////////////////////
-  /////////////////////////// SUBMIT TRIP //////////////////////////
+  ///////////////////////////// SUBMIT TRIP ////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
   // function assignUserTrip() {
