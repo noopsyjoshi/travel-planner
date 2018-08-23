@@ -246,52 +246,45 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   //////////////////////////////////////////////////////////////////////////////
 
   // CITY MAP
-  $scope.$watch('maps.city', function() { // watching for maps and accommodation data to load first before adding a map
-    if($scope.maps.city) {
+  $scope.$watch('trip.city', function() { // watching for maps and accommodation data to load first before adding a map
+    if($scope.maps.city && $scope.trip.city && $scope.trip.city.length > 3) {
       drawCityMap();
     }
   });
-  function drawCityMap() {
-    console.log('what is scope at the start', $scope);
-    const map = $scope.maps.city; // data based on which page you are at
-    console.log('what is scope at the end', $scope.maps.city);
-    map.setView([32, 20], 3);
-  }
-
   // function drawCityMap() {
+  //   console.log('what is scope at the start', $scope);
   //   const map = $scope.maps.city; // data based on which page you are at
-  //   console.log('what is scope', $scope.maps.city);
+  //   console.log('what is scope at the end', $scope.maps.city);
   //   map.setView([32, 20], 3);
   // }
-  // function drawCityMap() {
-  //   const map = $scope.maps.city;
-  //   map.setView([32, 20], 3);
-  // }
-  //
-  // function drawCityMap($scope) {
-  //   console.log('$scope.trip.city is', $scope.trip.city);
-  //   $http({
-  //     method: 'GET',
-  //     url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
-  //   })
-  //     .then(res => {
-  //       const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
-  //       $scope.trip = location;
-  //       console.log('WHAT IS THAT?', location); // WORKS
-  //       const bb = location.boundingbox; // getting this from insomnia
-  //       console.log('WHAT IS bb?', bb); // WORKS
-  //       map.fitBounds([ // extracts element from the array
-  //         [ bb[0], bb[2] ], // top left
-  //         [ bb[1], bb[3] ] // bottom right
-  //       ]);
-  //     });
-  //   const map = $scope.maps.city;
-  //   const location = map;
-  //   console.log('what is map', map);
-  //   map.setView([$scope.accommodation.coordinates.latitude, $scope.accommodation.coordinates.longitude], 2); // CONTINUE FROM HERE
-  //   const marker = L.marker([location.lat, location.lon]).addTo(map);
-  //   marker.bindPopup(`<p>${location.display_name}</p>`);
-  // }
+
+  $scope.$watch('maps.city', function() {
+    if($scope.maps.city) {
+      $scope.maps.city.setView([32, 20], 3);
+    }
+  });
+
+  function drawCityMap() {
+    $http({
+      method: 'GET',
+      url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
+    })
+      .then(res => {
+        const map = $scope.maps.city;
+        const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
+        // $scope.trip = location;
+        const bb = location.boundingbox; // getting this from insomnia
+        map.fitBounds([ // extracts element from the array
+          [ bb[0], bb[2] ], // top left
+          [ bb[1], bb[3] ] // bottom right
+        ]);
+        const marker = L.marker([location.lat, location.lon]).addTo(map); /* global L */
+        marker.bindPopup(`<p>${location.display_name}</p>`);
+      });
+    // const map = $scope.maps.city;
+    // const location = map;
+    // map.setView([$scope.accommodation.coordinates.latitude, $scope.accommodation.coordinates.longitude], 2); // CONTINUE FROM HERE
+  }
 
   // ACCOMMODATION MAP
   $scope.$watchGroup(['maps.accommodations','accommodations' ], function() {
