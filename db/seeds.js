@@ -460,6 +460,16 @@ const tripData = [
     budget: 500,
     categories: ['music', 'historical sites', 'food'], // is this needed?
     activities: [] // need activity id first
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    duration: 7,
+    accommodationTypes: ['Hotel', 'Hostel'],
+    accommodations: [], // need accommodation id first
+    budget: 9000,
+    categories: ['music', 'historical sites', 'museums'],
+    activities: [] // need activity id first
   }
 ];
 
@@ -492,9 +502,7 @@ Accommodation.create(accommodationData)
   })
   .then(trips => {
     console.log(`Created ${trips.length} trips`);
-    userData[0].trips = [
-      trips[0]._id
-    ];
+    userData[0].trips = [trips[0]._id, trips[1]._id];
     return User.create(userData);
   })
   .then(users => {
