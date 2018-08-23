@@ -44,7 +44,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   function getNumber(selectedDuration) {
     console.log('selectedDuration is', selectedDuration);
     const days = [];
-    for(var i=0; i<selectedDuration; i++) {
+    for(var i=0; i< selectedDuration; i++) {
       console.log(i);
       days.push(i);
     }
@@ -154,6 +154,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     $rootScope.trip.budget = $scope.trip.budget;
   };
 
+
   //////////////////////////////////////////////////////////////////////////////
   /////////////////////////// INTEREST AND ACTIVITIES //////////////////////////
   //////////////////////////////////////////////////////////////////////////////
@@ -213,9 +214,11 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   function assignDays() {
     $scope.trip.accommodations.forEach((accommodation, i) => {
       accommodation.dayNumber = i + 1;
+      console.log('accommodation.dayNumber is',accommodation.dayNumber);
     });
     $scope.trip.activities.forEach((activity) => {
       activity.dayNumber = Math.round(Math.random() * ($scope.trip.duration - 1)) + 1;
+      console.log('activity.dayNumber', activity.DayNumber);
     });
   }
 
@@ -309,7 +312,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     });
   }
 
-
   // ACTIVITY MAP
   $scope.$watchGroup(['maps.activities','activities'], function() {
     if($scope.maps.activities && $scope.activities) {
@@ -358,7 +360,29 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   //       marker.bindPopup(`<p>${accommodation.name}</p>`);
   //     });
   // };
+  //////////////////////////////////////////////////////////////////////////////
+  /////////////////////////// SUBMIT TRIP //////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
+  // function assignUserTrip() {
+  //   console.log('rootScope.user', $rootScope.user);
+  // }
+
+  $scope.handleSubmit = function() {
+    assignDays();
+    // assignUserTrip();
+    $http({
+      method: 'POST',
+      url: '/api/trips',
+      data: $rootScope.trip
+    })
+      .then(res => {
+        // $rootScope.users.trips.push(res);
+        // $rootScope.user.trips.push($rootScope.trip);
+        // console.log('$rootScope.users.trips', $rootScope.users.trips);
+        $state.go('tripsShow', { id: res.data._id });
+      });
+  };
 }
 
 export default TripsNewCtrl;
