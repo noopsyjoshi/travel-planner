@@ -1,15 +1,18 @@
+<div id="cityMap" class="map mapHome" ng-map map-name="city"></div>
+<!-- MAP -->
 
-<section class="hero is-light is-fullheight">
-  <!-- MAP -->
-  <section >
+<section class="is-light is-fullheight is-clipped">
+
+  <!-- SEARCH -->
+  <div class="column">
     <form ng-submit="getLocation()">
       <input ng-model="trip.city" class="input is-large has-text-centered" type="text" name="city" placeholder="e.g. London">
-      <a class="button is-info is-large" ng-click="drawAccommodationMap()" ui-sref="tripsNew2">GO</a>
     </form>
-  </section>
-  <!-- SEARCH -->
-<section class="is-light is-fullheight">
-      <div class="is-multiline is-mobile">
-          <div id="cityMap" class="map mapHome" ng-map map-name="city"></div>
-      </div>
+  </div>
+
+  <!-- BUTTON -->
+  <div class="column has-text-centered">
+    <a class="button" ng-click="drawAccommodationMap()" ui-sref="tripsNew2">GO</a>
+  </div>
+
 </section>
