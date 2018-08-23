@@ -1,10 +1,14 @@
 <div class="container">
+  
+  <div class="map" ng-map map-name="accommodations"></div>
+
   <!-- Duration -->
   <section>
     <h3 class="title is-3">Trip Duration</h3>
     <a ng-repeat="duration in durations" class="button durationButton is-large is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</a>
   </section>
   <hr>
+
   <!-- Accomodation Type -->
   <section>
     <h3 class="title is-3">Accommodation Type</h3>
@@ -21,7 +25,6 @@
           <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
         </form>
     </div>
-    <div class="map" ng-map map-name="accommodations"></div>
       <h3 class="title is-3">Choose your accommodation</h3>
       <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
       <table class="table table-bordered">

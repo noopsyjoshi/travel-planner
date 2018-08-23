@@ -238,32 +238,37 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     }
   });
   function drawCityMap() {
-    $http({
-      method: 'GET',
-      url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
-    })
-      .then(res => {
-        const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
-        $scope.trip = location;
-        console.log('WHAT IS THAT?', location); // WORKS
-        const bb = location.boundingbox; // getting this from insomnia
-        console.log('WHAT IS bb?', bb); // WORKS
-        map.fitBounds([ // extracts element from the array
-          [ bb[0], bb[2] ], // top left
-          [ bb[1], bb[3] ] // bottom right
-        ]);
-        // console.log('WHAT IS map.fitBounds?', map.fitBounds); // WORKS
-        // const map = $scope.maps.city;
-        // map.setView([25, 0], 2);
-      });
     const map = $scope.maps.city;
-    const location = map;
-    console.log('what is map', map);
-    map.setView([location.lat, location.lon], 2); // CONTINUE FROM HERE
-    const marker = L.marker([location.lat, location.lon]).addTo(map);
-    marker.bindPopup(`<p>${location.display_name}</p>`);
+    map.setView([32, 20], 3);
   }
+  // function drawCityMap() {
+  //   const map = $scope.maps.city;
+  //   map.setView([32, 20], 3);
+  // }
 
+  // function drawCityMap() {
+  //   $http({
+  //     method: 'GET',
+  //     url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
+  //   })
+  //     .then(res => {
+  //       const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
+  //       $scope.trip = location;
+  //       console.log('WHAT IS THAT?', location); // WORKS
+  //       const bb = location.boundingbox; // getting this from insomnia
+  //       console.log('WHAT IS bb?', bb); // WORKS
+  //       map.fitBounds([ // extracts element from the array
+  //         [ bb[0], bb[2] ], // top left
+  //         [ bb[1], bb[3] ] // bottom right
+  //       ]);
+  //     });
+  //   const map = $scope.maps.city;
+  //   const location = map;
+  //   console.log('what is map', map);
+  //   map.setView([$scope.accommodation.coordinates.latitude, $scope.accommodation.coordinates.longitude], 2); // CONTINUE FROM HERE
+  //   const marker = L.marker([location.lat, location.lon]).addTo(map);
+  //   marker.bindPopup(`<p>${location.display_name}</p>`);
+  // }
 
   // ACCOMMODATION MAP
   $scope.$watchGroup(['maps.accommodations','accommodations' ], function() {
