@@ -249,15 +249,24 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     }
   });
   function drawCityMap() {
-    const map = $scope.maps.city;
+    console.log('what is scope at the start', $scope);
+    const map = $scope.maps.city; // data based on which page you are at
+    console.log('what is scope at the end', $scope.maps.city);
     map.setView([32, 20], 3);
   }
+
+  // function drawCityMap() {
+  //   const map = $scope.maps.city; // data based on which page you are at
+  //   console.log('what is scope', $scope.maps.city);
+  //   map.setView([32, 20], 3);
+  // }
   // function drawCityMap() {
   //   const map = $scope.maps.city;
   //   map.setView([32, 20], 3);
   // }
-
-  // function drawCityMap() {
+  //
+  // function drawCityMap($scope) {
+  //   console.log('$scope.trip.city is', $scope.trip.city);
   //   $http({
   //     method: 'GET',
   //     url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`

@@ -2,7 +2,14 @@
   border-bottom: 2px solid pink;
 }
 
-#mapId { height: 700px; }
+#mapId {
+  height: 700px;
+}
+
+#selectedInterests {
+  // padding: 90px 0px 0px 0px;
+  height: 900px;
+}
 
 .map {
   position: relative;
