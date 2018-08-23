@@ -1,30 +1,81 @@
-<div class="container">
-  
-  <div class="map" ng-map map-name="accommodations"></div>
+<!-- Maps -->
+<div class="map" ng-map map-name="accommodations"></div>
 
-  <!-- Duration -->
-  <section>
-    <h3 class="title is-3">Trip Duration</h3>
-    <a ng-repeat="duration in durations" class="button durationButton is-large is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</a>
-  </section>
-  <hr>
+<section class="hero is-light is-fullheight">
+  <div class="hero-body">
+  <div class="container">
+    <div class="columns is-multiline is-mobile">
 
-  <!-- Accomodation Type -->
-  <section>
-    <h3 class="title is-3">Accommodation Type</h3>
-    <div class="columns is-multiline">
-      <div class="column is-one-half">
-        <a ng-repeat="accommodationType in accommodationTypes"
-        ng-class="{ 'is-link': trip.accommodationTypes.includes(accommodationType), 'is-outlined': !trip.accommodationTypes.includes(accommodationType) }"
-        class="button interestButton is-large" accommodationTypeVal="{{ accommodationType }}" ng-click="toggleAccommodation($event)">{{ accommodationType }}
-      </a>
+          <!-- Duration -->
+          <div class="container">
+            <div class="column">
+              <h3 class="title is-3">Trip Duration</h3>
+              <a ng-repeat="duration in durations" class="button durationButton is-large is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</a>
+            </div>
+          </div>
+
+          <!-- Budget -->
+          <div class="container ">
+            <div class="column">
+              <h3 class="title is-3">Enter your budget</h3>
+              <form ng-submit="getBudget()">
+                <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
+              </form>
+            </div>
+          </div>
+
+          <!-- Accomodation Type -->
+          <div class="container ">
+            <div class="column">
+              <h3 class="title is-3">Accommodation Type</h3>
+              <a ng-repeat="accommodationType in accommodationTypes" ng-class="{ 'is-link': trip.accommodationTypes.includes(accommodationType), 'is-outlined': !trip.accommodationTypes.includes(accommodationType) }" class="button interestButton is-large" accommodationTypeVal="{{ accommodationType }}" ng-click="toggleAccommodation($event)">{{ accommodationType }} </a>
+            </div>
+          </div>
+
+          <!-- Proposed Accommodations -->
+          <div class="container">
+            <div class="level">
+
+              <div class="column">
+                <h3 class="title is-3">Choose your accommodation</h3>
+                <p class=""> {{ filteredAccommodations.length }} available to choose from</p>
+              </div>
+
+              <div class="column">
+                <h3 class="title is-3">Choose your accommodation</h3>
+                <p class=""> {{ filteredAccommodations.length }} available to choose from</p>
+              </div>
+
+            </div>
+          </div>
+
+          <hr>
+
+          <!-- Buttons -->
+          <div class="container">
+            <div class="level">
+
+              <div class="level-left">
+                <a class="button is-large is-info" ui-sref="tripsNew1">PREVIOUS</a>
+              </div>
+
+              <div class="level-right">
+                <a class="button is-large is-info" ng-click="drawActivitiesMap()" ui-sref="tripsNew3">NEXT</a>
+              </div>
+
+            </div>
+          </div>
+
+
     </div>
-    <div class="column is-one-half">
-        <h3 class="title is-3">Enter your budget</h3>
-        <form ng-submit="getBudget()">
-          <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
-        </form>
-    </div>
+  </div>
+  </div>
+</section>
+
+<!--
+<div class="container"> -->
+
+    <!-- <div>
       <h3 class="title is-3">Choose your accommodation</h3>
       <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
       <table class="table table-bordered">
@@ -35,9 +86,9 @@
           <th>Rating</th>
           <th>Location</th>
           <th>Price</th>
-        </tr>
+        </tr> -->
         <!-- When the selectedAccommodation row is equal to the index, then add the class of is-link -->
-        <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'has-background-link': $index === 'selectedAccommodationIndex'}">
+        <!-- <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'has-background-link': $index === 'selectedAccommodationIndex'}">
           <td>{{ $index }}</td>
           <td><img src="{{ accommodation.imageUrl }}" alt="{{ accomodation.name }}"></td>
           <td>{{ accommodation.name }}</td>
@@ -46,17 +97,10 @@
           <td>{{ accommodation.price }}</td>
           <td ng-if="!selectedAccommodation.includes(accommodation.name)"><a class="button is-primary" ng-click="addAccommodation($index)">Select</a></td>
           <td ng-if="selectedAccommodation.includes(accommodation.name)"><a class="button is-info" ng-click="removeAccommodation($index)">Remove</a></td>
-        </tr>
-      </table>
-    </div>
-  </section>
-  <hr>
-  <div class="level">
-    <div class="level-left">
-      <a class="button is-large is-info" ui-sref="tripsNew1">PREVIOUS</a>
-    </div>
-    <div class="level-right">
-      <a class="button is-large is-info" ng-click="drawActivitiesMap()" ui-sref="tripsNew3">NEXT</a>
-    </div>
-  </div>
-</div>
+        </tr> -->
+      <!-- </table>
+    </div> -->
+
+  <!-- </section> -->
+
+</div> -->
