@@ -1,4 +1,5 @@
 const Trip = require('../models/trip');
+const User = require('../models/user');
 
 function tripsIndex(req, res, next) {
   Trip
@@ -19,9 +20,25 @@ function tripsShow(req, res, next) {
 
 // user can create a new trip
 function tripsCreate(req, res, next) {
+  console.log('req.body =>', req.body);
+  console.log('req.user =>', req.user);
   Trip
     .create(req.body)
-    .then(trip => res.status(201).json(trip))
+    .then(trip => {
+      User
+        .findById(req.user.id) // req.user gets assigned in secureRoute
+        .then(user => {
+          user.trips = [].concat(...user.trips, trip.id);
+          console.log('this is me =>', user);
+          return user.save();
+        });
+      console.log('this is trip after we have messed with the user', trip);
+      return trip;
+    })
+    .then(trip => {
+      console.log('this is trip in the next bit', trip);
+      res.json(trip);
+    })
     .catch(next);
 }
 
