@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const router = require('./config/routes');
 const errorHandler = require('./lib/errorHandler');
-
+const morgan = require('morgan');
 // Environment
 const { port, dbURI } = require('./config/environment');
 
@@ -18,6 +18,7 @@ app.use(express.static(`${__dirname}/public`));
 
 // Middleware
 app.use(bodyParser.json());
+app.use(morgan('dev'));
 
 // app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
