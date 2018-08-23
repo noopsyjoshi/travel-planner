@@ -28,8 +28,8 @@
           <p>{{ trip.duration }}</p>
           <p>{{ trip.budget }}</p>
           <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
-          <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.name }} {{ accommodation.rating }}</p>
-          <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
+          <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</p>
+          <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
         </div>
       </div>
     </section>

@@ -106,7 +106,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the UI
     $scope.selectedAccommodation = [selectedAccommodation.name];
     // Update the trip object
-    $rootScope.trip.accommodations = [selectedAccommodation];
+    $rootScope.trip.accommodations = [{accommodation: selectedAccommodation}];
   };
 
   // Remove Accommodation from list
@@ -128,7 +128,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the UI
     $scope.selectedActivities.push(selectedActivity.name);
     // Update the trip object
-    $rootScope.trip.activities.push(selectedActivity);
+    $rootScope.trip.activities.push({activity: selectedActivity});
   };
 
   $scope.removeActivity = function(index) {
@@ -137,7 +137,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the UI
     $scope.selectedActivities = $scope.selectedActivities.filter(activity => activity !== selectedActivity.name);
     // Update the trip object
-    $rootScope.trip.activities = $rootScope.trip.activities.filter(activity => activity.name !== selectedActivity.name);
+    $rootScope.trip.activities = $rootScope.trip.activities.filter(activity => activity.activity.name !== selectedActivity.name);
   };
 
   // Divide activities into columns (per each day)
@@ -210,11 +210,21 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       $scope.filteredAccommodations = res.data;
     });
 
+  function assignDays() {
+    $scope.trip.accommodations.forEach((accommodation, i) => {
+      accommodation.dayNumber = i + 1;
+    });
+    $scope.trip.activities.forEach((activity) => {
+      activity.dayNumber = Math.round(Math.random() * ($scope.trip.duration - 1)) + 1;
+    });
+  }
+
   //////////////////////////////////////////////////////////////////////////////
   /////////////////////////// SUBMIT TRIP //////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
   $scope.handleSubmit = function() {
+    assignDays();
     $http({
       method: 'POST',
       url: '/api/trips',
