@@ -227,10 +227,11 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     assignDays();
     $http({
       method: 'POST',
-      url: '/api/trips',
+      url: '/api/trip',
       data: $rootScope.trip
     })
       .then(res => {
+        console.log('rootScope.trip is', $rootScope.trip);
         $state.go('tripsShow', { id: res.data._id });
       });
   };
