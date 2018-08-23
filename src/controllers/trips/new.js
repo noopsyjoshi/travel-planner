@@ -96,7 +96,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     }
     //$scope.filteredAccommodations is an array of the accommodations filtered by selected accommodation
   };
-
   $scope.selectedAccommodation = [];
 
   // Select Accommodation from list
@@ -120,7 +119,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the trip object
     $rootScope.trip.accommodations = [];
   };
-
   $scope.selectedActivities = [];
 
   // Display the selected activity from a list
@@ -227,85 +225,115 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       });
   };
 
+
+
   //////////////////////////////////////////////////////////////////////////////
-  /////////////////////////// MAPS /////////////////////////////////////////////
+  /////////////////////////////////// MAPS /////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
+  // CITY MAP
+  $scope.$watch('maps.city', function() { // watching for maps and accommodation data to load first before adding a map
+    if($scope.maps.city) {
+      drawCityMap();
+    }
+  });
+  function drawCityMap() {
+    $http({
+      method: 'GET',
+      url: `https://nominatim.openstreetmap.org/search/${$scope.trip.city}?format=json`
+    })
+      .then(res => {
+        const location = res.data.sort((a, b) => a.importance < b.importance)[0]; // javascript sorts the location, which is location is now available to be set on the $scope
+        $scope.trip = location;
+        console.log('WHAT IS THAT?', location); // WORKS
+        const bb = location.boundingbox; // getting this from insomnia
+        console.log('WHAT IS bb?', bb); // WORKS
+        map.fitBounds([ // extracts element from the array
+          [ bb[0], bb[2] ], // top left
+          [ bb[1], bb[3] ] // bottom right
+        ]);
+        // console.log('WHAT IS map.fitBounds?', map.fitBounds); // WORKS
+        // const map = $scope.maps.city;
+        // map.setView([25, 0], 2);
+      });
+    const map = $scope.maps.city;
+    const location = map;
+    console.log('what is map', map);
+    map.setView([location.lat, location.lon], 2); // CONTINUE FROM HERE
+    const marker = L.marker([location.lat, location.lon]).addTo(map);
+    marker.bindPopup(`<p>${location.display_name}</p>`);
+  }
 
-  // MAP FUNCTIONS
-  //   $rootScope.$on('$stateChangeStart',
-  //   function(event, toState, toParams, fromState, fromParams){
-  //     // do something
-  // })
 
-  // $scope.$watch('maps.city', function() { // watching for maps and accommodation data to load first before adding a map
-  //   if($scope.maps.city) {
-  //     drawCityMap();
-  //   }
-  // });
+  // ACCOMMODATION MAP
+  $scope.$watchGroup(['maps.accommodations','accommodations' ], function() {
+    if($scope.maps.accommodations && $scope.accommodations) { // if this both are loaded than draw a map
+      drawAccommodationsMap();
+    }
+  });
+  function drawAccommodationsMap() {
+    const map = $scope.maps.accommodations; // WORKS returns map object
+    const accommodations = $scope.accommodations; // WORKS returns accommodation object
+    accommodations.forEach(accommodation => {
+      const lat = accommodation.coordinates.latitude; // getting data from seeds and storing in a new variable to be used later
+      const lng = accommodation.coordinates.longitude; // getting data from seeds and storing in a new variable to be used later
+      map.setView([lat, lng], 10);
+      const marker = L.marker([lat, lng]).addTo(map);
+      marker.bindPopup(`<p>${accommodation.name}</p>`);
+      console.log('what is this', marker);
+    });
+  }
+
+
+  // ACTIVITY MAP
+  $scope.$watchGroup(['maps.activities','activities'], function() {
+    if($scope.maps.activities && $scope.activities) {
+      drawActivitiesMap();
+    }
+  });
+  function drawActivitiesMap() {
+    const map = $scope.maps.activities;
+    const activities = $scope.activities;
+    activities.forEach(activity => {
+      const lat = activity.coordinates.latitude;
+      const lng = activity.coordinates.longitude;
+      map.setView([lat, lng], 10);
+      const marker = L.marker([lat, lng]).addTo(map);
+      marker.bindPopup(`<p>${activity.name}</p>`);
+      console.log('what is this', marker);
+    });
+  }
+
+
+// REDUNDANT CODE & OTHER ATTEMPTS
+  // $scope.drawAccommodationMap = function($http, $scope) {
+  //   $http({ // make a request to the database to get all accommodations
+  //     method: 'GET',
+  //     url: '/api/accommodations'
   //
-  // function drawCityMap() {
-  //   const map = $scope.maps.city;
-  //   map.setView([25, 0], 2);
-  //   // const marker = L.marker([city]).addTo($scope.map);
-  //   // marker.bindPopup(`<p>${trip.city}</p>`);
-  // }
+  //   })
+  //     .then(res => {
+  //       $scope.accommodations = res.data;  // res.data returns all the data in accommodations
+  //       $scope.filteredAccommodations = res.data;
+  //     });
   //
-  // $scope.$watchGroup(['maps.accommodation', 'accommodations'], function() { // watching for maps and accommodation data to load first before adding a map
-  //   if($scope.maps.accommodations && $scope.accommodations) {
-  //     drawAccommodationMap();
-  //   }
-  // });
-
-    // $scope.$watchGroup(['map', 'accommodations'], function() {
-    //   if($scope.map && $scope.accommodations) {
-  //     drawAccommodationMap();
-    //   }
-    // });
-
-    // function drawAccommodationMap() {
-    //   // Add one marker for each accommodation
-    //   const accommodations = $scope.accommodations;
-    //   accommodations.forEach(accommodation => {
-    //     const lat = accommodation.coordinates.latitude; // getting data from seeds and storing in a new variable
-    //     const lng = accommodation.coordinates.longitude;
-    //     $scope.map.setView([lat, lng], 12); //
-    //     const marker = L.marker([lat, lng]).addTo($scope.map);
-    //     marker.bindPopup(`<p>${accommodation.name}</p>`);
-    //   });
-    // }
-
-  // function drawAccommodationMap() {
-  //   const map = $scope.maps.accommodations;
-  //   const accommodations = $scope.accommodations;
-  //   accommodations.forEach(accommodation => {
-  //     const lat = accommodation.coordinates.latitude; // getting data from seeds and storing in a new variable
-  //     const lng = accommodation.coordinates.longitude;
-  //     map.setView([lat, lng], 12);
-  //     const marker = L.marker([lat, lng]).addTo(map);
-  //     marker.bindPopup(`<p>${accommodation.name}</p>`);
+  //   $watchGroup(['map', 'accommodations'], function() { // watching for maps and accommodation data to load first before adding a map
+  //     if(map && accommodations) {
+  //       drawAccommodationMap();
+  //     }
   //   });
-  // }
   //
-  // $scope.$watchGroup(['maps.activities', 'activities'], function() { // watching for maps and accommodation data to load first before adding a map
-  //   if($scope.maps.activities && $scope.activities) {
-  //     drawActivitiesMap();
-  //   }
-  // });
-  //
-  // function drawActivitiesMap() {
-  //   console.log('clicked activities map');
-  //   const map = $scope.maps.activities;
-  //   $scope.activities = [];
-  //   const activities = $scope.activities;
-  //   activities.forEach(activity => {
-  //     const lat = activity.coordinates.latitude;
-  //     const lng = activity.coordinates.longitude;
-  //     map.setView([lat, lng], 12);
-  //     const marker = L.marker([lat, lng]).addTo(map);
-  //     marker.bindPopup(`<p>${activity.name}</p>`);
-  //   });
-  // }
+  //   function drawAccommodationMap() {
+  //     const accommodations = $scope.accommodations;
+  //     accommodations.forEach(accommodation => {
+  //       const lat = accommodation.coordinates.latitude; // getting data from seeds and storing in a new variable
+  //       const lng = accommodation.coordinates.longitude;
+  //       $scope.map.setView([lat, lng], 12);
+  //       const marker = L.marker([lat, lng]).addTo($scope.map);
+  //       marker.bindPopup(`<p>${accommodation.name}</p>`);
+  //     });
+  // };
+
 }
 
 export default TripsNewCtrl;

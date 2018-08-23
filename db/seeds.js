@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 const { dbURI } = require('../config/environment');
 
-// Required models
+// REQUIRED MODELS
 const User = require('../models/user');
 const Activity = require('../models/activity');
 const Trip = require('../models/trip');
 const Accommodation = require('../models/accommodation');
 
-// Set-up mongoose
+// SET-UP MONGOOSE
 mongoose.connect(dbURI);
 
 // Remove pre-existing collections from MongoDB
@@ -17,7 +17,7 @@ Activity.collection.drop();
 Trip.collection.drop();
 Accommodation.collection.drop();
 
-// Database
+// DATABASE
 const userData = [
   {
     firstName: 'Kane',
@@ -449,7 +449,7 @@ const accommodationData = [
   }
 ];
 
-// Collecting user data
+// LOGIC TO COLLECT USER DATA
 const tripData = [
   {
     country: 'United Kingdom',
