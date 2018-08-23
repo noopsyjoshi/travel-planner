@@ -257,7 +257,6 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       $scope.maps.city.setView([32, 20], 3);
     }
   });
-
   function drawCityMap() {
     $http({
       method: 'GET',
