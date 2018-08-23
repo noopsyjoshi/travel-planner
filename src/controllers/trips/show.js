@@ -4,9 +4,9 @@ function TripsShowCtrl($http, $scope, $state) {
     method: 'GET',
     url: `/api/trips/${$state.params.id}`
   })
-  .then(res => {
-    $scope.trip = res.data;
-  });
+    .then(res => {
+      $scope.trip = res.data;
+    });
 }
 
 export default TripsShowCtrl;

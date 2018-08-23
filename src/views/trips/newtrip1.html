@@ -1,20 +1,18 @@
 
-<section class="hero is-fullheight is-light is-bold">
-  <div class="hero-body">
-    <div class="container">
-        <!-- <div class="map" ng-map></div> -->
-        <h2 class="title is-2">Plan your journey</h2>
-        <div class="map" ng-map map-name="city"></div>
-        <h3 class="title is-3">Select a city</h3>
-        <!-- Choose city -->
-        <form ng-submit="getLocation()">
-          <!-- TODO: Make this input required -->
-          <!-- TODO: Add google map api autocomplete  -->
-          <input ng-model="trip.city" class="input is-large" type="text" name="city" placeholder="e.g. London">
-        </form>
-        <a class="button is-info is-large" ng-click="drawAccommodationMap()" ui-sref="tripsNew2">NEXT</a>
-      </div>
-      </h2>
-    </div>
-  </div>
-</section>
+<!-- <section class="hero is-fullheight is-light is-bold">
+<div class="hero-body"> -->
+<div class="map mapHome" ng-map map-name="city"></div>
+<!-- <div class="container"> -->
+<h3 class="title is-3">Select a city</h3>
+<!-- Choose city -->
+<form ng-submit="getLocation()">
+  <!-- TODO: Make this input required -->
+  <!-- TODO: Add google map api autocomplete  -->
+  <input ng-model="trip.city" class="input is-large" type="text" name="city" placeholder="e.g. London">
+</form>
+<a class="button is-info is-large" ng-click="drawAccommodationMap()" ui-sref="tripsNew2">NEXT</a>
+<!-- </div> -->
+</h2>
+</div>
+<!-- </div>
+</section> -->

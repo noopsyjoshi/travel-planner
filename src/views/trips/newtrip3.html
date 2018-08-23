@@ -4,7 +4,7 @@
   <!-- TODO: Display this on a separate page/view -->
   <section>
     <h3 class="title is-3">Choose your Interests</h3>
-    <button ng-class="{ 'is-link': trip.interests.includes(interest), 'is-outlined': !trip.interests.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
+    <button ng-class="{ 'is-link': trip.categories.includes(interest), 'is-outlined': !trip.categories.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large interests" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
     <p>You've selected:<strong id="tripInterest">{{ selectedInterests }}</strong> </p>
   </section>
   <hr>

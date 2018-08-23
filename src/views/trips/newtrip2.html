@@ -1,9 +1,8 @@
 <div class="container">
-  <h2 class="title is-2"></h2>
   <!-- Duration -->
   <section>
     <h3 class="title is-3">Trip Duration</h3>
-    <a ng-repeat="duration in durations" class="button durationButton is-large is-link is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</a>
+    <a ng-repeat="duration in durations" class="button durationButton is-large is-outlined" durationVal="{{ duration }}" ng-click="toggleDuration($event)">{{duration}} days</a>
   </section>
   <hr>
   <!-- Accomodation Type -->
@@ -16,8 +15,13 @@
         class="button interestButton is-large" accommodationTypeVal="{{ accommodationType }}" ng-click="toggleAccommodation($event)">{{ accommodationType }}
       </a>
     </div>
-    <div class="map" ng-map map-name="accommodations"></div>
     <div class="column is-one-half">
+        <h3 class="title is-3">Enter your budget</h3>
+        <form ng-submit="getBudget()">
+          <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
+        </form>
+    </div>
+    <div class="map" ng-map map-name="accommodations"></div>
       <h3 class="title is-3">Choose your accommodation</h3>
       <p class="">There are {{ filteredAccommodations.length }} you can choose from</p>
       <table class="table table-bordered">
@@ -29,7 +33,6 @@
           <th>Location</th>
           <th>Price</th>
         </tr>
-        Selected accommodation is {{ selectedAccommodation }}
         <!-- When the selectedAccommodation row is equal to the index, then add the class of is-link -->
         <tr ng-repeat="accommodation in filteredAccommodations" ng-class="{'has-background-link': $index === 'selectedAccommodationIndex'}">
           <td>{{ $index }}</td>
@@ -43,14 +46,6 @@
         </tr>
       </table>
     </div>
-  </section>
-  <hr>
-  <!-- Budget -->
-  <section>
-    <h3 class="title is-3">Enter your budget</h3>
-    <form ng-submit="getBudget()">
-      <input ng-model="trip.budget" class="input is-large" required type="Number" name="budget" placeholder="e.g. 500">
-    </form>
   </section>
   <hr>
   <div class="level">

@@ -1,19 +1,19 @@
 <!-- html page where the result itinerary is displayed to the user -->
 <div class="container">
-  <h1>Your Itnerary</h1>
   <section class="hero is-medium is-primary is-bold">
     <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Confirm your trip details
-        </h1>
-        <h2 class="subtitle">
-        </h2>
-      </div>
+        <h1 class="title is-title">Your Itnerary</h1>
     </div>
   </section>
     <section>
-      <div class="columns is-multiline is-one-half">
+      <div class="columns is-multiline">
+        <div class="column has-background-primary" ng-repeat="number in days">
+          Day {{ number + 1 }}
+          {{ selectedActivites }}
+        </div>
+      </div>
+
+      <div class="columns container is-multiline is-one-half">
         <div class="column has-background-light">
           <p>City</p>
           <p>Trip Duration</p>

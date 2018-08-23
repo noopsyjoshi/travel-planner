@@ -24,6 +24,7 @@
         <p>{{ trip.budget }}</p>
         <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
         <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.name }} {{ accommodation.rating }}</p>
+        <p ng-repeat="interest in trip.categories">{{ interest.name }}</p>
         <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
       </div>
     </div>

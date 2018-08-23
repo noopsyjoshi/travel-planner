@@ -4,7 +4,7 @@ function MainCtrl($auth, $scope, $state, $rootScope, $timeout) {
   $rootScope.trip = {
     accommodationTypes: [],
     accommodations: [],
-    interests: [],
+    categories: [],
     activities: []
   };
 
