@@ -106,7 +106,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the UI
     $scope.selectedAccommodation = [selectedAccommodation.name];
     // Update the trip object
-    $rootScope.trip.accommodations = [selectedAccommodation];
+    $rootScope.trip.accommodations = [{accommodation: selectedAccommodation}];
   };
 
   // Remove Accommodation from list
@@ -128,7 +128,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the UI
     $scope.selectedActivities.push(selectedActivity.name);
     // Update the trip object
-    $rootScope.trip.activities.push(selectedActivity);
+    $rootScope.trip.activities.push({activity: selectedActivity});
   };
 
   $scope.removeActivity = function(index) {
@@ -137,7 +137,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the UI
     $scope.selectedActivities = $scope.selectedActivities.filter(activity => activity !== selectedActivity.name);
     // Update the trip object
-    $rootScope.trip.activities = $rootScope.trip.activities.filter(activity => activity.name !== selectedActivity.name);
+    $rootScope.trip.activities = $rootScope.trip.activities.filter(activity => activity.activity.name !== selectedActivity.name);
   };
 
   // Divide activities into columns (per each day)
