@@ -210,11 +210,21 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       $scope.filteredAccommodations = res.data;
     });
 
+  function assignDays() {
+    $scope.trip.accommodations.forEach((accommodation, i) => {
+      accommodation.dayNumber = i + 1;
+    });
+    $scope.trip.activities.forEach((activity) => {
+      activity.dayNumber = Math.round(Math.random() * ($scope.trip.duration - 1)) + 1;
+    });
+  }
+
   //////////////////////////////////////////////////////////////////////////////
   /////////////////////////// SUBMIT TRIP //////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
   $scope.handleSubmit = function() {
+    assignDays();
     $http({
       method: 'POST',
       url: '/api/trips',
