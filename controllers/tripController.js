@@ -22,23 +22,18 @@ function tripsShow(req, res, next) {
 function tripsCreate(req, res, next) {
   console.log('req.body =>', req.body);
   console.log('req.user =>', req.user);
+  let _trip;
   Trip
     .create(req.body)
     .then(trip => {
-      User
-        .findById(req.user.id) // req.user gets assigned in secureRoute
-        .then(user => {
-          user.trips = [].concat(...user.trips, trip.id);
-          console.log('this is me =>', user);
-          return user.save();
-        });
-      console.log('this is trip after we have messed with the user', trip);
-      return trip;
+      _trip = trip;
+      return User.findById(req.user.id); // req.user gets assigned in secureRoute
     })
-    .then(trip => {
-      console.log('this is trip in the next bit', trip);
-      res.json(trip);
+    .then(user => {
+      user.trips.push(_trip.id);
+      return user.save();
     })
+    .then(() => res.json(_trip))
     .catch(next);
 }
 

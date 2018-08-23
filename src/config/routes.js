@@ -88,12 +88,6 @@ function Router($stateProvider, $urlRouterProvider) {
       url: '/trips/new',
       controller: 'TripsNewCtrl'
     })
-    // Trips New 4 - where the user can select their activities based on their interests
-    .state('tripsNew4', {
-      templateUrl: './views/trips/newtrip4.html',
-      url: '/trips/new',
-      controller: 'TripsNewCtrl'
-    })
     .state('summary', {
       templateUrl: './views/trips/summary.html',
       url: '/trips/new',
