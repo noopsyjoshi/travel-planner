@@ -2,7 +2,6 @@
   <div class="hero-body">
     <div class="container">
       <div class="columns is-multiline is-mobile">
-
         <!-- TITLE -->
         <section class="is-medium is-bold has-text-centered">
           <div class="hero-body">
@@ -11,66 +10,38 @@
             </div>
           </div>
         </section>
-
       </div>
     </div>
   </div>
 </section>
-
 <section class="is-light is-fullheight">
-    <div class="hero-body">
-      <div class="container">
-
-        <form ng-submit="createNewTrip()">
-          <div class="column has text-centered">
-            <div class="box columns is-half">
-
-              <div class="column box">
-                <a class="navbar-item box"><strong>City:</strong>{{ trip.city }}</a>
-                <a class="navbar-item box"><strong>Duration:</strong>{{ trip.duration }}</a>
-                <a class="navbar-item box"><strong>Budget:</strong>{{ trip.budget }}</a>
-                <a class="navbar-item box" ng-repeat="accommodationType in trip.accommodationTypes"><strong>Accommodation Type :</strong>{{ accommodationType }}</a>
-                <a class="navbar-item box" ng-repeat="accommodation in trip.accommodations"><strong>Accommodation Name :</strong>{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</a>
-              </div>
-              <div class="columns">
-                <div class="column box">
-                  <a class="navbar-item"><strong>Activities</strong></a>
-                  <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
-                </div>
-              </div>
-
-            </div>
-
-
-          </div>
-        </form>
-
-
-      </div>
-    </div>
-</section>
-
-<section class="is-light is-fullheight">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns is-multiline is-mobile">
-
-        <!-- BUTTONS -->
-        <div class="container">
-          <div class="level">
-
-            <div class="level-left">
-              <a class="button is-large is-info" ui-sref="tripsNew3">Previous</a>
-            </div>
-
-            <div class="level-right">
-              <a class="button is-large is-info" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</a>
-            </div>
-
-          </div>
+  <div class="container">
+    <form ng-submit="createNewTrip()">
+      <div class="columns has text-centered">
+        <div class="column is-half">
+          <div class="box"><strong>City: </strong>{{ trip.city }}</div>
+          <div class="box"><strong>Duration: </strong>{{ trip.duration }}</div>
+          <div class="box"><strong>Budget: </strong>{{ trip.budget }}</div>
+          <div class="box" ng-repeat="accommodationType in trip.accommodationTypes"><strong>Accommodation Type: </strong>{{ accommodationType }}</div>
+          <div class="box" ng-repeat="accommodation in trip.accommodations"><strong>Accommodation Name: </strong>{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</div>
         </div>
-
+        <div class="column">
+          <div class="box"><strong>Activities</strong>
+          <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
+        </div>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </section>
+<!-- BUTTONS -->
+<div class="container">
+  <div class="level">
+    <div class="level-left">
+      <div class="button is-medium" ui-sref="tripsNew3">Previous</div>
+    </div>
+    <div class="level-right">
+      <div class="button is-medium" type="submit" name="confirm" ng-click="handleSubmit()">Confirm</div>
+    </div>
+  </div>
+</div>
