@@ -36,7 +36,7 @@ const userData = [
     email: 'noopurjoshi@gmail.com',
     password: 'pass',
     passwordConfirmation: 'pass',
-    imageUrl: '',
+    imageUrl: 'https://m.media-amazon.com/images/M/MV5BODQyNTQyNzY4MV5BMl5BanBnXkFtZTcwODg5MDA3MQ@@._V1_UY317_CR25,0,214,317_AL_.jpg',
     location: 'Berlin'
   },
   {

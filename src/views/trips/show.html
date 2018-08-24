@@ -1,21 +1,17 @@
 <!-- html page where the result itinerary is displayed to the user -->
-<section class="hero is-medium is-primary is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title is-title">Your Itnerary</h1>
-    </div>
-  </div>
-</section>
+<!-- <section class="hero is-medium is-bold"> -->
+
 <div class="container">
+  <h1 class="title is-title">Your Itnerary</h1>
   <section>
     <div class="columns is-multiline">
-      <div class="column has-background-primary" ng-repeat="day in days">
+      <div class="column is-fullheight has-background-white" ng-repeat="day in days">
         <div ng-repeat="activity in trip.activities" ng-if="activity.dayNumber === day + 1" class="box">
           {{ activity.activity.name}}
         </div>
       </div>
     </div>
-  </section>
+  <!-- </section> -->
   <!-- <div class="box">
   <p><strong>City</strong></p>
   <p>{{ trip.city }}</p>
