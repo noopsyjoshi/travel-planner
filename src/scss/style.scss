@@ -1,4 +1,10 @@
 // MAPS
+.tableInterest {
+  width: 90%;
+  margin: 0 auto;
+}
+
+
 
 #cityMap {
     height: 80vh;
@@ -37,6 +43,11 @@
 
 }
 
+.activity {
+  width: 300px;
+  height: 150px;
+}
+
 .newTripBtn a:hover {
   color: #CC1717;
 }
@@ -48,12 +59,6 @@
 .container {
   width: 90%;
   margin: 0 auto;
-}
-
-
-#selectedInterests {
-  // padding: 90px 0px 0px 0px;
-  height: 900px;
 }
 
 .category-is-selected {

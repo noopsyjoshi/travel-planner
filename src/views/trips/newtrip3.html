@@ -1,115 +1,77 @@
-<!-- THEMES -->
-<!-- <section class="hero is-light is-fullheight">
+<!-- INTERESTS FORM -->
+<section class="hero is-light is-fullheight">
   <div class="hero-body">
     <div class="container">
-      <div class="columns is-multiline is-mobile has-text-centered">
-        <div class="column">
-          <h3 class="title is-3">Choose your Interests</h3>
-          <button ng-class="{ 'category-is-selected': trip.categories.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large interests" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
-          <div>
-            <section id="selectedInterests">
-            </section>
+      <div class="columns is-multiline is-mobile">
+        <section>
+        <div class="columns">
+
+          <!-- MAPS -->
+          <div class="column">
+            <div class="map" ng-map map-name="activities"></div>
           </div>
+          <!-- INTEREST CATEGORIES -->
+          <div class="column">
+            <h3 class="title is-3">Choose your Interests</h3>
+            <div class="column">
+              <button ng-class="{ 'is-link': trip.categories.includes(interest.toLowerCase()), 'is-outlined': !trip.categories.includes(interest.toLowerCase()) }" ng-repeat="interest in interests"
+              class="button interestButton is-large" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </section>
- -->
-    <!-- INTERESTS FORM -->
-    <section class="hero is-light is-fullheight">
-      <div class="hero-body">
+        </section>
+
+        <!-- ALL PROPOSED ACTIVITIES -->
         <div class="container">
-          <div class="columns is-multiline is-mobile">
-
-            <div class="container">
-              <div class="level">
-
-                <!-- MAPS -->
-                <div class="level-left">
-                  <div class="map" ng-map map-name="activities"></div>
-                </div>
-
-                <!-- CHOOSING INTERESTS -->
-                <div class="level-right">
-                  <div class="section">
-                    <div class="container">
-
-                      <!-- INTEREST TYPES -->
-                      <div class="">
-                        <h3 class="title is-3">Choose your Interests</h3>
-                        <div class="column">
-                          <button ng-class="{ 'is-link': trip.categories.includes(interest.toLowerCase()), 'is-outlined': !trip.categories.includes(interest.toLowerCase()) }" ng-repeat="interest in interests"
-                            class="button interestButton is-large" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
+          <div class="section">
+            <div class="level">
+              <div class="level-left">
+                <h3 class="title is-3">Choose your activities</h3>
+              </div>
+              <div class="level-right">
+                <p class="">{{ filteredActivities.length }} things to do in your area</p>
               </div>
             </div>
-
-            <!-- PROPOSED INTERESTS -->
-            <div class="container">
-              <!-- header -->
-              <div class="section">
-                <div class="level">
-                  <div class="level-left">
-                    <h3 class="title is-3">Choose your activities</h3>
-                  </div>
-
-                  <div class="level-right">
-                    <p class="">{{ filteredActivities.length }} things to do in your area</p>
-                  </div>
-                </div>
-                <!-- displays interests list-->
-                <div class="level">
-
-                  <div class="level-left"> <!-- can add has-navbar-fixed-top for funkiness-->
-                    <!-- <nav class="navbar"> <! can add is-fixed-top for funkiness-->
-                    <table class="table table-bordered">
-                      <tr>
-                        <th>Number</th>
-                        <!-- <th>Image</th> -->
-                        <th>Name</th>
-                        <th>Rating</th>
-                      </tr>
-                      <tr ng-repeat="activity in filteredActivities" ng-class="{'has-background-link': $index === selectedActivityIndex}">
-                        <td>{{ $index }}</td>
-                        <!-- <td><img src="{{ activity.imageUrl }}" alt="{{ activity.name }}"></td> -->
-                        <td>{{ activity.name }}</td>
-                        <td>{{ activity.rating }}</td>
-                        <td ng-if="!selectedActivities.includes(activity.name)"><a class="button is-primary" ng-click="addActivity($index)">Select</a></td>
-                        <td ng-if="selectedActivities.includes(activity.name)"><a class="button is-info" ng-click="removeActivity($index)">Remove</a></td>
-                      </tr>
-                    </table>
-                    <!-- </nav> -->
-                  </div>
-                  <div class="level-right">
-                    <div class="section">
-                      <div class="container">
-                        <div class="column">
-                          <p>Selected activities is {{ selectedActivities }}</p>
-                          <p>selectedActivity = {{ selectedActivity }}</p>
-                          <p>activity = {{filteredActivities[selectedActivity].name}}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- BUTTONS -->
-              <hr>
-              <div class="container">
-                <div class="level">
-                  <div class="level-left">
-                    <a class="button is-large is-info" ui-sref="tripsNew2">PREVIOUS</a>
-                  </div>
-                  <div class="level-right">
-                    <a class="button is-large is-info" ui-sref="summary">NEXT</a>
-                  </div>
-                </div>
-              </div>
+            <div class="column">
+              <table class="table table-bordered tableInterest">
+                <tr>
+                  <th>Number</th>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Rating</th>
+                </tr>
+                <tr class="tableRow" ng-repeat="activity in filteredActivities" ng-class="{'has-background-link': $index === selectedActivityIndex}">
+                  <td>{{ $index }}</td>
+                  <td>
+                    <figure class="image activity">
+                      <img src="{{ activity.imageUrl }}" alt="{{ activity.name }}">
+                    </figure>
+                  </td>
+                  <td>{{ activity.name }}</td>
+                  <td>{{ activity.rating }}</td>
+                  <td ng-if="!selectedActivities.includes(activity.name)"><a class="button is-primary" ng-click="addActivity($index)">Select</a></td>
+                  <td ng-if="selectedActivities.includes(activity.name)"><a class="button is-info" ng-click="removeActivity($index)">Remove</a></td>
+                </tr>
+              </table>
             </div>
           </div>
         </div>
-      </section>
+
+        <!-- BUTTONS -->
+        <hr>
+        <div class="container">
+          <div class="level">
+            <div class="level-left">
+              <a class="button is-medium" ui-sref="tripsNew2">PREVIOUS</a>
+            </div>
+            <div class="level-right">
+              <a class="button is-medium" ui-sref="summary">NEXT</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

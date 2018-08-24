@@ -26,41 +26,21 @@
             <div class="box columns is-half">
 
               <div class="column box">
-                <a class="navbar-item box"><strong>City</strong></a>
-                <a class="navbar-item"><strong>Duration</strong></a>
-                <a class="navbar-item"><strong>Budget</strong></a>
-                <a class="navbar-item"><strong>Accommodation Type</strong></a>
-                <a class="navbar-item"><strong>Accommodation Name</strong></a>
+                <a class="navbar-item box"><strong>City:</strong>{{ trip.city }}</a>
+                <a class="navbar-item box"><strong>Duration:</strong>{{ trip.duration }}</a>
+                <a class="navbar-item box"><strong>Budget:</strong>{{ trip.budget }}</a>
+                <a class="navbar-item box" ng-repeat="accommodationType in trip.accommodationTypes"><strong>Accommodation Type :</strong>{{ accommodationType }}</a>
+                <a class="navbar-item box" ng-repeat="accommodation in trip.accommodations"><strong>Accommodation Name :</strong>{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</a>
               </div>
-              <div class="column box">
-                <a class="navbar-item">{{ trip.city }}</a>
-                <a class="navbar-item">{{ trip.duration }}</a>
-                <a class="navbar-item">{{ trip.budget }}</a>
-                <a class="navbar-item" ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</a>
-                <a class="navbar-item" ng-repeat="accommodation in trip.accommodations">{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</a>
-              </div>
-
-
-            </div>
-
-            <div class="columns is-half">
-              <!-- <div class="column box">
-                <div class="box">
-                  <p><strong>Interests</strong></p>
-                  <p ng-repeat="interest in trip.categories">{{ interest.name }}</p>
-                </div>
-              </div> -->
-              <div class="column box">
-                <a class="navbar-item"><strong>Activities</strong></a>
-              </div>
-              <div class="column box">
-                <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
-              </div>
-                <!-- <div class="box">
-                  <p><strong>Activities</strong></p>
+              <div class="columns">
+                <div class="column box">
+                  <a class="navbar-item"><strong>Activities</strong></a>
                   <p ng-repeat="activity in trip.activities">{{ activity.activity.name }}</p>
-                </div> -->
+                </div>
+              </div>
+
             </div>
+
 
           </div>
         </form>
