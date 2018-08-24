@@ -1,39 +1,37 @@
 <!-- page that shows the user's dashboard -->
 <div class="columns is-multiline">
-  <div class="column has-background-info is-one-quarter has-text-centered">
+  <div class="column side-nav is-one-quarter has-text-centered">
     <img src="{{ user.imageUrl }}" alt=" {{ user.FirstName }}">
     <h3 class="title is-3">{{ user.firstName }} {{ user.lastName }}</h3>
-    <a ui-sref="usersEdit({ id: user._id })" class="button is-medium is-info" ng-if="isAuthenticated()">Edit account details</a>
+    <a ui-sref="usersEdit({ id: user._id })" class="button is-medium" ng-if="isAuthenticated()">Edit account details</a>
   </div>
-  <div class="column has-background-primary">
-    <h2 class="title is-2">Dashboard</h2>
+  <div class="column">
+    <h3 class="title is-3">Dashboard</h3>
     <section>
       <div class="box" ng-repeat="trip in user.trips">
         <div class="columns">
           <div class="column">
-            <p>Location</p>
+            <p><strong>Location</strong></p>
             <p>{{ trip.city }}</p>
           </div>
           <div class="column">
-            <p>Duration</p>
-            <p>{{ trip.duration }}</p>
+            <p><strong>Duration</strong></p>
+            <p>{{ trip.duration }} days</p>
           </div>
           <div class="column">
-            <p>Budget</p>
+            <p><strong>Budget</strong></p>
             <p>{{ trip.budget }}</p>
           </div>
           <div class="column">
-            <p>Accommodation</p>
-            <p ng-repeat="accommodation in accommodations"</p>
-            <p>{{ accommodation.name }}</p>
-          </div>
-          <div class="column">
-            <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
+            <p><strong>Accommodation</strong></p>
+            <p ng-repeat="accommodation in user.trips.accommodations"</p>
+              <p>{{ accommodation.name }}</p>
+            </div>
+            <div class="column">
+              <p ng-repeat="activity in trip.activities">{{ activity.name }}</p>
+            </div>
           </div>
         </div>
       </div>
-      <!-- <p ng-repeat="accommodationType in trip.accommodationTypes">{{ accommodationType }}</p>
-      <p ng-repeat="accommodation in trip.accommodations">{{ accommodation.accommodation.name }} {{ accommodation.accommodation.rating }}</p> -->
-    </div>
-  </section>
-</div>
+    </section>
+  </div>
