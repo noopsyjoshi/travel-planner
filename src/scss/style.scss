@@ -6,7 +6,48 @@
 }
 
 #navbar {
-  border-bottom: 2px solid pink;
+  border-bottom: 2px solid #e13c3c;
+}
+
+.button {
+  background-color: #e13c3c;
+  margin-top: 20px;
+  color: white;
+}
+
+.button:hover {
+  transition:all .7s ease;
+  background-color: #CC1717;
+  color: white;
+}
+
+.durationButton {
+  margin: 10px;
+}
+
+.newTripBtn {
+  background-color: #e13c3c;
+  color: white;
+}
+
+.newTripBtn:hover {
+  background-color: white;
+  border: 1px solid #CC1717;
+  transition: all .4s ease;
+
+}
+
+.newTripBtn a:hover {
+  color: #CC1717;
+}
+
+.navbar-item {
+
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
 }
 
 
@@ -50,4 +91,10 @@
   background-size: contain;
   color: white;
   font-weight: bold;
+}
+
+
+.table {
+  border-radius: 10px;
+  background-color: light-grey;
 }

@@ -10,7 +10,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   //////////////////////////////////////////////////////////////////////////////
 
   $scope.durations = [3, 7, 10];
-  $scope.interests = ['Music', 'Hisorical Landmarks', 'Museums'];
+  $scope.interests = ['Music', 'Hisorical Landmarks', 'Museums', 'Sports', 'Outdoor Activities', 'Restaurants', 'Events', 'Festivals', 'Art', 'Nature', 'Concerts', 'Sight-seeing'];
   $scope.accommodationTypes = ['Hotel', 'Hostel', 'Bed and Breakfast'];
   $scope.maps = {};
 
