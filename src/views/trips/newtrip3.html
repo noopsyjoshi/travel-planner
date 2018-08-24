@@ -1,11 +1,11 @@
 <!-- THEMES -->
-<section class="hero is-light is-fullheight">
+<!-- <section class="hero is-light is-fullheight">
   <div class="hero-body">
     <div class="container">
       <div class="columns is-multiline is-mobile has-text-centered">
         <div class="column">
           <h3 class="title is-3">Choose your Interests</h3>
-          <button ng-class="{ 'is-link': trip.categories.includes(interest), 'is-outlined': !trip.categories.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large interests" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
+          <button ng-class="{ 'category-is-selected': trip.categories.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large interests" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
           <div>
             <section id="selectedInterests">
             </section>
@@ -13,7 +13,7 @@
         </div>
       </div>
     </section>
-
+ -->
     <!-- INTERESTS FORM -->
     <section class="hero is-light is-fullheight">
       <div class="hero-body">
@@ -37,10 +37,10 @@
                       <div class="">
                         <h3 class="title is-3">Choose your Interests</h3>
                         <div class="column">
-                          <button ng-class="{ 'is-link': trip.categories.includes(interest), 'is-outlined': !trip.categories.includes(interest) }" ng-repeat="interest in interests" class="button interestButton is-large" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
+                          <button ng-class="{ 'is-link': trip.categories.includes(interest.toLowerCase()), 'is-outlined': !trip.categories.includes(interest.toLowerCase()) }" ng-repeat="interest in interests"
+                            class="button interestButton is-large" interestVal="{{ interest }}" ng-click="toggleInterest($event)"> {{interest}} </button>
                         </div>
                       </div>
-
                     </div>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                   </div>
 
                   <div class="level-right">
-                    <p class="">{{ filteredActivites.length }} things to do in your area</p>
+                    <p class="">{{ filteredActivities.length }} things to do in your area</p>
                   </div>
                 </div>
                 <!-- displays interests list-->
@@ -73,8 +73,7 @@
                         <th>Name</th>
                         <th>Rating</th>
                       </tr>
-
-                      <tr ng-repeat="activity in filteredActivites" ng-class="{'has-background-link': $index === selectedActivityIndex}">
+                      <tr ng-repeat="activity in filteredActivities" ng-class="{'has-background-link': $index === selectedActivityIndex}">
                         <td>{{ $index }}</td>
                         <!-- <td><img src="{{ activity.imageUrl }}" alt="{{ activity.name }}"></td> -->
                         <td>{{ activity.name }}</td>
@@ -91,7 +90,7 @@
                         <div class="column">
                           <p>Selected activities is {{ selectedActivities }}</p>
                           <p>selectedActivity = {{ selectedActivity }}</p>
-                          <p>activity = {{filteredActivites[selectedActivity].name}}</p>
+                          <p>activity = {{filteredActivities[selectedActivity].name}}</p>
                         </div>
                       </div>
                     </div>

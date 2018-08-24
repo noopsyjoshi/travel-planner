@@ -10,7 +10,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   //////////////////////////////////////////////////////////////////////////////
 
   $scope.durations = [3, 7, 10];
-  $scope.interests = ['Music', 'Hisorical Landmarks', 'Museums', 'Sports', 'Outdoor Activities', 'Restaurants', 'Events', 'Festivals', 'Art', 'Nature', 'Concerts', 'Sight-seeing'];
+  $scope.interests = ['Music', 'Historical Landmarks', 'Museums', 'Sports', 'Outdoor Activities', 'Restaurants', 'Events', 'Festivals', 'Art', 'Nature', 'Concerts', 'Sight-seeing'];
   $scope.accommodationTypes = ['Hotel', 'Hostel', 'Bed and Breakfast'];
   $scope.maps = {};
 
@@ -119,12 +119,13 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Update the trip object
     $rootScope.trip.accommodations = [];
   };
+
   $scope.selectedActivities = [];
 
   // Display the selected activity from a list
   $scope.addActivity = function(index) {
     // selectedActivity is what the user has selected (one row in the display relates to one activity)
-    const selectedActivity = $scope.filteredActivites[index];
+    const selectedActivity = $scope.filteredActivities[index];
     // Update the UI
     $scope.selectedActivities.push(selectedActivity.name);
     // Update the trip object
@@ -133,7 +134,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
 
   $scope.removeActivity = function(index) {
     // selectedActivity is what the user has selected (one row in the display relates to one activity)
-    const selectedActivity = $scope.filteredActivites[index];
+    const selectedActivity = $scope.filteredActivities[index];
     // Update the UI
     $scope.selectedActivities = $scope.selectedActivities.filter(activity => activity !== selectedActivity.name);
     // Update the trip object
@@ -161,15 +162,14 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
 
   $scope.toggleInterest = function($event) {
     // Set filteredActivities to all the activities
-    $scope.filteredActivites = $scope.activities;
-
+    $scope.filteredActivities = $scope.activities;
+    // tripInterests is what user has selected
     let tripInterests = $rootScope.trip.categories;
-    //tripInterests is the collection of the selected interests we have clicked on
-    // console.log('this is $scope.filteredActivites ->', $scope.filteredActivites);
 
-    const selectedInterest = $event.target.getAttribute('interestVal');
     //selectedInterest is the one we clicked on
+    const selectedInterest = $event.target.getAttribute('interestVal').toLowerCase();
 
+    // Add or remove the selected interest from the tripInterests array
     if(tripInterests.includes(selectedInterest)) {
       // remove interest
       tripInterests = tripInterests.filter(interest => interest !== selectedInterest);
@@ -180,13 +180,14 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
 
     $rootScope.trip.categories = tripInterests;
 
-    if(tripInterests.length !== 0) {
+    // Filter the activities according to the tripInterests
+    if(tripInterests.length) {
       // 1. Check all of the Activities
       // 2. Check each activity has a category that matches the user's selected interest
-      $scope.filteredActivites = $scope.filteredActivites.filter(activity =>  activity.categories.filter(category => tripInterests.includes(category)).length);
-      $rootScope.filteredActivites = $scope.filteredActivites;
+      $scope.filteredActivities = $scope.activities.filter(activity => {
+        return activity.categories.filter(category => tripInterests.includes(category)).length;
+      });
     }
-    console.log($rootScope.trip);
   };
 
   $http({ // Make a request to the database to get the activities based on interests
@@ -196,9 +197,9 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   // The activities information is in the data section in console
     .then(res => {
       $scope.activities = res.data; // res.data returns all the data in activities
-      $scope.filteredActivites = res.data;
+      $scope.filteredActivities = res.data;
       // $scope.activities.categories = res.data.categories;
-      //TODO: In views change everything so that it refers to filteredActivites
+      //TODO: In views change everything so that it refers to filteredActivities
     });
 
   $http({ // make a request to the database to get all accommodations
@@ -291,7 +292,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       map.setView([lat, lng], 10);
       const marker = L.marker([lat, lng]).addTo(map);
       marker.bindPopup(`<p>${accommodation.name}</p>`);
-      console.log('what is this', marker);
+      // console.log('what is this', marker);
     });
   }
 
@@ -310,7 +311,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
       map.setView([lat, lng], 10);
       const marker = L.marker([lat, lng]).addTo(map);
       marker.bindPopup(`<p>${activity.name}</p>`);
-      console.log('what is this', marker);
+      // console.log('what is this', marker);
     });
   }
 
