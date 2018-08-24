@@ -1,3 +1,4 @@
+
 // MAPS
 .tableInterest {
   width: 90%;
@@ -5,14 +6,46 @@
 }
 
 
+// Main
+body {
+font-family: 'Palanquin', sans-serif;
+font-size: 1rem;
+}
 
+
+p {
+  font-size: 1rem;
+}
+
+// MAPS
 #cityMap {
-    height: 80vh;
-    width:: 100vw;
+  height: 80vh;
+  width:: 100vw;
 }
 
 #navbar {
   border-bottom: 2px solid #e13c3c;
+}
+
+// HOME PAGE
+.homePage {
+  background-image: url('https://images.pexels.com/photos/386025/pexels-photo-386025.jpeg?cs=srgb&dl=adventure-beach-blue-386025.jpg&fm=jpg');
+  background-size: cover;
+}
+
+// Choose a city page
+.goBtn {
+  width: 200px;
+  padding: 5px;
+}
+
+.cityInput {
+  padding: 5px;
+  margin: 0 auto;
+}
+
+.cityPage {
+  margin: 0 auto;
 }
 
 .button {
@@ -61,6 +94,14 @@
   margin: 0 auto;
 }
 
+<<<<<<< HEAD
+=======
+#selectedInterests {
+  // padding: 90px 0px 0px 0px;
+  height: 900px;
+}
+
+>>>>>>> styling-itenarary
 .category-is-selected {
   border: solid 3px red;
 }
@@ -102,8 +143,13 @@
   font-weight: bold;
 }
 
-
 .table {
   border-radius: 10px;
   background-color: light-grey;
+}
+
+.side-nav {
+  height: 100vh;
+  border-right: 2px solid #e13c3c;
+  background-color: none;
 }
