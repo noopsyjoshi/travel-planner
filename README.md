@@ -51,7 +51,7 @@ The MVP of the application was to add the following features:
 
 - Allow users to create a new trip, by inputting the location, trip duration, accommodation type, accommodation, interests (such as music, history, outdoor activities etc), and finally activities
 
-<img src="readmeimages/location.png" width="500px">
+<img src="readmeimages/Location.png" width="500px">
 
 - Allow users to see all created trips in their dashboard
 
