@@ -57,7 +57,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   //////////////////////////////////////////////////////////////////////////////
 
   $scope.toggleAccommodation = function($event) {
-    // Set filteredAccommodations to all the accommodations that we fetch from the seeds file (for test - 3)
+    // Set filteredAccommodations to all the accommodations that we fetch from the seeds file
     // $scope.accommodations is all accommodations from the db
     $scope.filteredAccommodations = $scope.accommodations;
 
@@ -163,7 +163,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
   $scope.toggleInterest = function($event) {
     // Set filteredActivities to all the activities
     $scope.filteredActivities = $scope.activities;
-    // tripInterests is what user has selected
+    // tripInterests is what user has selected ($rootScope.trip.categories is all the interests from the seeds file)
     let tripInterests = $rootScope.trip.categories;
 
     //selectedInterest is the one we clicked on
@@ -183,7 +183,7 @@ function TripsNewCtrl($scope, $http, $rootScope, $state) {
     // Filter the activities according to the tripInterests
     if(tripInterests.length) {
       // 1. Check all of the Activities
-      // 2. Check each activity has a category that matches the user's selected interest
+      // 2. Check each activity has an interest that matches the user's selected interest
       $scope.filteredActivities = $scope.activities.filter(activity => {
         return activity.categories.filter(category => tripInterests.includes(category)).length;
       });
